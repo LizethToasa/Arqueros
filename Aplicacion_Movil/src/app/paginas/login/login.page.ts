@@ -27,8 +27,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-   //Habilitar y deshabilitar la visualización del password
-   showPassword() {
+  showPassword() {
     this.passwordTypeInput = this.passwordTypeInput === 'text' ? 'password' : 'text';
   }
 
@@ -67,13 +66,11 @@ export class LoginPage implements OnInit {
 
   async onLogin() {
     try {
-      
       const user = await this.authSvc.login(this.usuario,this.contrasena);
       if (user) {
         const isVerified = this.authSvc.isEmailVerified(user);
         this.uid = user.uid;
-        this.redirectUser(isVerified, this.uid);
-        
+        this.redirectUser(isVerified, this.uid);        
       }else{
         if(this.authSvc.errores=="The password is invalid or the user does not have a password."){
           this.mensaje="La contraseña es incorrecta.";
@@ -91,21 +88,21 @@ export class LoginPage implements OnInit {
   private redirectUser(isVerified: boolean,id:string): void {
     if (isVerified) {
       this.authSvc.obtenerUsuario(id).subscribe(usuario => {
-        //this.tienda = tienda;
         console.log(usuario);
         if (usuario === undefined) {
           this.mensaje="La cuenta de correo no tiene permisos para ingresar a estos módulos.";
           this.mensajeerror();
-          //alert("El usuario no es de tipo cliente.");
         }else{
           if(usuario.estado=="Inactivo"){
             this.mensaje="El usuario esta inactivo.";
             this.mensajeerror();
-            //alert("El usuario esta borrado");
           }else{
-            this.router.navigate(['menu-arquero']);
+            if(usuario.tipo=="Arquero"){
+              this.router.navigate(['menu-arquero']);
+            }else{
+              this.router.navigate(['menu-entrenador']);
+            }
           }
-          
         }
       });
     } else {

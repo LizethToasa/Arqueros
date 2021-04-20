@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/login"></ion-back-button>
+    </ion-buttons>
     <ion-title>Mensaje de Verificación</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +18,7 @@
 
   <ion-row>
     <ion-col>
-      <ion-button type="submit" color="primary" expand="block" (click)="reenviar()">
+      <ion-button type="submit" color="tertiary" expand="block" (click)="reenviar()">
         Reenviar correo de verificación
       </ion-button>
     </ion-col>
