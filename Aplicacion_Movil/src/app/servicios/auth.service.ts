@@ -22,13 +22,27 @@ export class AuthService {
   public user$: Observable<User>;
   private usuariosCollection: AngularFirestoreCollection<DatosUsuario>;
   private usuario: Observable<DatosUsuario[]>;
-  constructor(public afAuth: AngularFireAuth, private afs: AngularFirestore,private storage: AngularFireStorage) {
+  constructor(
+    public afAuth: AngularFireAuth, 
+    private afs: AngularFirestore,
+    private storage: AngularFireStorage
+    ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }
         return of(null);
+      })
+    );
+    this.usuariosCollection = afs.collection<DatosUsuario>('users');
+    this.usuario = this.usuariosCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
       })
     );
   }
@@ -110,6 +124,7 @@ export class AuthService {
       console.log('Error->', error);
     }
   }
+
 
   obtenerUsuario(id: string){
     return this.usuariosCollection.doc<DatosUsuario>(id).valueChanges();

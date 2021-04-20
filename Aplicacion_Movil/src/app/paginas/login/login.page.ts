@@ -92,7 +92,7 @@ export class LoginPage implements OnInit {
     if (isVerified) {
       this.authSvc.obtenerUsuario(id).subscribe(usuario => {
         //this.tienda = tienda;
-   
+        console.log(usuario);
         if (usuario === undefined) {
           this.mensaje="La cuenta de correo no tiene permisos para ingresar a estos módulos.";
           this.mensajeerror();
@@ -103,7 +103,7 @@ export class LoginPage implements OnInit {
             this.mensajeerror();
             //alert("El usuario esta borrado");
           }else{
-            this.router.navigate(['menu']);
+            this.router.navigate(['menu-arquero']);
           }
           
         }
