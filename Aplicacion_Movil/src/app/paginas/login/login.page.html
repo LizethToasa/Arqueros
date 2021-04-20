@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -27,7 +27,7 @@
         *ngIf="formGroup.get('emailControl').hasError('maxlength')">
         *Máximo 40 caracteres  
       </p>
-  </div>
+    </div>
     <ion-item lines="full">
       <ion-label position="floating">Contraseña</ion-label>
       <div>
@@ -55,7 +55,7 @@
     </div>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" expand="block">
+        <ion-button type="submit" expand="block" color="tertiary">
           Login
         </ion-button>
       </ion-col>
