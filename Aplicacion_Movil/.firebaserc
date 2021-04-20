@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "aplicacion-movil-195c9": {
+      "hosting": {
+        "app": [
+          "aplicacion-movil-195c9"
+        ]
+      }
+    }
+  }
+}

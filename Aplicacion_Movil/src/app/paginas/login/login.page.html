@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="onLogin()">
+    <ion-item lines="full">
+      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-input type="email" formControlName="emailControl" [(ngModel)]="usuario" placeholder="escuela.arqueros@gmail.com"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('email')">
+        *Ingrese un correo válido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('minlength')">
+        *Mínimo 10 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('maxlength')">
+        *Máximo 40 caracteres  
+      </p>
+  </div>
+    <ion-item lines="full">
+      <ion-label position="floating">Contraseña</ion-label>
+      <div>
+        <ion-input formControlName="passwordControl" [type]="passwordTypeInput" 
+        #password placeholder="***********" [(ngModel)]="contrasena"></ion-input>
+      </div>
+      
+      <button item-end type="button" class="btn_eye_icon" color="royal" style="border: none;" (click)="showPassword()">
+        <ion-icon [name]="(passwordTypeInput === 'text')?'eye-off':'eye'" ></ion-icon>
+      </button>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('passwordControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('passwordControl').hasError('minlength')">
+        *Mínimo 8 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('passwordControl').hasError('passwordControl')">
+        *Máximo 40 caracteres  
+      </p>
+    </div>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block">
+          Login
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-grid> 
+    <ion-row>
+      <ion-col>
+        <p class="ion-text-end">
+          <a routerLink="/olvidar-contrasena">¿Olvidaste tu contraseña?</a>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p class="ion-text-end">
+          <a routerLink="/registro">Registrarse</a>
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

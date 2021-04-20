@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>¿Olvidaste tu contraseña?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <form [formGroup]="formolvidaste" (ngSubmit)="enviarcorreo(email)">
+      <ion-item>
+        <ion-input [type]="email" #email required placeholder="escuela.arqueros@gmail.com" formControlName="emailControl"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formolvidaste.get('emailControl').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formolvidaste.get('emailControl').hasError('email')">
+          *Ingrese un correo válido
+        </p>
+        <p class="form-error"
+          *ngIf="formolvidaste.get('emailControl').hasError('minlength')">
+          *Mínimo 10 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formolvidaste.get('emailControl').hasError('maxlength')">
+          *Máximo 40 caracteres  
+        </p>
+    </div>
+    <ion-row>
+      <ion-col>
+          <ion-button [disabled]="!formolvidaste.valid" type="submit" expand="block">Enviar</ion-button>
+      </ion-col>
+    </ion-row> 
+    </form>
+  </ion-content>
+</ion-content>
+
