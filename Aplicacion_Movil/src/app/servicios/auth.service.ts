@@ -30,12 +30,12 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {
-          return this.afs.doc<User>(`arqueros/${user.uid}`).valueChanges();
+          return this.afs.doc<User>(`alumnos/${user.uid}`).valueChanges();
         }
         return of(null);
       })
     );
-    this.usuariosCollection = afs.collection<DatosUsuario>('arqueros');
+    this.usuariosCollection = afs.collection<DatosUsuario>('alumnos');
     this.usuario = this.usuariosCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -69,7 +69,7 @@ export class AuthService {
            finalize(() => {
             fileRef.getDownloadURL().subscribe(urlImage => {
               this.photoURL=urlImage;
-              this.afs.collection('arqueros').doc(uid).set({
+              this.afs.collection('alumnos').doc(uid).set({
                 uid : uid,
                 cedula: cedu,
                 nombre : nombre,
