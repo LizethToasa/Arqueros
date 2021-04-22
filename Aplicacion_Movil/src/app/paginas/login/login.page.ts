@@ -89,19 +89,28 @@ export class LoginPage implements OnInit {
     if (isVerified) {
       this.authSvc.obtenerUsuario(id).subscribe(usuario => {
         console.log(usuario);
+        
         if (usuario === undefined) {
-          this.mensaje="La cuenta de correo no tiene permisos para ingresar a estos módulos.";
-          this.mensajeerror();
+          this.authSvc.obtenerEntrenador(id).subscribe(entrenador => {
+            if (entrenador=== undefined) {
+              this.mensaje="La cuenta de correo no es de tipo alumno.";
+              this.mensajeerror();
+            }else{
+              if(entrenador.estado=="Inactivo"){
+                this.mensaje="El usuario esta inactivo.";
+                this.mensajeerror();
+              }else{
+                  this.router.navigate(['menu-entrenador']);
+              }
+            }
+          });
+          
         }else{
           if(usuario.estado=="Inactivo"){
             this.mensaje="El usuario esta inactivo.";
             this.mensajeerror();
           }else{
-            if(usuario.tipo=="Arquero"){
-              this.router.navigate(['menu-arquero']);
-            }else{
-              this.router.navigate(['menu-entrenador']);
-            }
+            this.router.navigate(['menu-arquero']);
           }
         }
       });

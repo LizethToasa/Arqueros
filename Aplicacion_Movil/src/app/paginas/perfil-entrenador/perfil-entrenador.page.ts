@@ -135,6 +135,7 @@ export class PerfilEntrenadorPage implements OnInit {
   async cargarUsuario(){
     this.usuarioService.getEntrenador(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
+      console.log(usuario);
     });
   }
 
