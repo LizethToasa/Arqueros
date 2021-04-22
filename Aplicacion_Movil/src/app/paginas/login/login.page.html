@@ -55,7 +55,7 @@
     </div>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" expand="block" color="tertiary">
+        <ion-button type="submit" [disabled]="!formGroup.valid"  expand="block" color="tertiary">
           Login
         </ion-button>
       </ion-col>
@@ -71,9 +71,9 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <p class="ion-text-end">
-          <a routerLink="/registro">Registrarse</a>
-        </p>
+        <ion-button expand="block" color="tertiary" routerLink="/inicio">
+          Regresar
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

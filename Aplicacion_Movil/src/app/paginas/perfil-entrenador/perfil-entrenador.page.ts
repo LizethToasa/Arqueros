@@ -8,6 +8,7 @@ import { AuthService } from '../../servicios/auth.service';
 import { ActivatedRoute} from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-perfil-entrenador',
   templateUrl: './perfil-entrenador.page.html',
@@ -141,7 +142,7 @@ export class PerfilEntrenadorPage implements OnInit {
   async guardarUsuario() {
     if (this.usuarioId) {
       this.usuarioService.updateEntrenador(this.usuario, this.usuarioId).then(() => {
-        this.nav.navigateForward('menu');
+        this.nav.navigateForward('menu-entrenador');
         this.mensaje="Se actualizó correctamente su perfil.";
         this.mensajeconfirmacion();
       });

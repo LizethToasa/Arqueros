@@ -57,6 +57,13 @@ export class RegistroPage implements OnInit {
       Validators.pattern("[0-9]*"),
     ]));
 
+    const telefono2Control = new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.minLength(7),
+      Validators.maxLength(10),
+      Validators.pattern("[0-9]*"),
+    ]));
+
     const emailControl = new FormControl('', Validators.compose([
         Validators.required,
         Validators.email,
@@ -75,7 +82,7 @@ export class RegistroPage implements OnInit {
       
     ]));
 
-    this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl,emailControl,passwordControl,foto });
+    this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl,telefono2Control,emailControl,passwordControl,foto });
   }
 
   //Imagen
@@ -103,9 +110,9 @@ export class RegistroPage implements OnInit {
   }
 
   //Registrar nuevo usuario
-  async onRegister(email, password, nombre, apellido, cedula, telefono) {
+  async onRegister(email, password, nombre, apellido, cedula, telefono,telefono2) {
     try {
-      const user = await this.authSvc.register(email.value, password.value, nombre.value, apellido.value, cedula.value, telefono.value,this.image);
+      const user = await this.authSvc.register(email.value, password.value, nombre.value, apellido.value, cedula.value, telefono.value,telefono2.value,this.image);
       if (user) {
         const isVerified = this.authSvc.isEmailVerified(user);
         this.redirectUser(isVerified);

@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'perfil-arquero',
     loadChildren: () => import('./paginas/perfil-arquero/perfil-arquero.module').then( m => m.PerfilArqueroPageModule)
   },
+  {
+    path: 'registro-entrenador',
+    loadChildren: () => import('./paginas/registro-entrenador/registro-entrenador.module').then( m => m.RegistroEntrenadorPageModule)
+  },
+  {
+    path: 'registro-administrador',
+    loadChildren: () => import('./paginas/registro-administrador/registro-administrador.module').then( m => m.RegistroAdministradorPageModule)
+  },
 ];
 
 @NgModule({

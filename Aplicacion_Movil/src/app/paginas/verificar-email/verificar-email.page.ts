@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 export class VerificarEmailPage implements OnInit {
 
   user$: Observable<User> = this.authSvc.afAuth.user;
+  entrenador$: Observable<User> = this.authSvc.afAuth.user;
+  administrador$: Observable<User> = this.authSvc.afAuth.user;
+
   constructor(private authSvc: AuthService) { }
 
   ngOnInit() {

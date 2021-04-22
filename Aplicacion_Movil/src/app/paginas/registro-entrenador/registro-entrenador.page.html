@@ -1,0 +1,184 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro Entrenador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono)">
+    <ion-item>
+      <ion-label position="floating"><strong>Nombre</strong></ion-label>
+      <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Lizeth"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('minlength')">
+        *Mínimo 3 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('maxlength')">
+        *Máximo 15 caracteres  
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('pattern')">
+        *El nombre debe tener solo letras, la primera letra con mayúscula y sin espacios
+      </p>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"><strong>Apellido</strong></ion-label>
+      <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Toasa"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('minlength')">
+        *Mínimo 3 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('maxlength')">
+        *Máximo 15 caracteres  
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('pattern')">
+        *El apellido debe tener solo letras, la primera letra con mayúscula y sin espacios
+      </p>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"><strong>Cédula</strong></ion-label>
+      <ion-input formControlName="cedulaControl" type="tel" #cedula placeholder="0498989898"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('minlength')">
+        *10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('maxlength')">
+        *10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('pattern')">
+        *La cédula debe tener solo números
+      </p>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"><strong>Teléfono</strong></ion-label>
+      <ion-input formControlName="telefonoControl" type="tel" #telefono placeholder="0999999999"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('minlength')">
+        *Mínimo 7 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('maxlength')">
+        *Máximo 10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('pattern')">
+        *El teléfono debe tener solo números
+      </p>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"><strong>Correo electrónico</strong></ion-label>
+      <ion-input formControlName="emailControl" type="email" #email placeholder="escuela.arqueros@gmail.com"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('email')">
+        *Ingrese un correo válido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('minlength')">
+        *Mínimo 10 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('emailControl').hasError('maxlength')">
+        *Máximo 40 caracteres  
+      </p>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating"><strong>Contraseña</strong></ion-label>
+    <div>
+      <ion-input formControlName="passwordControl" [type]="passwordTypeInput" 
+      #password placeholder="***********"></ion-input>
+    </div>
+    
+    <button item-end type="button" class="btn_eye_icon" color="royal" style="border: none;" (click)="showPassword()">
+      <ion-icon [name]="(passwordTypeInput === 'text')?'eye-off':'eye'" ></ion-icon>
+    </button>
+  </ion-item>
+  <div class="validation-errors">
+    <p class="form-error"
+      *ngIf="formGroup.get('passwordControl').hasError('required')">
+      *Requerido
+    </p>
+    <p class="form-error"
+      *ngIf="formGroup.get('passwordControl').hasError('minlength')">
+      *Mínimo 8 caracteres 
+    </p>
+    <p class="form-error"
+      *ngIf="formGroup.get('passwordControl').hasError('maxlength')">
+      *Máximo 40 caracteres 
+    </p>
+  </div>
+  <ion-item>
+    <div class="row">
+      <ion-label position="floating"><strong>Foto</strong></ion-label>
+      <br/>
+        <ion-input formControlName="foto" type="file" accept="image/*" (change)="enviarimagen($event)" style="color:black"></ion-input>
+    </div>
+  </ion-item>
+  <div class="validation-errors">
+    <p class="form-error"
+      *ngIf="formGroup.get('foto').hasError('required')">
+      *Requerido
+    </p>
+  </div>
+
+  <ion-row>
+    <ion-col>
+        <ion-button type="submit" [disabled]="!formGroup.valid" expand="block" color="tertiary">Registrarse</ion-button>
+    </ion-col>
+  </ion-row>
+
+  </form>
+  <ion-row>
+    <ion-col>
+      <p class="center-span">
+        <a routerLink="/login">¿Ya tienes una cuenta?</a>
+      </p>
+    </ion-col>
+  </ion-row>
+</ion-content>

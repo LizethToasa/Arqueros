@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
+import { DatosEntrenador } from '../interfaces/entrenador.interface';
+import { DatosAdministrador } from '../interfaces/administrador.interface';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DatosUsuario } from '../interfaces/user.interface';
 import * as firebase from 'firebase';
@@ -20,8 +22,14 @@ export class AuthService {
   private filePath: string;
   public photoURL = null;
   public user$: Observable<User>;
+  public entrenador$: Observable<DatosEntrenador>;
+  public administrador$: Observable<DatosAdministrador>;
   private usuariosCollection: AngularFirestoreCollection<DatosUsuario>;
   private usuario: Observable<DatosUsuario[]>;
+  private entrenadorCollection: AngularFirestoreCollection<DatosEntrenador>;
+  private entrenador: Observable<DatosEntrenador[]>;
+  private administradorCollection: AngularFirestoreCollection<DatosAdministrador>;
+  private administrador: Observable<DatosAdministrador[]>;
   constructor(
     public afAuth: AngularFireAuth, 
     private afs: AngularFirestore,
@@ -45,6 +53,26 @@ export class AuthService {
         });
       })
     );
+    this.administradorCollection = afs.collection<DatosAdministrador>('administrador');
+    this.administrador = this.administradorCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
+    this.entrenadorCollection = afs.collection<DatosEntrenador>('entrenadores');
+    this.entrenador = this.entrenadorCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
   }
 
   async resetPassword(email: string): Promise<void> {
@@ -56,7 +84,7 @@ export class AuthService {
     }
   }
 
-  async register(email: string, password: string, nombre: string, apellido: string, cedu: string, tele: string,image?: FileI): Promise<User> {
+  async register(email: string, password: string, nombre: string, apellido: string, cedu: string, tele: string,tele2: string,image?: FileI): Promise<User> {
     try {
       const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
       const uid = user.uid;
@@ -76,9 +104,45 @@ export class AuthService {
                 apellido : apellido,
                 correo : correo,
                 telefono : tele,
+                telefono2 : tele2,
                 estado : "Activo",
                 foto : this.photoURL,
                 tipo: "Arquero"
+              })
+            });
+          })
+        ).subscribe();
+      await this.sendVerifcationEmail();
+      return user;
+    } catch (error) {
+      this.errores=error['message'];
+      console.log('Error->', error);
+    }
+  }
+
+  async registerentrenador(email: string, password: string, nombre: string, apellido: string, cedu: string, tele: string,image?: FileI): Promise<User> {
+    try {
+      const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
+      const uid = user.uid;
+      const correo = user.email;
+      this.filePath = `perfiles/${uid}`;
+      const fileRef = this.storage.ref(this.filePath);
+      const task = this.storage.upload(this.filePath, image);
+      task.snapshotChanges()
+        .pipe(
+           finalize(() => {
+            fileRef.getDownloadURL().subscribe(urlImage => {
+              this.photoURL=urlImage;
+              this.afs.collection('entrenadores').doc(uid).set({
+                uid : uid,
+                cedula: cedu,
+                nombre : nombre,
+                apellido : apellido,
+                correo : correo,
+                telefono : tele,
+                estado : "Activo",
+                foto : this.photoURL,
+                tipo: "Entrenador"
               })
             });
           })
@@ -129,5 +193,11 @@ export class AuthService {
 
   obtenerUsuario(id: string){
     return this.usuariosCollection.doc<DatosUsuario>(id).valueChanges();
+  }
+  obtenerEntrenador(id: string){
+    return this.entrenadorCollection.doc<DatosEntrenador>(id).valueChanges();
+  }
+  obtenerAdministrador(id: string){
+    return this.administradorCollection.doc<DatosAdministrador>(id).valueChanges();
   }
 }

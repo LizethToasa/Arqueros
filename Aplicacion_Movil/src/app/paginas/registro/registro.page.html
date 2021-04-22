@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
-      <ion-back-button routerLink="/login"></ion-back-button>
+      <ion-back-button routerLink="/inicio"></ion-back-button>
     </ion-buttons>
     <ion-title>Registrar Arqueros</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono)">
+  <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono,telefono2)">
     <ion-item>
       <ion-label position="floating"><strong>Nombre</strong></ion-label>
       <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Lizeth"></ion-input>
@@ -100,6 +100,30 @@
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('telefonoControl').hasError('pattern')">
+        *El teléfono debe tener solo números
+      </p>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"><strong>Teléfono Representante</strong></ion-label>
+      <ion-input formControlName="telefono2Control" type="tel" #telefono2 placeholder="0999999999"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('minlength')">
+        *Mínimo 7 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('maxlength')">
+        *Máximo 10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('pattern')">
         *El teléfono debe tener solo números
       </p>
     </div>
