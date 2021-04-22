@@ -18,7 +18,7 @@ export class EntrenadorService {
   constructor(
     db:AngularFirestore, private storage: AngularFireStorage ,public afDB: AngularFireDatabase
   ) { 
-    this.entrenadoresCollection = db.collection<DatosEntrenador>('alumnos');
+    this.entrenadoresCollection = db.collection<DatosEntrenador>('entrenadores');
     this.entrenadores = this.entrenadoresCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
