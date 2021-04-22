@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'registro-administrador',
     loadChildren: () => import('./paginas/registro-administrador/registro-administrador.module').then( m => m.RegistroAdministradorPageModule)
   },
+  {
+    path: 'listado-arqueros',
+    loadChildren: () => import('./paginas/listado-arqueros/listado-arqueros.module').then( m => m.ListadoArquerosPageModule)
+  },
 ];
 
 @NgModule({

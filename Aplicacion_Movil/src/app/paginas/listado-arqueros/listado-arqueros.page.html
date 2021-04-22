@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listado-arqueros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let usuario of usuarios">
+    <ion-card-header>
+      <ion-card-subtitle>{{usuario.nombre}} {{usuario.apellido}}</ion-card-subtitle>
+      <ion-card-title><img [src]="usuario.foto" style="height:100px;display:block;margin:auto"/></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>
+        <b>Telefonos: </b> 
+        <a href="https://api.whatsapp.com/send?phone=+593998785905&text=Enviar mensaje">{{usuario.telefono}}</a> y <a routerLink="/olvidar-contrasena">{{usuario.telefono2}}</a>
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
