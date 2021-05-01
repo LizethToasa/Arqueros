@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'listado-arqueros',
     loadChildren: () => import('./paginas/listado-arqueros/listado-arqueros.module').then( m => m.ListadoArquerosPageModule)
   },
+  {
+    path: 'ficha',
+    loadChildren: () => import('./paginas/ficha/ficha.module').then( m => m.FichaPageModule)
+  },
 ];
 
 @NgModule({

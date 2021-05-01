@@ -33,14 +33,14 @@ export class RegistroPage implements OnInit {
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
-      Validators.pattern("(?=[^A-Z]*[A-Z])[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*"),
+      Validators.pattern("(?=[^A-Z]*[A-Z])[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]* "),
     ]));
 
     const apellidoControl = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
-      Validators.pattern("(?=[^A-Z]*[A-Z])[a-zA-ZÑñÁÉÍÓÚáéíóú]*"),
+      Validators.pattern("(?=[^A-Z]*[A-Z])[a-zA-ZÑñÁÉÍÓÚáéíóú]* "),
     ]));
 
     const cedulaControl = new FormControl('', Validators.compose([

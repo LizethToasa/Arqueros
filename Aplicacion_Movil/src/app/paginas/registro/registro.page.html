@@ -10,7 +10,7 @@
 <ion-content>
   <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono,telefono2)">
     <ion-item>
-      <ion-label position="floating"><strong>Nombre</strong></ion-label>
+      <ion-label position="floating"><strong>Nombres</strong></ion-label>
       <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Lizeth"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -20,20 +20,20 @@
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('nombreControl').hasError('minlength')">
-        *Mínimo 3 caracteres 
+        *Mínimo 7 caracteres 
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('nombreControl').hasError('maxlength')">
-        *Máximo 15 caracteres  
+        *Máximo 30 caracteres  
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('nombreControl').hasError('pattern')">
-        *El nombre debe tener solo letras, la primera letra con mayúscula y sin espacios
+        *Se debe ingresar dos nombres y debe solo contener letras
       </p>
     </div>
 
     <ion-item>
-      <ion-label position="floating"><strong>Apellido</strong></ion-label>
+      <ion-label position="floating"><strong>Apellidos</strong></ion-label>
       <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Toasa"></ion-input>
     </ion-item>
 
@@ -44,15 +44,15 @@
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('apellidoControl').hasError('minlength')">
-        *Mínimo 3 caracteres 
+        *Mínimo 7 caracteres 
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('apellidoControl').hasError('maxlength')">
-        *Máximo 15 caracteres  
+        *Máximo 30 caracteres  
       </p>
       <p class="form-error"
         *ngIf="formGroup.get('apellidoControl').hasError('pattern')">
-        *El apellido debe tener solo letras, la primera letra con mayúscula y sin espacios
+        *Se debe ingresar dos apellidos y debe solo contener letras
       </p>
     </div>
 
