@@ -43,6 +43,14 @@ export class AuthService {
         return of(null);
       })
     );
+    this.entrenador$ = this.afAuth.authState.pipe(
+      switchMap((user) => {
+        if (user) {
+          return this.afs.doc<User>(`entrenadores/${user.uid}`).valueChanges();
+        }
+        return of(null);
+      })
+    );
     this.usuariosCollection = afs.collection<DatosUsuario>('alumnos');
     this.usuario = this.usuariosCollection.snapshotChanges().pipe(
       map(actions => {

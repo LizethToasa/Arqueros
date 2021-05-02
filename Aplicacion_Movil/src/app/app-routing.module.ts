@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from './guards/auth.guard';
+import { EntrenadorGuard } from './guards/entrenador.guard';
 const routes: Routes = [
   {
     path: '',
@@ -9,11 +10,13 @@ const routes: Routes = [
   },
   {
     path: 'olvidar-contrasena',
-    loadChildren: () => import('./paginas/olvidar-contrasena/olvidar-contrasena.module').then( m => m.OlvidarContrasenaPageModule)
+    loadChildren: () => import('./paginas/olvidar-contrasena/olvidar-contrasena.module').then( m => m.OlvidarContrasenaPageModule),
+    
   },
   {
     path: 'menu-arquero',
-    loadChildren: () => import('./paginas/menu-arquero/menu-arquero.module').then( m => m.MenuArqueroPageModule)
+    loadChildren: () => import('./paginas/menu-arquero/menu-arquero.module').then( m => m.MenuArqueroPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'verificar-email',
@@ -25,7 +28,8 @@ const routes: Routes = [
   },
   {
     path: 'menu-entrenador',
-    loadChildren: () => import('./paginas/menu-entrenador/menu-entrenador.module').then( m => m.MenuEntrenadorPageModule)
+    loadChildren: () => import('./paginas/menu-entrenador/menu-entrenador.module').then( m => m.MenuEntrenadorPageModule),
+    canActivate: [EntrenadorGuard]
   },
   {
     path: 'login',
@@ -58,6 +62,10 @@ const routes: Routes = [
   {
     path: 'ficha',
     loadChildren: () => import('./paginas/ficha/ficha.module').then( m => m.FichaPageModule)
+  },
+  {
+    path: 'solicutud',
+    loadChildren: () => import('./paginas/solicutud/solicutud.module').then( m => m.SolicutudPageModule)
   },
 ];
 
