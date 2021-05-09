@@ -45,7 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'perfil-arquero',
-    loadChildren: () => import('./paginas/perfil-arquero/perfil-arquero.module').then( m => m.PerfilArqueroPageModule)
+    loadChildren: () => import('./paginas/perfil-arquero/perfil-arquero.module').then( m => m.PerfilArqueroPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'registro-entrenador',
@@ -65,7 +66,8 @@ const routes: Routes = [
   },
   {
     path: 'solicutud',
-    loadChildren: () => import('./paginas/solicutud/solicutud.module').then( m => m.SolicutudPageModule)
+    loadChildren: () => import('./paginas/solicutud/solicutud.module').then( m => m.SolicutudPageModule),
+    canActivate: [AuthGuard]
   },
 ];
 

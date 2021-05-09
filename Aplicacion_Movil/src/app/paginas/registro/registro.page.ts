@@ -13,6 +13,12 @@ export class RegistroPage implements OnInit {
   public passwordTypeInput = 'password';
   public mensaje:string;
   public image: any;
+  age:any;
+  showAge:any;
+  ano:number;
+  max:Date;
+  min:Date;
+  fechacumple:Date;
   constructor(
 
     private authSvc: AuthService, 
@@ -21,6 +27,13 @@ export class RegistroPage implements OnInit {
     private alertCtrl: AlertController
     ) 
     {
+      this.ano = new Date().getFullYear();
+      var max = this.ano - 7;
+      var min = this.ano - 30;
+      var actual = "1/" + "1/" + max;
+      var minima = "1/" + "1/" + min;
+      this.min = new Date(minima);
+      this.max = new Date(actual);
       this.crearvalidaciones();
     }
 
@@ -31,16 +44,16 @@ export class RegistroPage implements OnInit {
   crearvalidaciones(){
     const nombreControl = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(15),
-      Validators.pattern("(?=[^A-Z]*[A-Z])[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]* "),
+      Validators.minLength(7),
+      Validators.maxLength(30),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$"),
     ]));
 
     const apellidoControl = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(15),
-      Validators.pattern("(?=[^A-Z]*[A-Z])[a-zA-ZÑñÁÉÍÓÚáéíóú]* "),
+      Validators.minLength(7),
+      Validators.maxLength(30),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$"),
     ]));
 
     const cedulaControl = new FormControl('', Validators.compose([
@@ -81,8 +94,23 @@ export class RegistroPage implements OnInit {
       Validators.required,
       
     ]));
+    const fechaControl = new FormControl('', Validators.compose([
+      Validators.required,
+      
+    ]));
 
-    this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl,telefono2Control,emailControl,passwordControl,foto });
+    this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl,telefono2Control,emailControl,passwordControl,foto,fechaControl });
+  }
+
+  edad(event){
+    this.fechacumple=new Date(event.detail.value);  
+    if(this.age){
+      var fec = new Date(this.age);
+      console.log(fec.getDay());
+      const convertAge = new Date(this.age);
+      const timeDiff = Math.abs(Date.now() - convertAge.getTime());
+      this.showAge = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
+    }
   }
 
   //Imagen
@@ -112,7 +140,7 @@ export class RegistroPage implements OnInit {
   //Registrar nuevo usuario
   async onRegister(email, password, nombre, apellido, cedula, telefono,telefono2) {
     try {
-      const user = await this.authSvc.register(email.value, password.value, nombre.value, apellido.value, cedula.value, telefono.value,telefono2.value,this.image);
+      const user = await this.authSvc.register(email.value, password.value, nombre.value, apellido.value, cedula.value, telefono.value,telefono2.value,this.fechacumple,this.image);
       if (user) {
         const isVerified = this.authSvc.isEmailVerified(user);
         this.redirectUser(isVerified);

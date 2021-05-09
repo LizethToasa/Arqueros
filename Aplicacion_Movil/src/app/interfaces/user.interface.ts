@@ -14,5 +14,6 @@ export interface DatosUsuario {
   telefono2: string;
   estado:string;
   foto:string;
+  fecha_naciento:any;
   tipo:string;
 }

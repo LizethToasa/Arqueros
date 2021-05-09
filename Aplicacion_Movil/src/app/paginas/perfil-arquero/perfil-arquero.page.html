@@ -1,9 +1,175 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>perfil-arquero</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-arquero"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="formGroup" (ngSubmit)="guardarUsuario()" *ngIf="usuario" >
+    <div class="row">  
+        <img [src]="usuario.foto" style="height:150px;display:block;margin:auto"/>
+    </div>
+    <br/>
+    <div class="row" style="display: flex;justify-content: center;">  
+      <label style="color:blue">
+        Cambiar foto de perfil
+        <input type="file" name="fileSubir" (change)="subirImagen($event)" style="display:none;" accept="image/*">
+      </label>
+  </div>
+    <ion-item>
+      <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+      <ion-input formControlName="nombreControl" type="text" #nombre [(ngModel)]="usuario.nombre" placeholder="Bryan"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+      *ngIf="formGroup.get('nombreControl').hasError('required')">
+      *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('minlength')">
+        *Mínimo 7 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('maxlength')">
+        *Máximo 30 caracteres  
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('nombreControl').hasError('pattern')">
+        *Se debe ingresar dos nombres y debe solo contener letras
+      </p>
+    </div>
+    <ion-item>
+      <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+      <ion-input formControlName="apellidoControl" #apellido type="text" [(ngModel)]="usuario.apellido" placeholder="Molina"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('minlength')">
+        *Mínimo 7 caracteres 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('maxlength')">
+        *Máximo 30 caracteres  
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('apellidoControl').hasError('pattern')">
+        *Se debe ingresar dos apellidos y debe solo contener letras
+      </p>
+    </div>
+  
+    <ion-item>
+      <ion-label position="stacked"><strong>Cédula</strong></ion-label>
+      <ion-input formControlName="cedulaControl" #cedula type="text" [(ngModel)]="usuario.cedula" placeholder="0400887599"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('minlength')">
+        *10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('maxlength')">
+        *10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('cedulaControl').hasError('pattern')">
+        *La cédula debe tener solo números
+      </p>
+    </div>
+  
+    <ion-item>
+      <ion-label position="stacked"><strong>Teléfono</strong></ion-label>
+      <ion-input formControlName="telefonoControl"#telefono  type="text" [(ngModel)]="usuario.telefono" placeholder="0999999999"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('minlength')">
+        *Mínimo 7 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('maxlength')">
+        *Máximo 10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefonoControl').hasError('pattern')">
+        *El teléfono debe tener solo números
+      </p>
+    </div>
+  
+    <ion-item>
+      <ion-label position="stacked"><strong>Teléfono Representante</strong></ion-label>
+      <ion-input formControlName="telefono2Control"#telefono  type="text" [(ngModel)]="usuario.telefono2" placeholder="0999999999"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('minlength')">
+        *Mínimo 7 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('maxlength')">
+        *Máximo 10 números 
+      </p>
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('pattern')">
+        *El teléfono debe tener solo números
+      </p>
+    </div>
 
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha de nacimiento</strong></ion-label>
+      <ion-datetime 
+        value="{{usuario.fecha_naciento | date: 'yyyy-MM-dd'}}"
+        [(ngModel)]="age" 
+        displayFormat="DD/MM/YYYY" 
+        min="{{min | date: 'yyyy-MM-dd'}}" 
+        max="{{max | date: 'yyyy-MM-dd'}}" 
+        cancelText="Cancelar"
+        doneText="Seleccionar"
+        formControlName="fechaControl"
+        (ionChange)="edad($event)"
+      ></ion-datetime>
+      <p *ngIf="age" style="color:black">Tu edad es {{ showAge }}</p>
+    </ion-item>
+
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('telefono2Control').hasError('minlength')">
+        *Requerido
+      </p>
+    </div>
+  
+    <ion-item>
+      <ion-label position="stacked"><strong>Correo electrónico</strong></ion-label>
+      <p>{{usuario.correo}}</p>
+    </ion-item>
+  
+    <ion-row>
+      <ion-col>
+        <ion-button type="button" expand="block" color="tertiary" (click)="cambiarcontra()">Cambiar contraseña</ion-button>
+      </ion-col>
+    </ion-row>  
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" [disabled]="!formGroup.valid" expand="block">Guardar</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

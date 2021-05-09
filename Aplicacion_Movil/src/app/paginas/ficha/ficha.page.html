@@ -1,11 +1,23 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-    <ion-buttons slot="start">
-      <ion-back-button routerLink="/inicio"></ion-back-button>
     <ion-title>Ficha</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <h1>Calcular la Edad ⏳</h1>
+  <ion-item>
+    <ion-label position="stacked">Seleccione fecha de donación</ion-label>
+    <ion-datetime 
+      type="date" 
+      [(ngModel)]="age" 
+      displayFormat="DD/MM/YYYY" 
+      min="{{min | date: 'yyyy-MM-dd'}}" 
+      max="{{max | date: 'yyyy-MM-dd'}}" 
+      cancelText="Cancelar"
+      doneText="Seleccionar"
+    ></ion-datetime>
+  </ion-item>
+  <button type="button" (click)="ageCalculator()"> Calcular </button>
+  <p *ngIf="age">Tu edad es {{ showAge }}</p>
 </ion-content>
