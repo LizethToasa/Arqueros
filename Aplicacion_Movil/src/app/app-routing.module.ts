@@ -65,10 +65,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/ficha/ficha.module').then( m => m.FichaPageModule)
   },
   {
-    path: 'solicutud',
-    loadChildren: () => import('./paginas/solicutud/solicutud.module').then( m => m.SolicutudPageModule),
+    path: 'solicitud',
+    loadChildren: () => import('./paginas/solicitud/solicitud.module').then( m => m.SolicitudPageModule),
     canActivate: [AuthGuard]
   },
+
 ];
 
 @NgModule({

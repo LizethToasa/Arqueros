@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SolicutudPageRoutingModule } from './solicutud-routing.module';
+import { SolicitudPageRoutingModule } from './solicitud-routing.module';
 
-import { SolicutudPage } from './solicutud.page';
+import { SolicitudPage } from './solicitud.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SolicutudPageRoutingModule
+    SolicitudPageRoutingModule
   ],
-  declarations: [SolicutudPage]
+  declarations: [SolicitudPage]
 })
-export class SolicutudPageModule {}
+export class SolicitudPageModule {}

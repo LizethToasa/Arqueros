@@ -145,8 +145,8 @@ export class AuthService {
               this.afs.collection('entrenadores').doc(uid).set({
                 uid : uid,
                 cedula: cedu,
-                nombre : nombre,
-                apellido : apellido,
+                nombres : nombre,
+                apellidos : apellido,
                 correo : correo,
                 telefono : tele,
                 estado : "Activo",
