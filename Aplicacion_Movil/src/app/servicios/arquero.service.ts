@@ -14,10 +14,12 @@ export class ArqueroService {
 
   private arquerosCollection: AngularFirestoreCollection<DatosUsuario>;
   private arqueros: Observable<DatosUsuario[]>;
+  private arquerosCollection2: AngularFirestoreCollection<DatosUsuario>;
+  private arqueros2: Observable<DatosUsuario[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
-    db:AngularFirestore, private storage: AngularFireStorage ,public afDB: AngularFireDatabase
+    public db:AngularFirestore, private storage: AngularFireStorage ,public afDB: AngularFireDatabase
   ) { 
     this.arquerosCollection = db.collection<DatosUsuario>('alumnos');
     this.arqueros = this.arquerosCollection.snapshotChanges().pipe(
@@ -56,8 +58,21 @@ export class ArqueroService {
           });
         })
       ).subscribe();
+  }
 
-    
+  busquedauser(cedula:string){
+    this.arquerosCollection2 = this.db.collection<DatosUsuario>('alumnos', ref => ref.where('cedula', '==', cedula));
+    this.arqueros2 = this.arquerosCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+    return this.arqueros2;
   }
 }
 

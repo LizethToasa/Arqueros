@@ -181,6 +181,7 @@
     <ion-label position="stacked"><strong>Fecha de nacimiento</strong></ion-label>
     <ion-datetime 
       [(ngModel)]="age" 
+      placeholder="Dia Mes Año" 
       displayFormat="DD/MM/YYYY" 
       min="{{min | date: 'yyyy-MM-dd'}}" 
       max="{{max | date: 'yyyy-MM-dd'}}" 
@@ -189,7 +190,7 @@
       formControlName="fechaControl"
       (ionChange)="edad($event)"
     ></ion-datetime>
-    <p *ngIf="age" style="color:black">Tu edad es {{ showAge }}</p>
+
   </ion-item>
   
   <ion-item>

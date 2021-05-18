@@ -25,7 +25,8 @@ export class PerfilEntrenadorPage implements OnInit {
     telefono: '',
     estado:'',
     foto:'',
-    tipo:''
+    tipo:'',
+    firma:''
   }
   public image: any;
   usuarioId= null;

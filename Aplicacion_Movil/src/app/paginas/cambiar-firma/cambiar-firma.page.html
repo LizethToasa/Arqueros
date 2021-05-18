@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-entrenador"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cambiar Firma</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()"></signature-pad>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="primary" (click)="drawComplete()" >Confirmar</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="primary" (click)="borrarfirma()" >Borrar</ion-button>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col>
+      <ion-button expand="block" color="primary" [disabled]="firma==null" (click)="guardarUsuario()">Cambiar Firma</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

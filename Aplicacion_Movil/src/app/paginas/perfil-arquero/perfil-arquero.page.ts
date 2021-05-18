@@ -7,12 +7,16 @@ import { NavController, LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { DatosUsuario } from '../../interfaces/user.interface';
 import { ArqueroService} from '../../servicios/arquero.service';
+import { formatDate } from "@angular/common";
+
 @Component({
   selector: 'app-perfil-arquero',
   templateUrl: './perfil-arquero.page.html',
   styleUrls: ['./perfil-arquero.page.scss'],
 })
 export class PerfilArqueroPage implements OnInit {
+  format = 'EEEE';
+  locale = 'en-US';
   formGroup: FormGroup;
   usuario: DatosUsuario={
     uid: '',
@@ -36,7 +40,7 @@ export class PerfilArqueroPage implements OnInit {
   ano:number;
   max:Date;
   min:Date;
-  fechacumple:Date;
+  fechacumple:string;
   constructor(
     private usuarioService: ArqueroService,
     public formBuilder: FormBuilder,
@@ -64,14 +68,16 @@ export class PerfilArqueroPage implements OnInit {
   }
 
   edad(event){
-    this.fechacumple=new Date(event.detail.value);  
+    var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
+    this.fechacumple = probar4.toString();
+    /*this.fechacumple=new Date(event.detail.value);  
     if(this.age){
       var fec = new Date(this.age);
       console.log(fec.getDay());
       const convertAge = new Date(this.age);
       const timeDiff = Math.abs(Date.now() - convertAge.getTime());
       this.showAge = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-    }
+    }*/
   }
 
   async mensajeconfirmacion() {
@@ -181,7 +187,7 @@ export class PerfilArqueroPage implements OnInit {
       this.usuario = usuario;
       
       console.log(this.usuario);
-      this.usuario.fecha_naciento= new Date(this.usuario.fecha_naciento['seconds']*1000);
+      this.usuario.fecha_naciento= new Date(this.usuario.fecha_naciento);
 
       //this.usuario.fecha_naciento= new Date(this.usuario.fecha_naciento['seconds']*1000);
       /*const convertAge = new Date(this.usuario.fecha_naciento);

@@ -3,6 +3,8 @@ import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { formatDate } from "@angular/common";
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -18,7 +20,9 @@ export class RegistroPage implements OnInit {
   ano:number;
   max:Date;
   min:Date;
-  fechacumple:Date;
+  fechacumple:string;
+  format = 'EEEE';
+  locale = 'en-US';
   constructor(
 
     private authSvc: AuthService, 
@@ -103,14 +107,18 @@ export class RegistroPage implements OnInit {
   }
 
   edad(event){
-    this.fechacumple=new Date(event.detail.value);  
+    var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
+    this.fechacumple = probar4.toString();
+    console.log(probar4.toString());
+    console.log(new Date('10/1/2020'));
+    /*this.fechacumple=new Date(event.detail.value);  
     if(this.age){
       var fec = new Date(this.age);
       console.log(fec.getDay());
       const convertAge = new Date(this.age);
       const timeDiff = Math.abs(Date.now() - convertAge.getTime());
       this.showAge = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-    }
+    }*/
   }
 
   //Imagen

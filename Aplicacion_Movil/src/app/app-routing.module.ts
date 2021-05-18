@@ -41,7 +41,8 @@ const routes: Routes = [
   },
   {
     path: 'perfil-entrenador',
-    loadChildren: () => import('./paginas/perfil-entrenador/perfil-entrenador.module').then( m => m.PerfilEntrenadorPageModule)
+    loadChildren: () => import('./paginas/perfil-entrenador/perfil-entrenador.module').then( m => m.PerfilEntrenadorPageModule),
+    canActivate: [EntrenadorGuard]
   },
   {
     path: 'perfil-arquero',
@@ -68,6 +69,11 @@ const routes: Routes = [
     path: 'solicitud',
     loadChildren: () => import('./paginas/solicitud/solicitud.module').then( m => m.SolicitudPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'cambiar-firma',
+    loadChildren: () => import('./paginas/cambiar-firma/cambiar-firma.module').then( m => m.CambiarFirmaPageModule),
+    canActivate: [EntrenadorGuard]
   },
 
 ];

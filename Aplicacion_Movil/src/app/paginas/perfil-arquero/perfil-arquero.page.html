@@ -146,7 +146,6 @@
         formControlName="fechaControl"
         (ionChange)="edad($event)"
       ></ion-datetime>
-      <p *ngIf="age" style="color:black">Tu edad es {{ showAge }}</p>
     </ion-item>
 
     <div class="validation-errors">
@@ -160,16 +159,17 @@
       <ion-label position="stacked"><strong>Correo electrónico</strong></ion-label>
       <p>{{usuario.correo}}</p>
     </ion-item>
-  
-    <ion-row>
-      <ion-col>
-        <ion-button type="button" expand="block" color="tertiary" (click)="cambiarcontra()">Cambiar contraseña</ion-button>
-      </ion-col>
-    </ion-row>  
     <ion-row>
       <ion-col>
         <ion-button type="submit" [disabled]="!formGroup.valid" expand="block">Guardar</ion-button>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button type="button" expand="block" color="tertiary" (click)="cambiarcontra()">Cambiar contraseña</ion-button>
+      </ion-col>
+    </ion-row>  
+    
+    
   </form>
 </ion-content>

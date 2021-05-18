@@ -115,17 +115,27 @@
         <ion-label position="stacked"><strong>Correo electrónico</strong></ion-label>
         <p>{{usuario.correo}}</p>
       </ion-item>
+ 
+      <ion-item>
+        <ion-label position="stacked"><strong>Firma</strong></ion-label>
+        <img [src]="usuario.firma" style="height:150px;display:block;margin:auto"/>
 
-      <ion-row>
-        <ion-col>
-          <ion-button type="button" expand="block" color="tertiary" (click)="cambiarcontra()">Cambiar contraseña</ion-button>
-        </ion-col>
-      </ion-row>  
+      </ion-item>
       <ion-row>
         <ion-col>
           <ion-button type="submit" [disabled]="!formGroup.valid" expand="block">Guardar</ion-button>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button type="button" expand="block" color="tertiary" (click)="cambiarcontra()">Cambiar contraseña</ion-button>
+        </ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col>
+          <ion-button type="button" expand="block" color="success" routerLink="/cambiar-firma">Cambiar Firma</ion-button>
+        </ion-col>
+      </ion-row>  
   </form>
 
   

@@ -1,23 +1,43 @@
 <ion-header>
   <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-entrenador"></ion-back-button>
+    </ion-buttons>
     <ion-title>Ficha</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Calcular la Edad ⏳</h1>
-  <ion-item>
-    <ion-label position="stacked">Seleccione fecha de donación</ion-label>
-    <ion-datetime 
-      type="date" 
-      [(ngModel)]="age" 
-      displayFormat="DD/MM/YYYY" 
-      min="{{min | date: 'yyyy-MM-dd'}}" 
-      max="{{max | date: 'yyyy-MM-dd'}}" 
-      cancelText="Cancelar"
-      doneText="Seleccionar"
-    ></ion-datetime>
+  
+  <ion-item lines="none" >
+    <ion-label position="stacked"><strong>Cédula</strong></ion-label>
+    <ion-input type="tel" placeholder="Ingrese su cédula" #busquedacedula></ion-input>
+    <br/>
+    <button type="button" class="btn btn-primary" (click)="buscar(busquedacedula)" style="width: 300px;">Buscar</button>
+    
   </ion-item>
-  <button type="button" (click)="ageCalculator()"> Calcular </button>
-  <p *ngIf="age">Tu edad es {{ showAge }}</p>
+  <ion-item>
+    <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+    <p>{{alumno.nombre}}</p>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+    <p>{{alumno.apellido}}</p>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"><strong>Número de Cédula</strong></ion-label>
+    <p>{{alumno.cedula}}</p>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"><strong>Fecha de Nacimiento</strong></ion-label>
+    <p>{{alumno.fecha_naciento}}</p>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked"><strong>Fecha de Nacimiento</strong></ion-label>
+    <p>{{alumno.fecha_naciento | date: 'dd-MM-yyyy'}}</p>
+  </ion-item>
+  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" ></signature-pad>
+  <ion-button color="primary" (click)="drawComplete()" >Guardar</ion-button>
+  <ion-button color="primary" (click)="borrarfirma()" >Borrar</ion-button>
+  <ion-button color="primary" (click)="generarPdf()" >Generar PDF</ion-button>
 </ion-content>

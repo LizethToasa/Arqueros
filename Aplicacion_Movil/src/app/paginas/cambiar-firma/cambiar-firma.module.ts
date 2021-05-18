@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FichaPageRoutingModule } from './ficha-routing.module';
+import { CambiarFirmaPageRoutingModule } from './cambiar-firma-routing.module';
 
-import { FichaPage } from './ficha.page';
+import { CambiarFirmaPage } from './cambiar-firma.page';
 import { SignaturePadModule } from 'angular2-signaturepad';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { SignaturePadModule } from 'angular2-signaturepad';
     CommonModule,
     FormsModule,
     IonicModule,
-    FichaPageRoutingModule,
+    CambiarFirmaPageRoutingModule,
     SignaturePadModule
   ],
-  declarations: [FichaPage]
+  declarations: [CambiarFirmaPage]
 })
-export class FichaPageModule {}
+export class CambiarFirmaPageModule {}

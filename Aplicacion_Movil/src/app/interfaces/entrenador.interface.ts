@@ -8,5 +8,6 @@ export interface DatosEntrenador {
     estado:string;
     foto:string;
     tipo:string;
+    firma:string;
   }
   

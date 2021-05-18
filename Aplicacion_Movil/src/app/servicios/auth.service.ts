@@ -92,7 +92,7 @@ export class AuthService {
     }
   }
 
-  async register(email: string, password: string, nombre: string, apellido: string, cedu: string, tele: string,tele2: string,fecha:any,image?: FileI): Promise<User> {
+  async register(email: string, password: string, nombre: string, apellido: string, cedu: string, tele: string,tele2: string,fecha:string,image?: FileI): Promise<User> {
     try {
       const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
       const uid = user.uid;
@@ -151,7 +151,8 @@ export class AuthService {
                 telefono : tele,
                 estado : "Activo",
                 foto : this.photoURL,
-                tipo: "Entrenador"
+                tipo: "Entrenador",
+                firma: ""
               })
             });
           })
