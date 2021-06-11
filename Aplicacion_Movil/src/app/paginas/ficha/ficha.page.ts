@@ -3,6 +3,8 @@ import { jsPDF } from "jspdf";
 import { SignaturePad } from 'angular2-signaturepad';
 import { DatosUsuario } from '../../interfaces/user.interface';
 import { ArqueroService } from '../../servicios/arquero.service';
+import { formatDate } from "@angular/common";
+
 @Component({
   selector: 'app-ficha',
   templateUrl: './ficha.page.html',
@@ -22,9 +24,13 @@ export class FichaPage implements OnInit {
     fecha_naciento:'',
     tipo:''
   }
+  age:any;
+  format = 'EEEE';
+  locale = 'en-US';
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
   firmarepresentante:any;
+  
   private signaturePadOptions: Object = { // passed through to szimek/signature_pad constructor
     'minWidth': 5,
     'canvasWidth': 300,
@@ -33,7 +39,7 @@ export class FichaPage implements OnInit {
 
   doc = new jsPDF();
   constructor(private Service: ArqueroService) {
-
+  
   }
 
   ngOnInit() {
@@ -42,9 +48,19 @@ export class FichaPage implements OnInit {
   buscar(busquedatienda){   
     this.Service.busquedauser(busquedatienda.value).subscribe((alumno) =>{
       this.alumno = alumno[0];
-      this.alumno.fecha_naciento = new Date(this.alumno.fecha_naciento['seconds']*1000);
+      //this.alumno.fecha_naciento = new Date(this.alumno.fecha_naciento['seconds']*1000);
       console.log(this.alumno.nombre);
+      var element = <HTMLInputElement> document.getElementById("formainputid");
+      element.style.display = 'inline';
+  
     })
+  }
+
+  edad(event){
+    var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
+    console.log(probar4.toString());
+
+   
   }
 
   ngAfterViewInit() {

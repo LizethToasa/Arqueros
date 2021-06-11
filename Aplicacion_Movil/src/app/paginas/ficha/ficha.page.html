@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  
+  <br/>
   <ion-item lines="none" >
     <ion-label position="stacked"><strong>Cédula</strong></ion-label>
     <ion-input type="tel" placeholder="Ingrese su cédula" #busquedacedula></ion-input>
@@ -16,27 +16,176 @@
     <button type="button" class="btn btn-primary" (click)="buscar(busquedacedula)" style="width: 300px;">Buscar</button>
     
   </ion-item>
-  <ion-item>
-    <ion-label position="stacked"><strong>Nombres</strong></ion-label>
-    <p>{{alumno.nombre}}</p>
+  <br/>
+  <div *ngIf="alumno.nombre">
+    
+    <ion-item lines="none" color="primary" style="text-align: center;">
+      <h4 style="text-align: center;">DATOS PERSONALES DEL ALUMNO</h4>
+    </ion-item>
+    <br/>
+    <ion-item lines="none">  
+      <img [src]="alumno.foto" style="height:150px;display:block;margin:auto"/>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+      <p>{{alumno.nombre}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+      <p>{{alumno.apellido}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Número de Cédula</strong></ion-label>
+      <p>{{alumno.cedula}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha Nacimiento</strong></ion-label>
+      <p>{{alumno.fecha_naciento }}</p>
+    </ion-item>
+    <form>
+      <ion-item>
+        <ion-label position="stacked">Lugar de nacimiento:</ion-label>
+        <ion-textarea>
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dirección de domicilio:</ion-label>
+        <ion-textarea>
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Escuela / Colegio / Universidad:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Donde Trabaja:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dirección de Trabajo:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Estatura:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Peso:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Tipo de Sangre:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Posee alergias? Cuales son?:</ion-label>
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-textarea>
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Fracturas? Cuales son?:</ion-label>
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dirección de domicilio:</ion-label>
+        <ion-textarea>
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Operaciones? Cuales son?:</ion-label>
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Dirección de domicilio:</ion-label>
+        <ion-textarea>
+        </ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Enfermedades? Cuales son?:</ion-label>
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none" color="primary" style="text-align: center;">
+        <h4 style="text-align: center;">DATOS DEL PADRE</h4>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Apellidos:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Numero de Cédula:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Lugar de Trabajo:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Telefonos:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item lines="none" color="primary" style="text-align: center;">
+        <h4 style="text-align: center;">DATOS DE LA MADRE</h4>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Apellidos:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Numero de Cédula:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Lugar de Trabajo:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Email:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Telefonos:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Telfs de Emergencia / De Quien?</ion-label>
+        <ion-textarea>
+        </ion-textarea>
+      </ion-item>
+    </form>
+  </div>
+  
+
+  <ion-item id="formainputid" style="display: none;">
+  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()"></signature-pad>
   </ion-item>
-  <ion-item>
-    <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
-    <p>{{alumno.apellido}}</p>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked"><strong>Número de Cédula</strong></ion-label>
-    <p>{{alumno.cedula}}</p>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked"><strong>Fecha de Nacimiento</strong></ion-label>
-    <p>{{alumno.fecha_naciento}}</p>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked"><strong>Fecha de Nacimiento</strong></ion-label>
-    <p>{{alumno.fecha_naciento | date: 'dd-MM-yyyy'}}</p>
-  </ion-item>
-  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" ></signature-pad>
   <ion-button color="primary" (click)="drawComplete()" >Guardar</ion-button>
   <ion-button color="primary" (click)="borrarfirma()" >Borrar</ion-button>
   <ion-button color="primary" (click)="generarPdf()" >Generar PDF</ion-button>

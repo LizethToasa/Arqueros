@@ -1,56 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>inicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  
-  <ion-row>
-    <ion-col>
-      <a href="tel:0998785905">0998785905</a>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" href="https://api.whatsapp.com/send?phone=593098785905&text=Hola">
-        Numero
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" href="https://chat.whatsapp.com/DmACGpFKfZqH4A3KIPy4Fx">
-        Ir grupo
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="block" color="tertiary" routerLink="/login">
-        Login
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="block" color="tertiary" routerLink="/registro">
-        Registro alumno
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="block" color="tertiary" routerLink="/registro-entrenador">
-        Registro entrenador
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="block" color="tertiary" routerLink="/registro-administrador">
-        Registro administrador
-      </ion-button>
-    </ion-col>
-  </ion-row>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <h1>Slide 1</h1>
+    </ion-slide>
+    <ion-slide>
+      <ion-button color="primary" routerLink="/registro" expand="full">Registrarse</ion-button>
+    </ion-slide>
+    <ion-slide>
+      <ion-button color="primary" routerLink="/login">Login</ion-button>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
