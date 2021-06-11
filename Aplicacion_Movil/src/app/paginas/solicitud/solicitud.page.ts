@@ -25,7 +25,8 @@ export class SolicitudPage implements OnInit {
     estado:'',
     foto:'',
     fecha_naciento:'',
-    tipo:''
+    tipo:'',
+    ficha:''
   }
   hora:any;
   constructor(private usuarioService: ArqueroService,) { }

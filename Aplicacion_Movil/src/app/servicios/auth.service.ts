@@ -113,10 +113,11 @@ export class AuthService {
                 correo : correo,
                 telefono : tele,
                 telefono2 : tele2,
-                estado : "Activo",
+                estado : "Inactivo",
                 foto : this.photoURL,
                 fecha_naciento: fecha,
-                tipo: "Arquero"
+                tipo: "Arquero",
+                ficha: "Si"
               })
             });
           })

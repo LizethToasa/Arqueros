@@ -29,7 +29,8 @@ export class PerfilArqueroPage implements OnInit {
     estado:'',
     foto:'',
     fecha_naciento:'',
-    tipo:''
+    tipo:'',
+    ficha:''
   }
   public image: any;
   usuarioId= null;

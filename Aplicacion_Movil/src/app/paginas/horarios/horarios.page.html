@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-entrenador"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro Horario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha de horario</strong></ion-label>
+      <p>{{fechamanana}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Hora entrada</ion-label>
+      <ion-datetime  cancelText="Cancelar" formControlName="horaentr"
+      doneText="Seleccionar" displayFormat="HH:mm" 
+      placeholder="Hora Minutos" min="06:00" max="20:00" (ionChange)="horaentre($event)"></ion-datetime>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('horaentr').hasError('required')" >
+        *Requerido
+      </p>
+    </div>
+    <ion-item>
+      <ion-label position="stacked">Hora de salida</ion-label>
+      <ion-datetime  cancelText="Cancelar" formControlName="horasal"
+      doneText="Seleccionar" displayFormat="HH:mm" [disabled]="seleccion1"
+      placeholder="Hora Minutos" min="{{horaentrada}}" max="20:00" (ionChange)="horasali($event)"></ion-datetime>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('horasal').hasError('required')" >
+        *Requerido
+      </p>
+    </div>
+    <ion-row>
+      <ion-col>
+        <ion-button  [disabled]="!formGroup.valid" expand="full" (click)="crearHorario()" >Registrar Horario</ion-button>
+      </ion-col>
+    </ion-row>  
+  </form>
+</ion-content>

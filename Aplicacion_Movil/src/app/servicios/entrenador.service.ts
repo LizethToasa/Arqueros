@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DatosEntrenador } from '../interfaces/entrenador.interface';
+import { Horario } from '../interfaces/horario.interface';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -13,6 +14,8 @@ import { FileI } from '../interfaces/file.interface';
 export class EntrenadorService {
   private entrenadoresCollection: AngularFirestoreCollection<DatosEntrenador>;
   private entrenadores: Observable<DatosEntrenador[]>;
+  private horarioCollection: AngularFirestoreCollection<Horario>;
+  private horario: Observable<Horario[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -29,6 +32,34 @@ export class EntrenadorService {
         });
       })
     );
+
+    this.horarioCollection = db.collection<Horario>('horarios');
+    this.horario = this.horarioCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+  }
+
+  getHorarios(){
+    return this.horario;
+  }
+
+  getHoario(id: string){
+    return this.horarioCollection.doc<Horario>(id).valueChanges();
+  }
+
+  updateHorario(todo:Horario, id: string){
+    return this.horarioCollection.doc(id).update(todo);
+  }
+  
+  addHorario(todo: Horario){
+    return this.horarioCollection.add(todo);
   }
 
   getEntrenadores(){

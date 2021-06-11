@@ -16,4 +16,5 @@ export interface DatosUsuario {
   foto:string;
   fecha_naciento:any;
   tipo:string;
+  ficha:string;
 }

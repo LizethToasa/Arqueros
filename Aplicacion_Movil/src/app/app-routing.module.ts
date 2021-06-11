@@ -75,6 +75,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/cambiar-firma/cambiar-firma.module').then( m => m.CambiarFirmaPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'horarios',
+    loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule),
+    canActivate: [EntrenadorGuard]
+  },
 
 ];
 

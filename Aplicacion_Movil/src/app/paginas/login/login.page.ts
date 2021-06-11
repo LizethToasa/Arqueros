@@ -107,7 +107,7 @@ export class LoginPage implements OnInit {
           
         }else{
           if(usuario.estado=="Inactivo"){
-            this.mensaje="El usuario esta inactivo.";
+            this.mensaje="El usuario esta inactivo contactarse al numero 0987988798.";
             this.mensajeerror();
           }else{
             this.router.navigate(['menu-arquero']);

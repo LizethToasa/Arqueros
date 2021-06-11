@@ -22,7 +22,8 @@ export class FichaPage implements OnInit {
     estado:'',
     foto:'',
     fecha_naciento:'',
-    tipo:''
+    tipo:'',
+    ficha:''
   }
   age:any;
   format = 'EEEE';
