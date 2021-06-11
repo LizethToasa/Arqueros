@@ -80,6 +80,15 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/horarios/horarios.module').then( m => m.HorariosPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'visualizar-horarios',
+    loadChildren: () => import('./paginas/visualizar-horarios/visualizar-horarios.module').then( m => m.VisualizarHorariosPageModule),
+    canActivate: [EntrenadorGuard]
+  },
+  {
+    path: 'editar-horarios',
+    loadChildren: () => import('./paginas/editar-horarios/editar-horarios.module').then( m => m.EditarHorariosPageModule)
+  },
 
 ];
 

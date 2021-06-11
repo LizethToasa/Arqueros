@@ -16,10 +16,12 @@ export class EntrenadorService {
   private entrenadores: Observable<DatosEntrenador[]>;
   private horarioCollection: AngularFirestoreCollection<Horario>;
   private horario: Observable<Horario[]>;
+  private horarioCollection2: AngularFirestoreCollection<Horario>;
+  private horario2: Observable<Horario[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
-    db:AngularFirestore, private storage: AngularFireStorage ,public afDB: AngularFireDatabase
+    private db:AngularFirestore, private storage: AngularFireStorage ,public afDB: AngularFireDatabase
   ) { 
     this.entrenadoresCollection = db.collection<DatosEntrenador>('entrenadores');
     this.entrenadores = this.entrenadoresCollection.snapshotChanges().pipe(
@@ -60,6 +62,21 @@ export class EntrenadorService {
   
   addHorario(todo: Horario){
     return this.horarioCollection.add(todo);
+  }
+
+  getHorariosactual(iduser:string, fec:string){
+    this.horarioCollection2 = this.db.collection<Horario>('horarios', ref => ref.where('idusuario', '==', iduser).where('fecha', '==', fec));
+    this.horario2 = this.horarioCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+    return this.horario2;
   }
 
   getEntrenadores(){

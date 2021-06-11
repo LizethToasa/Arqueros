@@ -69,8 +69,6 @@ export class HorariosPage implements OnInit {
     this.horario.horaentrada = horas+':'+minutos;
     this.seleccion1 = false;
     this.formGroup.controls['horasal'].setValue(null);
-  
-
   }
   horasali(event){
     var horas = new Date(event.detail.value).getHours().toString();
@@ -88,7 +86,7 @@ export class HorariosPage implements OnInit {
   async crearHorario(){
     this.HorarioService.addHorario(this.horario).then(() => {
       this.nav.navigateForward('menu-entrenador'); 
-      this.mensaje="Se envió correctamente su formulario de alquiler.";
+      this.mensaje="Se envió correctamente el horario.";
       this.mensajeingreso();
     });
   }
