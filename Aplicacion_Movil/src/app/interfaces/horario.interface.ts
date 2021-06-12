@@ -3,4 +3,5 @@ export interface Horario {
   horaentrada: string;
   horasalida: string;
   fecha: string;
+  lugar: string;
 }

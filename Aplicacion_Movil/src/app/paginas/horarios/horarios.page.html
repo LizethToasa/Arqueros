@@ -37,6 +37,19 @@
         *Requerido
       </p>
     </div>
+    <ion-item >
+      <ion-label position="stacked" style="padding-bottom:20px !important">Lugar:</ion-label>
+      <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="horario.lugar" formControlName="lugar">
+        <ion-select-option value="Bicentenario">Bicentenario</ion-select-option>
+        <ion-select-option value="La Carolina">La Carolina</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('lugar').hasError('required')" >
+        *Requerido
+      </p>
+    </div>
     <ion-row>
       <ion-col>
         <ion-button  [disabled]="!formGroup.valid" expand="full" (click)="crearHorario()" >Registrar Horario</ion-button>

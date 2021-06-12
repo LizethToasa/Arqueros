@@ -25,7 +25,6 @@ export class VisualizarHorariosPage implements OnInit {
       this.fechahoy = formatDate(new Date(fecha) , "dd/MM/yyyy", this.locale);
       this.Servicio.getHorariosactual(this.id,this.fechahoy).subscribe((horar) =>{
         this.horario = horar;
-        console.log(this.horario);
       })
      }
 

@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>visualizar-horarios</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-entrenador"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Horarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div *ngFor="let hora of horario">
+    <ion-item  button [routerLink]="['/details', hora.id]">
+      <ion-label position="stacked">
+        Hora de entrada
+      </ion-label >
+      <p>{{ hora.horaentrada }}</p>
+      <ion-label position="stacked">
+        Hora de salida
+      </ion-label >
+      <p>{{ hora.horasalida }}</p>
+    </ion-item>
+  </div>
 </ion-content>

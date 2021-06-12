@@ -23,10 +23,13 @@ export class HorariosPage implements OnInit {
     idusuario :'',
     horaentrada: '',
     horasalida: '',
-    fecha: ''
+    fecha: '',
+    lugar:''
   }
   mensaje:any;
   formGroup: FormGroup; 
+  fechahoy :any;
+  limite = true;
   constructor(public formBuilder: FormBuilder,private HorarioService: EntrenadorService,private nav: NavController,private alertCtrl: AlertController) { 
     var fecha = new Date();
     var dias = 1; // Número de días a agregar
@@ -35,11 +38,21 @@ export class HorariosPage implements OnInit {
     this.horario.fecha = this.fechamanana;
     console.log(this.horario.fecha);
     this.crearvalidaciones();
+    this.usuarioId = firebase.auth().currentUser.uid;
+    this.horario.idusuario = this.usuarioId;
+
+    this.fechahoy = formatDate(new Date(fecha) , "dd/MM/yyyy", this.locale);
+    this.HorarioService.getHorariosactual(this.usuarioId,this.fechahoy).subscribe((horar) =>{
+      if(horar.length>=3){
+        this.limite = false;
+      }else{
+        this.limite = true;
+      }
+    })
   }
 
   ngOnInit() {
-    this.usuarioId = firebase.auth().currentUser.uid;
-    this.horario.idusuario = this.usuarioId;
+    
   }
 
   //Crear validaciones para el form 
@@ -52,8 +65,11 @@ export class HorariosPage implements OnInit {
     const horasal = new FormControl('', Validators.compose([
       Validators.required,
     ]));
+    const lugar = new FormControl('', Validators.compose([
+      Validators.required,
+    ]));
     
-    this.formGroup = this.formBuilder.group({horaentr,horasal});
+    this.formGroup = this.formBuilder.group({horaentr,horasal,lugar});
   }
 
   horaentre(event){
@@ -84,11 +100,20 @@ export class HorariosPage implements OnInit {
   }
 
   async crearHorario(){
-    this.HorarioService.addHorario(this.horario).then(() => {
-      this.nav.navigateForward('menu-entrenador'); 
-      this.mensaje="Se envió correctamente el horario.";
-      this.mensajeingreso();
-    });
+    console.log(this.limite);
+    if(this.limite==true){
+      this.HorarioService.addHorario(this.horario).then(() => {
+        this.nav.navigateForward('visualizar-horarios'); 
+        this.mensaje="Se envió correctamente el horario.";
+        this.mensajeingreso();
+      });
+    }else{
+      this.mensaje="Maximo 3.";
+        this.mensajeingreso();
+    }
+    
+ 
+    
   }
 
   async mensajeingreso() {
