@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SolicitudPageRoutingModule } from './solicitud-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { SolicitudPage } from './solicitud.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { SolicitudPage } from './solicitud.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     SolicitudPageRoutingModule
   ],
   declarations: [SolicitudPage]

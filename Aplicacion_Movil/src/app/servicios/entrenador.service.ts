@@ -14,6 +14,8 @@ import { FileI } from '../interfaces/file.interface';
 export class EntrenadorService {
   private entrenadoresCollection: AngularFirestoreCollection<DatosEntrenador>;
   private entrenadores: Observable<DatosEntrenador[]>;
+  private entrenadoresCollection2: AngularFirestoreCollection<DatosEntrenador>;
+  private entrenadores2: Observable<DatosEntrenador[]>;
   private horarioCollection: AngularFirestoreCollection<Horario>;
   private horario: Observable<Horario[]>;
   private horarioCollection2: AngularFirestoreCollection<Horario>;
@@ -77,6 +79,22 @@ export class EntrenadorService {
       })
     );
     return this.horario2;
+  }
+
+  getactivos(){
+
+    this.entrenadoresCollection2 = this.db.collection<DatosEntrenador>('entrenadores', ref => ref.where('estado', '==', 'Activo'));
+    this.entrenadores2 = this.entrenadoresCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+    return this.entrenadores2;
   }
 
   getEntrenadores(){

@@ -8,76 +8,75 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label position="stacked"><strong>Fecha solicitud:</strong></ion-label>
-    <p>{{fechaactual | date: 'dd-MM-yyyy'}}</p>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked"><strong>Estudiante:</strong></ion-label>
-    <p>{{usuario.nombre}} {{usuario.apellido}}</p>
-  </ion-item>
+  
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha entrenamiento:</strong></ion-label>
+      <p>{{fechaactual}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Estudiante:</strong></ion-label>
+      <p>{{usuario.nombre}} {{usuario.apellido}}</p>
+    </ion-item>
+    <ion-item >
+      <ion-label position="stacked" style="padding-bottom:20px !important">Entrenador:</ion-label>
+      <ion-select ok-text="Seleccionar" formControlName="profesor" [(ngModel)]="solicitud.entrenador"
+      cancel-text="Cancelar" (ionChange)="seleprofe()" >
+        <ion-select-option *ngFor="let pro of entrenadores" [value]="pro.uid"> 
+          {{ pro.nombres}} {{ pro.apellidos }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('profesor').hasError('required')" >
+        *Requerido
+      </p>
+    </div>
+    <ion-item >
+      <ion-label position="stacked" style="padding-bottom:20px !important">Lugar y horario:</ion-label>
+      <ion-select ok-text="Seleccionar" formControlName="hora" [(ngModel)]="solicitud.horario" [disabled]="seleccion1"
+      cancel-text="Cancelar" >
+        <ion-select-option *ngFor="let hora of hararios" [value]="hararios.id"> 
+          {{ hora.lugar}} {{ hora.horaentrada }} {{ hora.horasalida }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('hora').hasError('required')" >
+        *Requerido
+      </p>
+    </div>
+    <ion-item>
+      <ion-label position="stacked">Mensaje:</ion-label>
+      <ion-textarea formControlName="mensaje" [(ngModel)]="solicitud.mensaje">
+      </ion-textarea>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('mensaje').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('minlength')">
+      *Mínimo 5 caracteres 
+    </p>
+    <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('maxlength')">
+      *Máximo 30 caracteres  
+    </p>
+    </div>
+    <ion-row>
+      <ion-col>
+        <ion-button  [disabled]="!formGroup.valid" expand="full" (click)="crearSolicitud()" >Enviar Solicitud</ion-button>
+      </ion-col>
+    </ion-row> 
+  
+   
+  </form>
 
-  <ion-item lines="none">
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col class="ion-padding-bottom">
-          <ion-label position="stacked">Seleccione el lugar</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-select ok-text="Seleccionar" 
-        cancel-text="Cancelar" style="width: 100%;">
-          <ion-select-option value="Bicentenario"> 
-            <ion-label>
-              Bicentenario
-            </ion-label>
-          </ion-select-option>
-          <ion-select-option value="La Carolina" > 
-            <ion-label>
-              La Carolina
-            </ion-label>
-          </ion-select-option>
-    
-        </ion-select>
-      </ion-row>
-    </ion-grid>
-  </ion-item>
-  <ion-item>
-    <ion-label position="stacked">Fecha entrenamiento</ion-label>
-    <ion-datetime 
-    min="{{fechaactual | date: 'yyyy-MM-dd'}}" 
 
-    cancelText="Cancelar"
-    doneText="Seleccionar"
-    displayFormat="DD/MM/YYYY"
-    placeholder="Dia Mes Año" 
-    (ionChange)="edad($event)"></ion-datetime>
-  </ion-item>
-  <ion-item lines="none">
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col class="ion-padding-bottom">
-          <ion-label position="stacked">Seleccione el lugar</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-select ok-text="Seleccionar" 
-        cancel-text="Cancelar" style="width: 100%;">
-          <ion-select-option value="Bicentenario"> 
-            <ion-label>
-              Bicentenario
-            </ion-label>
-          </ion-select-option>
-          <ion-select-option value="La Carolina" > 
-            <ion-label>
-              La Carolina
-            </ion-label>
-          </ion-select-option>
-    
-        </ion-select>
-      </ion-row>
-    </ion-grid>
-  </ion-item>
 
 
 

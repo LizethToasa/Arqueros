@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DatosUsuario } from '../interfaces/user.interface';
+import { Solicitud } from '../interfaces/solicitud.interface';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -16,6 +17,8 @@ export class ArqueroService {
   private arqueros: Observable<DatosUsuario[]>;
   private arquerosCollection2: AngularFirestoreCollection<DatosUsuario>;
   private arqueros2: Observable<DatosUsuario[]>;
+  private solicitudCollection: AngularFirestoreCollection<Solicitud>;
+  private solicitud: Observable<Solicitud[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -32,7 +35,23 @@ export class ArqueroService {
         });
       })
     );
+
+    this.solicitudCollection = db.collection<Solicitud>('solicitudes');
+    this.solicitud = this.solicitudCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return {id, ...data};
+        });
+      })
+    );
   }
+
+  addSolicitud(solicitud: Solicitud){
+    return this.solicitudCollection.add(solicitud);
+  }
+
   getArqueros(){
     return this.arqueros;
   }
