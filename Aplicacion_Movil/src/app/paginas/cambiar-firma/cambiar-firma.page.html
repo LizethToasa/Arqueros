@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()"></signature-pad>
+  <signature-pad (onBeginEvent)="drawStart()"></signature-pad>
   <ion-row>
     <ion-col>
       <ion-button expand="block" color="primary" (click)="drawComplete()" >Confirmar</ion-button>

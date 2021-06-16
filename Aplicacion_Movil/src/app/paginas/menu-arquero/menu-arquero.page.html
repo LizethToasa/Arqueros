@@ -1,50 +1,76 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-title>Menu Arqueros</ion-title>
+    <ion-buttons slot="end" style="padding: 10px;" >
+      <app-noti></app-noti>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" routerLink="/perfil-arquero">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button routerLink="/perfil-arquero" block >
+          <img src="../../../assets/menu/perfil.png">
+        </button>
+      </ion-col>
+      <ion-col>
+        <button routerLink="/solicitud" block >
+          <img src="../../../assets/menu/file.png">
+        </button>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>
         Perfil
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" routerLink="/solicitud">
+      </ion-col>
+      <ion-col>
         Solicitar Entrenamiento
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" routerLink="/login">
-        Visualizar Entrenamientos
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" routerLink="/login">
-        Visualizar avance
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button type="submit" expand="block" color="tertiary" routerLink="/login">
-        Notificaciones
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-button expand="block" color="tertiary" (click)="mensajesalir()">
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>
+        <button routerLink="/perfil-arquero" block >
+          <img src="../../../assets/menu/file (2).png">
+        </button>
+      </ion-col>
+      <ion-col >
+        <button routerLink="/perfil-arquero" block >
+          <img src="../../../assets/menu/analytics.png">
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Solicitudes
+      </ion-col>
+      <ion-col >
+        Avances
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <a href="https://chat.whatsapp.com/DmACGpFKfZqH4A3KIPy4Fx">
+          <img src="../../../assets/menu/whatsap.png">
+        </a>
+      </ion-col>
+      <ion-col >
+        <button (click)="mensajesalir()" block >
+          <img src="../../../assets/menu/cerrarsesión.png">
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Grupo
+      </ion-col>
+      <ion-col >
         Cerrar Sesión
-      </ion-button>
-    </ion-col>
-  </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

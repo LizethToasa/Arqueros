@@ -24,7 +24,10 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
+form{
+    margin-left:10px;
+    margin-right:10px;
+  }
 .form-error{
     margin-bottom: 0px;
     text-align: center;

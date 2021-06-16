@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { RegistroAdministradorPage } from './registro-administrador.page';
+import { NotiComponent } from './noti.component';
 
-describe('RegistroAdministradorPage', () => {
-  let component: RegistroAdministradorPage;
-  let fixture: ComponentFixture<RegistroAdministradorPage>;
+describe('NotiComponent', () => {
+  let component: NotiComponent;
+  let fixture: ComponentFixture<NotiComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistroAdministradorPage ],
+      declarations: [ NotiComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RegistroAdministradorPage);
+    fixture = TestBed.createComponent(NotiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

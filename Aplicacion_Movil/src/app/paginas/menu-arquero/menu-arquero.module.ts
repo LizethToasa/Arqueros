@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MenuArqueroPageRoutingModule } from './menu-arquero-routing.module';
 
 import { MenuArqueroPage } from './menu-arquero.page';
-
+import { ComponentsModule } from '../../componentes/components.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuArqueroPageRoutingModule
+    MenuArqueroPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [MenuArqueroPage]
 })

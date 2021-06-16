@@ -53,14 +53,7 @@ const routes: Routes = [
     path: 'registro-entrenador',
     loadChildren: () => import('./paginas/registro-entrenador/registro-entrenador.module').then( m => m.RegistroEntrenadorPageModule)
   },
-  {
-    path: 'registro-administrador',
-    loadChildren: () => import('./paginas/registro-administrador/registro-administrador.module').then( m => m.RegistroAdministradorPageModule)
-  },
-  {
-    path: 'listado-arqueros',
-    loadChildren: () => import('./paginas/listado-arqueros/listado-arqueros.module').then( m => m.ListadoArquerosPageModule)
-  },
+ 
   {
     path: 'ficha',
     loadChildren: () => import('./paginas/ficha/ficha.module').then( m => m.FichaPageModule)

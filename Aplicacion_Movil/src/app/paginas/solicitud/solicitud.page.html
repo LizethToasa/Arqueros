@@ -37,7 +37,7 @@
       <ion-label position="stacked" style="padding-bottom:20px !important">Lugar y horario:</ion-label>
       <ion-select ok-text="Seleccionar" formControlName="hora" [(ngModel)]="solicitud.horario" [disabled]="seleccion1"
       cancel-text="Cancelar" >
-        <ion-select-option *ngFor="let hora of hararios" [value]="hararios.id"> 
+        <ion-select-option *ngFor="let hora of hararios" value="hararios.id"> 
           {{ hora.lugar}} {{ hora.horaentrada }} {{ hora.horasalida }}
         </ion-select-option>
       </ion-select>
