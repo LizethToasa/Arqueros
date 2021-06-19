@@ -82,6 +82,14 @@ const routes: Routes = [
     path: 'editar-horarios',
     loadChildren: () => import('./paginas/editar-horarios/editar-horarios.module').then( m => m.EditarHorariosPageModule)
   },
+  {
+    path: 'listado-solicitudes',
+    loadChildren: () => import('./paginas/listado-solicitudes/listado-solicitudes.module').then( m => m.ListadoSolicitudesPageModule)
+  },
+  {
+    path: 'anular-solicitudes',
+    loadChildren: () => import('./paginas/anular-solicitudes/anular-solicitudes.module').then( m => m.AnularSolicitudesPageModule)
+  },
 
 ];
 
