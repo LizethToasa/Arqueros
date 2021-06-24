@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { EntrenadorGuard } from './guards/entrenador.guard';
+import { NoGuardGuard } from './guards/no-guard.guard';
 const routes: Routes = [
   {
     path: '',
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'olvidar-contrasena',
     loadChildren: () => import('./paginas/olvidar-contrasena/olvidar-contrasena.module').then( m => m.OlvidarContrasenaPageModule),
+    canActivate: [NoGuardGuard]
     
   },
   {
@@ -20,11 +22,13 @@ const routes: Routes = [
   },
   {
     path: 'verificar-email',
-    loadChildren: () => import('./paginas/verificar-email/verificar-email.module').then( m => m.VerificarEmailPageModule)
+    loadChildren: () => import('./paginas/verificar-email/verificar-email.module').then( m => m.VerificarEmailPageModule),
+    canActivate: [NoGuardGuard]
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule),
+    canActivate: [NoGuardGuard]
   },
   {
     path: 'menu-entrenador',
@@ -33,7 +37,8 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./paginas/login/login.module').then( m => m.LoginPageModule),
+    canActivate: [NoGuardGuard]
   },
   {
     path: 'registro',
