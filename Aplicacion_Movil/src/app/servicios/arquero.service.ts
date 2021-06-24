@@ -19,6 +19,8 @@ export class ArqueroService {
   private arqueros2: Observable<DatosUsuario[]>;
   private solicitudCollection: AngularFirestoreCollection<Solicitud>;
   private solicitud: Observable<Solicitud[]>;
+  private solicitudCollection2: AngularFirestoreCollection<Solicitud>;
+  private solicitud2: Observable<Solicitud[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -46,10 +48,36 @@ export class ArqueroService {
         });
       })
     );
+
+   
   }
 
   addSolicitud(solicitud: Solicitud){
     return this.solicitudCollection.add(solicitud);
+  }
+
+  updateSolicitud(solicitud: Solicitud, id: string){
+    return this.solicitudCollection.doc(id).update(solicitud);
+  }
+
+  getSolicitud(id: string){
+    return this.solicitudCollection.doc<Solicitud>(id).valueChanges();
+  }
+
+  getSolicitudes(){
+    this.solicitudCollection2 = this.db.collection<Solicitud>('solicitudes', ref => ref.orderBy("fechasol", "desc") );
+    this.solicitud2= this.solicitudCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+
+    return this.solicitud2;
   }
 
   getArqueros(){

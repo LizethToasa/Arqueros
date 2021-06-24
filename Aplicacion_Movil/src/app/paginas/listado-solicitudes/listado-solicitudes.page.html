@@ -8,15 +8,49 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <br/>
+  
+  
+  
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p style="text-align: left;padding-left: 10px;"><img src="../../../assets/solicitudes/aceptar.png" style="width: 30px; height: 30px;"> Aceptados</p> 
+      </ion-col>
+      <ion-col>
+        <p style="text-align: left;padding-left: 10px;"><img src="../../../assets/solicitudes/rechazar.png" style="width: 30px; height: 30px;"> Rechazados</p> 
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p style="text-align: left;padding-left: 10px;"><img src="../../../assets/solicitudes/espera.png" style="width: 30px; height: 30px;"> En espera</p> 
+      </ion-col>
+      <ion-col>
+        <p style="text-align: left;padding-left: 10px;"><img src="../../../assets/solicitudes/anulado.png" style="width: 30px; height: 30px;"> Anulado</p>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="!solicitudes || solicitudes.length == 0">
+    <p class="centrarmensaje" style="margin-top: 10px;">No existe solicitudes enviadas.</p>
+  </div>
+  <ion-card *ngFor="let solicitud of solicitudes">
+    
     <ion-card-header>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>{{solicitud.fechasol}}</ion-card-subtitle>
+
     </ion-card-header>
   
     <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+      <img src="../../../assets/solicitudes/espera.png" *ngIf="solicitud.respuesta==espera" style="width: 50px; height: 50px;display:block;margin:auto;">
+      <img src="../../../assets/solicitudes/aceptar.png" *ngIf="solicitud.respuesta==aceptar" style="width: 50px; height: 50px;display:block;margin:auto;">
+      <img src="../../../assets/solicitudes/rechazar.png" *ngIf="solicitud.respuesta==rechazar" style="width: 50px; height: 50px;display:block;margin:auto;">
+      <img src="../../../assets/solicitudes/anulado.png" *ngIf="solicitud.respuesta==anulado" style="width: 50px; height: 50px;display:block;margin:auto;">
+      <br/>
+      Horario {{ solicitud.horario }}
     </ion-card-content>
+    <ion-button expand="block" [routerLink]="['/ver-solicitud', solicitud.id]">
+      Ver
+    </ion-button>
   </ion-card>
 </ion-content>

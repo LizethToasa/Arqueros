@@ -42,7 +42,10 @@ export class SolicitudPage implements OnInit {
     fechasol: '',
     entrenador: '',
     horario: '',
-    mensaje: ''
+    mensaje: '',
+    idusuario:'',
+    respuesta: 'espera',
+    mensajerespuesta:''
   };
   formGroup: FormGroup;
   fechahoy:any;
@@ -102,7 +105,8 @@ export class SolicitudPage implements OnInit {
   async cargarUsuario(){
     this.usuarioService.getArquero(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
-      this.solicitud.nombresol=this.usuario.nombre+this.usuario.apellido
+      this.solicitud.idusuario=this.usuarioId;
+      this.solicitud.nombresol=this.usuario.nombre+' '+this.usuario.apellido
     });
   }
 

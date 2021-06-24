@@ -84,11 +84,13 @@ const routes: Routes = [
   },
   {
     path: 'listado-solicitudes',
-    loadChildren: () => import('./paginas/listado-solicitudes/listado-solicitudes.module').then( m => m.ListadoSolicitudesPageModule)
+    loadChildren: () => import('./paginas/listado-solicitudes/listado-solicitudes.module').then( m => m.ListadoSolicitudesPageModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: 'anular-solicitudes',
-    loadChildren: () => import('./paginas/anular-solicitudes/anular-solicitudes.module').then( m => m.AnularSolicitudesPageModule)
+    path: 'ver-solicitud/:id',
+    loadChildren: () => import('./paginas/ver-solicitud/ver-solicitud.module').then( m => m.VerSolicitudPageModule),
+    canActivate: [AuthGuard]
   },
 
 ];

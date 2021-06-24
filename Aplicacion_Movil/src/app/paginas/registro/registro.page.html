@@ -194,11 +194,8 @@
   </ion-item>
   
   <ion-item>
-    <div class="row">
-      <ion-label position="floating"><strong>Foto</strong></ion-label>
-      <br/>
-        <ion-input formControlName="foto" type="file" accept="image/*" (change)="enviarimagen($event)" style="color:black"></ion-input>
-    </div>
+      <ion-label position="stacked"><strong>Foto</strong></ion-label>
+      <ion-input formControlName="foto" type="file" accept="image/*" (change)="enviarimagen($event)" style="color:black"></ion-input>
   </ion-item>
   <div class="validation-errors">
     <p class="form-error"
