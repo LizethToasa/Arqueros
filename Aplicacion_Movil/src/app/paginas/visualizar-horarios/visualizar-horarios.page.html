@@ -8,16 +8,42 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let hora of horario">
-    <ion-item  button [routerLink]="['/details', hora.id]">
-      <ion-label position="stacked">
-        Hora de entrada
-      </ion-label >
-      <p>{{ hora.horaentrada }}</p>
-      <ion-label position="stacked">
-        Hora de salida
-      </ion-label >
-      <p>{{ hora.horasalida }}</p>
-    </ion-item>
-  </div>
+  <ion-card *ngFor="let hora of horario"> 
+    <ion-card-header>
+      <ion-card-subtitle>{{hora.fecha}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            Hora de entrada
+          </ion-col>
+          <ion-col>
+            {{ hora.horaentrada }}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Hora de salida
+          </ion-col>
+          <ion-col>
+            {{ hora.horasalida }}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Lugar 
+          </ion-col>
+          <ion-col>
+            {{ hora.lugar }}
+          </ion-col>
+        </ion-row>
+        <ion-button expand="block" [routerLink]="['/ver-horario', hora.id]">
+          Ver
+        </ion-button>
+      </ion-grid> 
+      
+    </ion-card-content>
+  </ion-card>
 </ion-content>

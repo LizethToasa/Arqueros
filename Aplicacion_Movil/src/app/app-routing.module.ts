@@ -105,7 +105,13 @@ const routes: Routes = [
   },
   {
     path: 'ver-arquero/:id',
-    loadChildren: () => import('./paginas/ver-arquero/ver-arquero.module').then( m => m.VerArqueroPageModule)
+    loadChildren: () => import('./paginas/ver-arquero/ver-arquero.module').then( m => m.VerArqueroPageModule),
+    canActivate: [EntrenadorGuard]
+  },
+  {
+    path: 'ver-horario/:id',
+    loadChildren: () => import('./paginas/ver-horario/ver-horario.module').then( m => m.VerHorarioPageModule),
+    canActivate: [EntrenadorGuard]
   },
 
 ];
