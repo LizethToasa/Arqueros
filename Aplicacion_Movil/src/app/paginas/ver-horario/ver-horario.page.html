@@ -8,5 +8,39 @@
 </ion-header>
 
 <ion-content>
-
+  <form *ngIf="horario">
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha de horario</strong></ion-label>
+      <p>{{horario.fecha}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Hora entrada</ion-label>
+      <ion-datetime  cancelText="Cancelar" value="{{entrada}}"
+      doneText="Seleccionar" displayFormat="HH:mm" 
+      placeholder="Hora Minutos" (ionChange)="horaentrada($event)"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Hora salida</ion-label>
+      <ion-datetime  cancelText="Cancelar" value="{{salida}}"
+      doneText="Seleccionar" displayFormat="HH:mm" 
+      placeholder="Hora Minutos" (ionChange)="horasalida($event)"></ion-datetime>
+    </ion-item>
+    <ion-item >
+      <ion-label position="stacked" style="padding-bottom:20px !important">Lugar:</ion-label>
+      <ion-select placeholder="Seleccionar" name="something" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="horario.lugar">
+        <ion-select-option value="Bicentenario">Bicentenario</ion-select-option>
+        <ion-select-option value="La Carolina">La Carolina</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button  expand="full" (click)="editarhorario()" >Guardar</ion-button>
+      </ion-col>
+    </ion-row> 
+    <ion-row>
+      <ion-col>
+        <ion-button  color="danger" expand="full" (click)="eliminarhorario()" >Eliminar</ion-button>
+      </ion-col>
+    </ion-row> 
+  </form>
 </ion-content>

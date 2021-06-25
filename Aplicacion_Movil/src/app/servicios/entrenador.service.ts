@@ -66,6 +66,10 @@ export class EntrenadorService {
     return this.horarioCollection.add(todo);
   }
 
+  removeHorario(id: string){
+    return this.horarioCollection.doc(id).delete();
+  }
+
   getHorariosactual(iduser:string, fec:string){
     this.horarioCollection2 = this.db.collection<Horario>('horarios', ref => ref.where('idusuario', '==', iduser).where('fecha', '==', fec));
     this.horario2 = this.horarioCollection2.snapshotChanges().pipe(
