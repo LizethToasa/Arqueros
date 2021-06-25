@@ -85,7 +85,8 @@ const routes: Routes = [
   },
   {
     path: 'editar-horarios',
-    loadChildren: () => import('./paginas/editar-horarios/editar-horarios.module').then( m => m.EditarHorariosPageModule)
+    loadChildren: () => import('./paginas/editar-horarios/editar-horarios.module').then( m => m.EditarHorariosPageModule),
+    canActivate: [EntrenadorGuard]
   },
   {
     path: 'listado-solicitudes',
@@ -96,6 +97,15 @@ const routes: Routes = [
     path: 'ver-solicitud/:id',
     loadChildren: () => import('./paginas/ver-solicitud/ver-solicitud.module').then( m => m.VerSolicitudPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'listado-arqueros',
+    loadChildren: () => import('./paginas/listado-arqueros/listado-arqueros.module').then( m => m.ListadoArquerosPageModule),
+    canActivate: [EntrenadorGuard]
+  },
+  {
+    path: 'ver-arquero/:id',
+    loadChildren: () => import('./paginas/ver-arquero/ver-arquero.module').then( m => m.VerArqueroPageModule)
   },
 
 ];

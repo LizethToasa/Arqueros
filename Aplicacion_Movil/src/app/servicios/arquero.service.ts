@@ -121,5 +121,23 @@ export class ArqueroService {
     );
     return this.arqueros2;
   }
+  busquedauser2(nombre:string){
+    if(nombre==''){
+      this.arquerosCollection2=this.db.collection<DatosUsuario>('alumnos', ref => ref.orderBy('estado'));
+    }else{
+      this.arquerosCollection2=this.db.collection<DatosUsuario>('alumnos', ref => ref.orderBy('nombre').startAt(nombre).endAt(nombre+'\uf8ff'));
+    }
+    this.arqueros2 = this.arquerosCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+    return this.arqueros2;
+  }
 }
 

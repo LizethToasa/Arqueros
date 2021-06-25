@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/listado-arqueros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Arquero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br/>
+  <form *ngIf="usuario">
+    <div class="row">  
+      <img [src]="usuario.foto" style="height:150px;display:block;margin:auto"/>
+    </div>
+    <br/>
+    <ion-item>
+      <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+      <p>{{usuario.nombre}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+      <p>{{usuario.apellido}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Telefono arquero</strong></ion-label>
+      <p>{{usuario.telefono}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Telefono representante</strong></ion-label>
+      <p>{{usuario.telefono2}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Cédula</strong></ion-label>
+      <p>{{usuario.cedula}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha de nacimiento</strong></ion-label>
+      <p>{{usuario.fecha_naciento}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Correo electrónico</strong></ion-label>
+      <p>{{usuario.correo}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked" style="padding-bottom:20px !important"><strong>Estado</strong></ion-label>
+      <ion-select  [(ngModel)]="usuario.estado" name="something" okText="Ok" cancelText="Cancelar">
+        <ion-select-option  value="Activo">Activo</ion-select-option >
+        <ion-select-option  value="Inactivo">Inactivo</ion-select-option >
+      </ion-select>
+    </ion-item>
+    <ion-button type="submit" (click)="guardarUsuario()" expand="block">Guardar</ion-button>
+  
+  </form>
+</ion-content>
