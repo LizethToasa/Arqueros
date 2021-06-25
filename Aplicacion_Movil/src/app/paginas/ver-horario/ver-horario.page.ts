@@ -4,6 +4,7 @@ import { EntrenadorService } from '../../servicios/entrenador.service';
 import { Horario } from '../../interfaces/horario.interface';
 import { NavController, LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-ver-horario',
   templateUrl: './ver-horario.page.html',
@@ -15,11 +16,15 @@ export class VerHorarioPage implements OnInit {
   entrada:Date;
   salida:Date;
   mensaje:any;
-  constructor(private route: ActivatedRoute, private entrenadorservice: EntrenadorService,private nav: NavController,private alertCtrl: AlertController) {
+  formGroup: FormGroup; 
+  seleccion1 : boolean = false;
+  constructor(public formBuilder: FormBuilder,private route: ActivatedRoute, private entrenadorservice: EntrenadorService,private nav: NavController,private alertCtrl: AlertController) {
     this.idhorario=this.route.snapshot.params['id'];
+    this.crearvalidaciones();
     this.entrenadorservice.getHoario(this.idhorario).subscribe(horario => {
       this.horario = horario;
       this.entrada = new Date("December 17, 1995 "+ this.horario.horaentrada+":00");
+      
       this.salida = new Date("December 17, 1995 "+ this.horario.horasalida+":00");
 
     });
@@ -27,6 +32,23 @@ export class VerHorarioPage implements OnInit {
 
   ngOnInit() {
   }
+
+  crearvalidaciones(){
+    const horaentr = new FormControl('', Validators.compose([
+        Validators.required,
+
+
+    ]));
+    const horasal = new FormControl('', Validators.compose([
+      Validators.required,
+    ]));
+    const lugar = new FormControl('', Validators.compose([
+      Validators.required,
+    ]));
+    
+    this.formGroup = this.formBuilder.group({horaentr,horasal,lugar});
+  }
+
 
   horaentrada(event){
     var horas = new Date(event.detail.value).getHours().toString();
@@ -38,7 +60,7 @@ export class VerHorarioPage implements OnInit {
       minutos="0"+minutos;
     }
     this.horario.horaentrada = horas+':'+minutos;
-    console.log(this.horario.horaentrada);
+    this.formGroup.controls['horasal'].setValue(null);
 
   }
 

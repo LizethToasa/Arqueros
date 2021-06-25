@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { VerHorarioPageRoutingModule } from './ver-horario-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { VerHorarioPage } from './ver-horario.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { VerHorarioPage } from './ver-horario.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     VerHorarioPageRoutingModule
   ],
   declarations: [VerHorarioPage]
