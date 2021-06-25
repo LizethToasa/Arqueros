@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let hora of horario"> 
+  <ion-card *ngFor="let hora of horario" > 
     <ion-card-header>
       <ion-card-subtitle>{{hora.fecha}}</ion-card-subtitle>
     </ion-card-header>
@@ -39,7 +39,7 @@
             {{ hora.lugar }}
           </ion-col>
         </ion-row>
-        <ion-button expand="block" [routerLink]="['/ver-horario', hora.id]">
+        <ion-button expand="block" [routerLink]="['/ver-horario', hora.id]" *ngIf="fechaactual==hora.fecha">
           Ver
         </ion-button>
       </ion-grid> 

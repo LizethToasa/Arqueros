@@ -15,7 +15,7 @@ export class VisualizarHorariosPage implements OnInit {
   format = 'EEEE';
   locale = 'en-US';
   fechahoy :any;
-  
+  fechaactual = formatDate(new Date() , "dd/MM/yyyy", this.locale);;
   constructor(private Servicio:EntrenadorService,
     private route: ActivatedRoute) {
       var fecha = new Date();
@@ -23,9 +23,10 @@ export class VisualizarHorariosPage implements OnInit {
       fecha.setDate(fecha.getDate() + dias);
       this.id = firebase.auth().currentUser.uid;
       this.fechahoy = formatDate(new Date(fecha) , "dd/MM/yyyy", this.locale);
+      console.log(this.fechaactual);
       this.Servicio.getHorarioentrena().subscribe((horar) =>{
         this.horario = horar.filter(ho=>ho.idusuario == this.id); 
-        console.log(this.horario);
+        console.log(this.horario[0].fecha);
       })
   
      }

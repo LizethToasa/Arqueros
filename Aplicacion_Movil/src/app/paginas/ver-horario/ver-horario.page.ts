@@ -93,7 +93,30 @@ export class VerHorarioPage implements OnInit {
     await alert.present();
   }
 
-  async eliminarhorario(){
+  async eliminarhorario() {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Mensaje',
+      message: "Esta seguro de eliminar el horario.",
+      buttons: [
+        {
+          text: 'Aceptar',
+          handler: () => {
+            this.eliminarhorario2();
+          }
+        },
+        {
+          text: 'Cancelar',
+          handler: () => {
+            console.log();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async eliminarhorario2(){
     this.entrenadorservice.removeHorario(this.idhorario);
     this.nav.navigateForward('/menu-entrenador');
     this.mensaje = "Se elimino correctamente el horario.";
