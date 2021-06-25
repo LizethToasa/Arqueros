@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/listado-arqueros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Añadir avance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br/>
+  <form [formGroup]="formGroup" *ngIf="usuario">
+    <ion-item lines="none">
+      <ion-label position="stacked"><strong>Fecha entrenamiento:</strong></ion-label>
+      <p>{{fechaactual}}</p>
+    </ion-item>
+    <div class="row">  
+      <img [src]="usuario.foto" style="height:150px;display:block;margin:auto"/>
+    </div>
+    <br/>
+    <ion-item>
+      <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+      <p>{{usuario.nombre}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+      <p>{{usuario.apellido}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Mensaje:</ion-label>
+      <ion-textarea formControlName="mensaje" [(ngModel)]="avance.mensaje">
+      </ion-textarea>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('mensaje').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('minlength')">
+      *Mínimo 5 caracteres 
+    </p>
+    <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('maxlength')">
+      *Máximo 50 caracteres  
+    </p>
+    </div>
+    <ion-button [disabled]="!formGroup.valid" (click)="guardarAvance()" expand="block">Guardar</ion-button>
+  
+  </form>
+</ion-content>

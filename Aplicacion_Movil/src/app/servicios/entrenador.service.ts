@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DatosEntrenador } from '../interfaces/entrenador.interface';
 import { Horario } from '../interfaces/horario.interface';
+import { Avance } from '../interfaces/avance.interface';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -20,6 +21,8 @@ export class EntrenadorService {
   private horario: Observable<Horario[]>;
   private horarioCollection2: AngularFirestoreCollection<Horario>;
   private horario2: Observable<Horario[]>;
+  private avanceCollection: AngularFirestoreCollection<Avance>;
+  private avance: Observable<Avance[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -48,6 +51,33 @@ export class EntrenadorService {
         });
       })
     );
+    this.avanceCollection = db.collection<Avance>('avances');
+    this.avance = this.avanceCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+  }
+
+  getAvance(id: string){
+    return this.avanceCollection.doc<Avance>(id).valueChanges();
+  }
+
+  updateAvance(todo:Avance, id: string){
+    return this.avanceCollection.doc(id).update(todo);
+  }
+  
+  addAvance(todo: Avance){
+    return this.avanceCollection.add(todo);
+  }
+  
+  removeAvance(id: string){
+    return this.avanceCollection.doc(id).delete();
   }
 
   getHorarios(){

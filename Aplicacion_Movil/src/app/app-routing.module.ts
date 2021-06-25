@@ -113,6 +113,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/ver-horario/ver-horario.module').then( m => m.VerHorarioPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'avance/:id',
+    loadChildren: () => import('./paginas/avance/avance.module').then( m => m.AvancePageModule),
+    canActivate: [EntrenadorGuard]
+  },
 
 ];
 

@@ -17,7 +17,6 @@ export class ListadoArquerosPage implements OnInit {
   ngOnInit() {
   }
   busqueda(busquedanombre){
-    console.log(busquedanombre.value);
     this.usuarioService.busquedauser2(busquedanombre.value).subscribe(usuario => {
       this.arqueros = usuario;
     });
