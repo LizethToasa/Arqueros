@@ -128,6 +128,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/ver-avance/ver-avance.module').then( m => m.VerAvancePageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'arquero-avance',
+    loadChildren: () => import('./paginas/arquero-avance/arquero-avance.module').then( m => m.ArqueroAvancePageModule),
+    canActivate: [AuthGuard]
+  },
 
 ];
 
