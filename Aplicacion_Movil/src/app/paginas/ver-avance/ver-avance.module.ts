@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { VerAvancePageRoutingModule } from './ver-avance-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { VerAvancePage } from './ver-avance.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { VerAvancePage } from './ver-avance.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     VerAvancePageRoutingModule
   ],
   declarations: [VerAvancePage]

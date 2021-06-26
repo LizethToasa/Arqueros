@@ -8,5 +8,39 @@
 </ion-header>
 
 <ion-content>
-
+  <br/>
+  <form [formGroup]="formGroup" *ngIf="avance">
+    <ion-item lines="none">
+      <ion-label position="stacked"><strong>Fecha entrenamiento:</strong></ion-label>
+      <p>{{avance.fecha}}</p>
+    </ion-item>
+    <div *ngIf="arquero">
+      <div class="row">  
+        <img [src]="arquero.foto" style="height:150px;display:block;margin:auto"/>
+      </div>
+      <ion-item>
+        <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+        <p>{{arquero.nombre}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+        <p>{{arquero.apellido}}</p>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-label position="stacked">Mensaje:</ion-label>
+      <ion-textarea name="first" formControlName="mensaje" [(ngModel)]="avance.mensaje">
+      </ion-textarea>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button [disabled]="!formGroup.valid"  expand="full" (click)="actualizar()" >Guardar</ion-button>
+      </ion-col>
+    </ion-row> 
+    <ion-row>
+      <ion-col>
+        <ion-button  color="danger" expand="full" (click)="eliminaravance()" >Eliminar</ion-button>
+      </ion-col>
+    </ion-row> 
+  </form>
 </ion-content>
