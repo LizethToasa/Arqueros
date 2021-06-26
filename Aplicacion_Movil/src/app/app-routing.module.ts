@@ -118,6 +118,16 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/avance/avance.module').then( m => m.AvancePageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'listado-avance',
+    loadChildren: () => import('./paginas/listado-avance/listado-avance.module').then( m => m.ListadoAvancePageModule),
+    canActivate: [EntrenadorGuard]
+  },
+  {
+    path: 'ver-avance/:id',
+    loadChildren: () => import('./paginas/ver-avance/ver-avance.module').then( m => m.VerAvancePageModule),
+    canActivate: [EntrenadorGuard]
+  },
 
 ];
 

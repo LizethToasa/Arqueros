@@ -23,6 +23,8 @@ export class EntrenadorService {
   private horario2: Observable<Horario[]>;
   private avanceCollection: AngularFirestoreCollection<Avance>;
   private avance: Observable<Avance[]>;
+  private avanceCollection2: AngularFirestoreCollection<Avance>;
+  private avance2: Observable<Avance[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -62,6 +64,21 @@ export class EntrenadorService {
         });
       })
     );
+  }
+
+  getAvancefecha(){
+    this.avanceCollection2 = this.db.collection<Avance>('avances', ref => ref.orderBy('fecha', "desc"));
+    this.avance2 = this.avanceCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+    return this.avance2;
   }
 
   getAvance(id: string){
