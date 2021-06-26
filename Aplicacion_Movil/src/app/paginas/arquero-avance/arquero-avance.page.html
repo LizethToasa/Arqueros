@@ -1,9 +1,59 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>arquero-avance</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-arquero"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Avances</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let avance of avances">
+    <ion-card-header>
+      <ion-card-subtitle>{{avance.fecha}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div *ngFor="let entrenador of entrenadores">
+        <div *ngIf="entrenador.uid==avance.identrenador">
+          <div class="row">  
+          
+            <img [src]="entrenador.foto" style="height:150px;display:block;margin:auto"/>
+          </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Entrenador
+              </ion-col>
+            </ion-row> 
+            <ion-row>
+              <ion-col>
+                Nombres:
+              </ion-col>
+              <ion-col>
+                {{entrenador.nombres}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Apellidos:
+              </ion-col>
+              <ion-col>
+                {{entrenador.apellidos}}
+              </ion-col>
+             
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Mensaje<br/>
+                {{avance.mensaje}}
+              </ion-col>
+              
+            </ion-row>
+          </ion-grid>
+          
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
