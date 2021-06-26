@@ -9,13 +9,20 @@
 
 <ion-content>
   <br/>
-  <ion-item lines="none" >
-    <ion-label position="stacked"><strong>Cédula</strong></ion-label>
-    <ion-input type="tel" placeholder="Ingrese su cédula" #busquedacedula></ion-input>
-    <br/>
-    <button type="button" class="btn btn-primary" (click)="buscar(busquedacedula)" style="width: 300px;">Buscar</button>
+  <form>
+    <ion-item >
+      <ion-label position="stacked"><strong>Cédula</strong></ion-label>
+      <ion-input type="tel" placeholder="Ingrese su cédula" #busquedacedula></ion-input>
+      
+      
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" (click)="buscar(busquedacedula)" >Buscar</ion-button>
+      </ion-col>
+    </ion-row>  
     
-  </ion-item>
+  </form> 
   <br/>
   <div *ngIf="alumno.nombre">
     
@@ -186,7 +193,10 @@
   <ion-item id="formainputid" style="display: none;">
   <signature-pad (onBeginEvent)="drawStart()"></signature-pad>
   </ion-item>
-  <ion-button color="primary" (click)="drawComplete()" >Guardar</ion-button>
-  <ion-button color="primary" (click)="borrarfirma()" >Borrar</ion-button>
-  <ion-button color="primary" (click)="generarPdf()" >Generar PDF</ion-button>
+  <div id="formainputid2" style="display: none;">
+    <ion-button color="primary" (click)="drawComplete()" >Guardar</ion-button>
+    <ion-button color="primary" (click)="borrarfirma()" >Borrar</ion-button>
+    <ion-button color="primary" (click)="generarPdf()" >Generar PDF</ion-button>
+  </div>
+  
 </ion-content>

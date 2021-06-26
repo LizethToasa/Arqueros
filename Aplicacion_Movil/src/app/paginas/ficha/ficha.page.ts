@@ -4,6 +4,7 @@ import { SignaturePad } from 'angular2-signaturepad';
 import { DatosUsuario } from '../../interfaces/user.interface';
 import { ArqueroService } from '../../servicios/arquero.service';
 import { formatDate } from "@angular/common";
+import { ignoreElements } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ficha',
@@ -51,8 +52,13 @@ export class FichaPage implements OnInit {
       this.alumno = alumno[0];
       //this.alumno.fecha_naciento = new Date(this.alumno.fecha_naciento['seconds']*1000);
       console.log(this.alumno.nombre);
-      var element = <HTMLInputElement> document.getElementById("formainputid");
+      if(alumno){
+        var element = <HTMLInputElement> document.getElementById("formainputid");
+        element.style.display = 'inline';
+        var element = <HTMLInputElement> document.getElementById("formainputid2");
       element.style.display = 'inline';
+      }
+      
   
     })
   }
