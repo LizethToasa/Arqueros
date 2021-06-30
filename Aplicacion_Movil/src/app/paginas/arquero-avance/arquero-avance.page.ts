@@ -16,7 +16,6 @@ export class ArqueroAvancePage implements OnInit {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.AvanceService.getAvancefecha().subscribe((avance) =>{
       this.avances = avance.filter(avan=>avan.idarquero == this.usuarioId); 
-      console.log(this.avances);
     })
     this.AvanceService.getEntrenadores().subscribe((entrenadores) =>{
       this.entrenadores = entrenadores;
