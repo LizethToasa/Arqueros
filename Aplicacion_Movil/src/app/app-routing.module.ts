@@ -133,6 +133,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/arquero-avance/arquero-avance.module').then( m => m.ArqueroAvancePageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'notificaciones-arquero',
+    loadChildren: () => import('./paginas/notificaciones-arquero/notificaciones-arquero.module').then( m => m.NotificacionesArqueroPageModule),
+    canActivate: [AuthGuard]
+  },
 
 ];
 
