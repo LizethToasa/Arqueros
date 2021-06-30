@@ -98,7 +98,6 @@ export class PerfilArqueroPage implements OnInit {
        {
           text: 'Aceptar',
           handler: () => {
-            console.log('Confirm Ok');
           }
         }
       ]
@@ -108,7 +107,7 @@ export class PerfilArqueroPage implements OnInit {
 
   async cambiarcontra(){
     this.Service.resetPassword(this.usuario.correo).then(() => {
-      this.mensaje="Se envió un correo para cambiar la contraseña.";
+      this.mensaje="Se envió un correo para modificar la contraseña.";
       this.mensajeerror();
     });
   }
@@ -174,12 +173,10 @@ export class PerfilArqueroPage implements OnInit {
   async cargarUsuario(){
     this.usuarioService.getArquero(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
-      console.log(this.usuario);
       this.fechanacim = new Date(this.usuario.fecha_naciento);   
     });
   }
 
-  //Guardar Usuario
   async guardarUsuario() {
     if (this.usuarioId) {
       this.usuarioService.updateArquero(this.usuario, this.usuarioId).then(() => {

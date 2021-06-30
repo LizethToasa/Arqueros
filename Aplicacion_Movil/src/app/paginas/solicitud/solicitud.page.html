@@ -10,15 +10,15 @@
 <ion-content>
   
   <form [formGroup]="formGroup">
-    <ion-item>
+    <ion-item lines="none">
       <ion-label position="stacked"><strong>Fecha entrenamiento:</strong></ion-label>
       <p>{{fechaactual}}</p>
     </ion-item>
-    <ion-item>
+    <ion-item lines="none"> 
       <ion-label position="stacked"><strong>Estudiante:</strong></ion-label>
       <p>{{usuario.nombre}} {{usuario.apellido}}</p>
     </ion-item>
-    <ion-item >
+    <ion-item lines="none">
       <ion-label position="stacked" style="padding-bottom:20px !important">Entrenador:</ion-label>
       <ion-select ok-text="Seleccionar" formControlName="profesor" [(ngModel)]="solicitud.entrenador"
       cancel-text="Cancelar" (ionChange)="seleprofe()" >
@@ -33,7 +33,7 @@
         *Requerido
       </p>
     </div>
-    <ion-item >
+    <ion-item lines="none">
       <ion-label position="stacked" style="padding-bottom:20px !important">Lugar y horario:</ion-label>
       <ion-select ok-text="Seleccionar" formControlName="hora" [(ngModel)]="solicitud.horario" [disabled]="seleccion1"
       cancel-text="Cancelar" >

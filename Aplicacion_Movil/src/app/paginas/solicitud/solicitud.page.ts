@@ -52,7 +52,7 @@ export class SolicitudPage implements OnInit {
   mensaje=null;
   seleccion1 : boolean =true;
   constructor(private usuarioService: ArqueroService,private entrenadorService: EntrenadorService,public formBuilder: FormBuilder,private nav: NavController,private alertCtrl: AlertController) {
-    console.log(this.fechaactual);
+
     var fec = this.fechaactual.toString();
     this.solicitud.fechasol=fec;
     this.entrenadorService.getactivos().subscribe((entrenador) =>{
@@ -78,12 +78,10 @@ export class SolicitudPage implements OnInit {
       this.formGroup.controls['hora'].setValue(null);
       this.entrenadorService.getHorariosactual(this.solicitud.entrenador,this.fechahoy).subscribe((horario) =>{
         this.hararios = horario
-        console.log(this.hararios);
       });
     }
   }
 
-  //Crear validaciones para el form 
   crearvalidaciones(){
     const profesor = new FormControl('', Validators.compose([
         Validators.required,
@@ -96,12 +94,9 @@ export class SolicitudPage implements OnInit {
       Validators.minLength(5),
       Validators.maxLength(50)
     ]));
- 
-    
     this.formGroup = this.formBuilder.group({profesor,hora,mensaje});
   }
 
-  //Cargar usuario
   async cargarUsuario(){
     this.usuarioService.getArquero(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
@@ -111,10 +106,9 @@ export class SolicitudPage implements OnInit {
   }
 
   async crearSolicitud(){
-    console.log(this.solicitud.entrenador,this.solicitud.horario,this.solicitud.mensaje);
     this.usuarioService.addSolicitud(this.solicitud).then(() => {
       this.nav.navigateForward('menu-arquero'); 
-      this.mensaje="Se envió correctamente la solicitud.";
+      this.mensaje="Se envió correctamente la solicitud de entrenamiento.";
       this.mensajeingreso();
     });
   }
@@ -134,5 +128,4 @@ export class SolicitudPage implements OnInit {
     });
     await alert.present();
   }
-
 }
