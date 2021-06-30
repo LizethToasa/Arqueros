@@ -291,7 +291,8 @@
         }
 
         &.shape-default {
-            background: linear-gradient(150deg, shapes-default-color("step-1-gradient-bg") 15%, shapes-default-color("step-2-gradient-bg") 70%, shapes-default-color("step-3-gradient-bg") 94%);
+            //background: red;
+            background-image: url("https://www.swissinfo.ch/resource/image/9050220/landscape_ratio16x9/1920/1080/327a2d75e54f00efad1dca830efc01b/A4351AB0177D9A095F3E885F5C9ADCF1/rtr103pk-9050234.jpg");
         }
 
         &.shape-light {

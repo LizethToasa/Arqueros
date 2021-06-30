@@ -52,138 +52,141 @@
     <form>
       <ion-item>
         <ion-label position="stacked">Lugar de nacimiento:</ion-label>
-        <ion-textarea>
+        <ion-textarea [(ngModel)]="ficha.lugarnacimiento" name="lugarnaci">
         </ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Dirección de domicilio:</ion-label>
-        <ion-textarea>
+        <ion-textarea [(ngModel)]="ficha.direccion" name="direccdomici">
         </ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Escuela / Colegio / Universidad:</ion-label>
-        <ion-input></ion-input>
+        <ion-input  [(ngModel)]="ficha.institucion" name="instucion"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Donde Trabaja:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.dondetrabaja" name="diretrabajo"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Dirección de Trabajo:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.direcciontrabajo" name="direecciontraba"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Estatura:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.estatura" name="estatura"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Peso:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.peso" name="peso"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Tipo de Sangre:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.tiposangre" name="tiposangre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked" style="padding-bottom:20px !important">Posee alergias? Cuales son?:</ion-label>
-        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.alergias" name="alergias" (ionChange)="seleccionalergias()">
           <ion-select-option value="Si">Si</ion-select-option>
           <ion-select-option value="No">No</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-textarea>
+      <ion-item id="aler" style="display: none;">
+        <ion-textarea [(ngModel)]="ficha.descripcionalergias" name="descripcionalergias">
         </ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label position="stacked" style="padding-bottom:20px !important">Fracturas? Cuales son?:</ion-label>
-        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.fracturas" name="fracturas" (ionChange)="seleccionafracturas()">
           <ion-select-option value="Si">Si</ion-select-option>
           <ion-select-option value="No">No</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Dirección de domicilio:</ion-label>
-        <ion-textarea>
+      <ion-item id="frac" style="display: none;">
+        <ion-textarea [(ngModel)]="ficha.descripcionfracturas" name="descripcionfracturas">
         </ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label position="stacked" style="padding-bottom:20px !important">Operaciones? Cuales son?:</ion-label>
-        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.operaciones" name="operaciones" (ionChange)="seleccionaoperaciones()">
           <ion-select-option value="Si">Si</ion-select-option>
           <ion-select-option value="No">No</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Dirección de domicilio:</ion-label>
-        <ion-textarea>
+      <ion-item id="opera" style="display: none;">
+        <ion-textarea  [(ngModel)]="ficha.descripcionoperaciones" name="descripcionoperaciones">
         </ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label position="stacked" style="padding-bottom:20px !important">Enfermedades? Cuales son?:</ion-label>
-        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar">
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.enfermedades" name="enfermedades" (ionChange)="seleccionaenfermedades()">
           <ion-select-option value="Si">Si</ion-select-option>
           <ion-select-option value="No">No</ion-select-option>
         </ion-select>
       </ion-item>
+      <ion-item id="enfer" style="display: none;">
+        <ion-textarea [(ngModel)]="ficha.descripcionenfermades" name="descripcionenfermades">
+        </ion-textarea>
+      </ion-item>
+      <br/>
       <ion-item lines="none" color="primary" style="text-align: center;">
         <h4 style="text-align: center;">DATOS DEL PADRE</h4>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Nombres:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.nombpadre" name="nombpadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Apellidos:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.apellpadre" name="apellpadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Numero de Cédula:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.cedpadre" name="cedpadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Lugar de Trabajo:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.lugartrabajopadre" name="lugartrabajopadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Email:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.emailpadre" name="emailpadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Telefonos:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.telefonopadre" name="telefonopadre"></ion-input>
       </ion-item>
       <ion-item lines="none" color="primary" style="text-align: center;">
         <h4 style="text-align: center;">DATOS DE LA MADRE</h4>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Nombres:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.nombmadre" name="nombmadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Apellidos:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.apellmadre" name="apellmadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Numero de Cédula:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.cedmadre" name="cedmadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Lugar de Trabajo:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.lugartrabajomadre" name="lugartrabajomadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Email:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.emailmadre" name="emailmadre"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Telefonos:</ion-label>
-        <ion-input></ion-input>
+        <ion-input [(ngModel)]="ficha.telefonomadre" name="telefonomadre"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Telfs de Emergencia / De Quien?</ion-label>
-        <ion-textarea>
+        <ion-textarea [(ngModel)]="ficha.telefonemergencia" name="telefonemergencia">
         </ion-textarea>
       </ion-item>
     </form>
