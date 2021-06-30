@@ -59,7 +59,7 @@ export class PerfilArqueroPage implements OnInit {
       this.max = new Date(actual);
     this.crearvalidaciones();
    }
-
+   fechanacim:Date;
   ngOnInit() {
     this.usuarioId = firebase.auth().currentUser.uid;
     if (this.usuarioId){
@@ -70,15 +70,7 @@ export class PerfilArqueroPage implements OnInit {
 
   edad(event){
     var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
-    this.fechacumple = probar4.toString();
-    /*this.fechacumple=new Date(event.detail.value);  
-    if(this.age){
-      var fec = new Date(this.age);
-      console.log(fec.getDay());
-      const convertAge = new Date(this.age);
-      const timeDiff = Math.abs(Date.now() - convertAge.getTime());
-      this.showAge = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-    }*/
+    this.usuario.fecha_naciento = probar4.toString();
   }
 
   async mensajeconfirmacion() {
@@ -90,7 +82,6 @@ export class PerfilArqueroPage implements OnInit {
        {
           text: 'Aceptar',
           handler: () => {
-            //this.nav.navigateForward('menu');
           }
         }
       ]
@@ -98,7 +89,6 @@ export class PerfilArqueroPage implements OnInit {
     await alert.present();
   }
 
-  //Mostrar mensaje de alerta
   async mensajeerror() {
     const alert = await this.alertCtrl.create({
       header: 'Mensaje',
@@ -117,9 +107,8 @@ export class PerfilArqueroPage implements OnInit {
   }
 
   async cambiarcontra(){
-
     this.Service.resetPassword(this.usuario.correo).then(() => {
-      this.mensaje="Se envió un correo para cambiar la contraseña. ";
+      this.mensaje="Se envió un correo para cambiar la contraseña.";
       this.mensajeerror();
     });
   }
@@ -182,27 +171,17 @@ export class PerfilArqueroPage implements OnInit {
     this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl,telefono2Control,fechaControl});
   }
 
-  //Cargar usuario
   async cargarUsuario(){
     this.usuarioService.getArquero(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
-      
       console.log(this.usuario);
-      this.usuario.fecha_naciento= new Date(this.usuario.fecha_naciento);
-
-      //this.usuario.fecha_naciento= new Date(this.usuario.fecha_naciento['seconds']*1000);
-      /*const convertAge = new Date(this.usuario.fecha_naciento);
-      const timeDiff = Math.abs(Date.now() - convertAge.getTime());
-      this.showAge = Math.floor((timeDiff / (1000 * 3600 * 24))/365);*/
-    
- 
+      this.fechanacim = new Date(this.usuario.fecha_naciento);   
     });
   }
 
   //Guardar Usuario
   async guardarUsuario() {
     if (this.usuarioId) {
-      this.usuario.fecha_naciento = this.fechacumple;
       this.usuarioService.updateArquero(this.usuario, this.usuarioId).then(() => {
         this.nav.navigateForward('menu-arquero');
         this.mensaje="Se actualizó correctamente su perfil.";

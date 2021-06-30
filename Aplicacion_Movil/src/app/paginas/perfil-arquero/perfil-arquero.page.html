@@ -137,7 +137,7 @@
     <ion-item>
       <ion-label position="stacked"><strong>Fecha de nacimiento</strong></ion-label>
       <ion-datetime 
-        value="{{usuario.fecha_naciento | date: 'yyyy-MM-dd'}}"
+        value="{{fechanacim | date: 'yyyy-MM-dd'}}"
         [(ngModel)]="age" 
         displayFormat="DD/MM/YYYY" 
         min="{{min | date: 'yyyy-MM-dd'}}" 

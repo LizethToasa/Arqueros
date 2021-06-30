@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { DatosEntrenador } from '../interfaces/entrenador.interface';
-import { DatosAdministrador } from '../interfaces/administrador.interface';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DatosUsuario } from '../interfaces/user.interface';
 import * as firebase from 'firebase';
@@ -23,13 +23,12 @@ export class AuthService {
   public photoURL = null;
   public user$: Observable<User>;
   public entrenador$: Observable<DatosEntrenador>;
-  public administrador$: Observable<DatosAdministrador>;
+
   private usuariosCollection: AngularFirestoreCollection<DatosUsuario>;
   private usuario: Observable<DatosUsuario[]>;
   private entrenadorCollection: AngularFirestoreCollection<DatosEntrenador>;
   private entrenador: Observable<DatosEntrenador[]>;
-  private administradorCollection: AngularFirestoreCollection<DatosAdministrador>;
-  private administrador: Observable<DatosAdministrador[]>;
+
   constructor(
     public afAuth: AngularFireAuth, 
     private afs: AngularFirestore,
@@ -61,16 +60,7 @@ export class AuthService {
         });
       })
     );
-    this.administradorCollection = afs.collection<DatosAdministrador>('administrador');
-    this.administrador = this.administradorCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return {id, ...data};
-        });
-      })
-    );
+   
     this.entrenadorCollection = afs.collection<DatosEntrenador>('entrenadores');
     this.entrenador = this.entrenadorCollection.snapshotChanges().pipe(
       map(actions => {
@@ -208,7 +198,5 @@ export class AuthService {
   obtenerEntrenador(id: string){
     return this.entrenadorCollection.doc<DatosEntrenador>(id).valueChanges();
   }
-  obtenerAdministrador(id: string){
-    return this.administradorCollection.doc<DatosAdministrador>(id).valueChanges();
-  }
+ 
 }
