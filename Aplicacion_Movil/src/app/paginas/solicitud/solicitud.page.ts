@@ -52,7 +52,6 @@ export class SolicitudPage implements OnInit {
   mensaje=null;
   seleccion1 : boolean =true;
   constructor(private usuarioService: ArqueroService,private entrenadorService: EntrenadorService,public formBuilder: FormBuilder,private nav: NavController,private alertCtrl: AlertController) {
-
     var fec = this.fechaactual.toString();
     this.solicitud.fechasol=fec;
     this.entrenadorService.getactivos().subscribe((entrenador) =>{
