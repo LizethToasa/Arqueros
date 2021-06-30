@@ -18,10 +18,7 @@ export class ListadoSolicitudesPage implements OnInit {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getSolicitudes().subscribe((solicit) =>{
       this.solicitudes = solicit.filter(soli=>soli.idusuario == this.usuarioId); 
-      console.log(this.solicitudes);
     });
-    
-    
   }
 
   ngOnInit() {

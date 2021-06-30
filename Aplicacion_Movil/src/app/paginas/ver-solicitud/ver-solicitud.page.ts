@@ -24,9 +24,7 @@ export class VerSolicitudPage implements OnInit {
       this.solicitud = solicitud;
       this.entrenadorService.getEntrenador(this.solicitud.entrenador).subscribe((entrenador) =>{
         this.entrenador = entrenador.nombres + " " +entrenador.apellidos;
-        
       });
-
     })
 
   }
@@ -38,7 +36,7 @@ export class VerSolicitudPage implements OnInit {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Mensaje',
-      message: 'Esta seguro de anular el alquiler.',
+      message: 'Esta seguro de anular la solicitud de entrenamiento.',
       buttons: [
        {
           text: 'Aceptar',
@@ -61,7 +59,7 @@ export class VerSolicitudPage implements OnInit {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Mensaje',
-      message: 'Se anulo correctamente la solicitud.',
+      message: 'Se anulo correctamente la solicitud de entrenamiento.',
       buttons: [
        {
           text: 'Aceptar',
