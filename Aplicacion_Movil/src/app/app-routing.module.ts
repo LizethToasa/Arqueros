@@ -61,7 +61,8 @@ const routes: Routes = [
  
   {
     path: 'ficha',
-    loadChildren: () => import('./paginas/ficha/ficha.module').then( m => m.FichaPageModule)
+    loadChildren: () => import('./paginas/ficha/ficha.module').then( m => m.FichaPageModule),
+    canActivate: [EntrenadorGuard]
   },
   {
     path: 'solicitud',
