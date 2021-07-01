@@ -53,8 +53,10 @@ export class SolicitudPage implements OnInit {
   notificacionentrenador:NotificacionEntrenador={
     identrenador: '',
     fecha: '',
-    color: "#C2B7C8",
+    color: "#EEEEEE",
     idsolicitud: '',
+    nombrearquero:'',
+    mensaje:'',
   };
   formGroup: FormGroup;
   fechahoy:any;
@@ -129,6 +131,8 @@ export class SolicitudPage implements OnInit {
     this.solicitud.idenlace = this.idenlace;
     this.notificacionentrenador.idsolicitud = this.idenlace;
     this.notificacionentrenador.identrenador = this.solicitud.entrenador;
+    this.notificacionentrenador.mensaje = this.solicitud.mensaje
+    this.notificacionentrenador.nombrearquero = this.usuario.nombre +" "+this.usuario.apellido;
     this.usuarioService.addSolicitud(this.solicitud).then(() => {
       this.usuarioService.addNotificacionEntrenador(this.notificacionentrenador).then(() => {
         this.nav.navigateForward('menu-arquero'); 

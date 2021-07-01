@@ -70,7 +70,7 @@ export class ArqueroService {
       })
     );
 
-    this.notificacionentreCollection = db.collection<NotificacionEntrenador>('notificacioentrenador');
+    this.notificacionentreCollection = db.collection<NotificacionEntrenador>('notificacioentrenador' ,ref => ref.orderBy("fecha", "desc"));
     this.notificacionentre = this.notificacionentreCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

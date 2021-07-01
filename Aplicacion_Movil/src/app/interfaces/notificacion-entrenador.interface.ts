@@ -4,4 +4,7 @@ export interface NotificacionEntrenador {
   fecha:string;
   color:string;
   idsolicitud:string;
+  nombrearquero:string;
+  mensaje:string;
+
 }

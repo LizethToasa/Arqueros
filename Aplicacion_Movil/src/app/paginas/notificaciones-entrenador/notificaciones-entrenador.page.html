@@ -1,9 +1,48 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>notificaciones-entrenador</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/menu-entrenador"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notificaciones</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf="!notificaciones || notificaciones.length == 0">
+    <p class="centrarmensaje" style="margin-top: 10px;">No existe notificaciones.</p>
+  </div>
+  <div *ngFor="let notificacion of notificaciones">
+  <ion-card [ngStyle]="{'background':notificacion.color}">
+    
+    <ion-card-header>
+      <ion-card-subtitle>{{notificacion.fecha}}</ion-card-subtitle>
 
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Nombre: {{notificacion.nombrearquero}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Mensaje
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          {{notificacion.mensaje}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card-content>
+    
+     
+ 
+      <ion-button expand="block" color="secondary">Ver</ion-button>
+    </ion-card-content>
+    
+    
+  </ion-card>
+  </div>
 </ion-content>
