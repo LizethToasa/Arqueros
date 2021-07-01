@@ -139,6 +139,12 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/notificaciones-arquero/notificaciones-arquero.module').then( m => m.NotificacionesArqueroPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'notificaciones-entrenador',
+    loadChildren: () => import('./paginas/notificaciones-entrenador/notificaciones-entrenador.module').then( m => m.NotificacionesEntrenadorPageModule),
+    canActivate: [EntrenadorGuard]
+  },
+
 
 ];
 

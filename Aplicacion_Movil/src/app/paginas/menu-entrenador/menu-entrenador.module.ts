@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { MenuEntrenadorPageRoutingModule } from './menu-entrenador-routing.module';
 
 import { MenuEntrenadorPage } from './menu-entrenador.page';
-
+import { ComponentsModule } from '../../componentes/components.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MenuEntrenadorPageRoutingModule
+    MenuEntrenadorPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [MenuEntrenadorPage]
 })

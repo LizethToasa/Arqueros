@@ -95,8 +95,12 @@ export class ArqueroService {
     return this.notificacionentreCollection.doc<NotificacionEntrenador>(id).valueChanges();
   }
 
+  getNotificacionEntrenadores(){
+    return this.notificacionentre;
+  }
+
   getNotificacionesEntrenador(id:string){
-    this.notificacionentreCollection2 = this.db.collection<NotificacionEntrenador>('notificacioentrenador', ref  => ref.where('identrenador', '==', id));
+    this.notificacionentreCollection2 = this.db.collection<NotificacionEntrenador>('notificacioentrenador', ref  => ref.where('identrenador', '==', id).where('color', '==', '#C2B7C8'));
     this.notificacionentre2= this.notificacionentreCollection2.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
