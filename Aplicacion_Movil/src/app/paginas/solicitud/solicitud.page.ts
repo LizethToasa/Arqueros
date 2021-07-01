@@ -3,6 +3,7 @@ import * as firebase from 'firebase';
 import { DatosUsuario } from '../../interfaces/user.interface';
 import { Horario } from '../../interfaces/horario.interface';
 import { DatosEntrenador } from '../../interfaces/entrenador.interface';
+import { NotificacionEntrenador } from '../../interfaces/notificacion-entrenador.interface';
 import { Solicitud } from '../../interfaces/solicitud.interface';
 import { ArqueroService } from '../../servicios/arquero.service';
 import { EntrenadorService } from '../../servicios/entrenador.service';
@@ -45,19 +46,39 @@ export class SolicitudPage implements OnInit {
     mensaje: '',
     idusuario:'',
     respuesta: 'espera',
-    mensajerespuesta:''
+    mensajerespuesta:'',
+    idenlace:''
+
+  };
+  notificacionentrenador:NotificacionEntrenador={
+    identrenador: '',
+    fecha: '',
+    color: "#C2B7C8",
+    idsolicitud: '',
   };
   formGroup: FormGroup;
   fechahoy:any;
   mensaje=null;
   seleccion1 : boolean =true;
+  idenlace:string;
   constructor(private usuarioService: ArqueroService,private entrenadorService: EntrenadorService,public formBuilder: FormBuilder,private nav: NavController,private alertCtrl: AlertController) {
     var fec = this.fechaactual.toString();
     this.solicitud.fechasol=fec;
+    this.notificacionentrenador.fecha = fec;
     this.entrenadorService.getactivos().subscribe((entrenador) =>{
       this.entrenadores = entrenador;
     });
     this.crearvalidaciones();
+
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < charactersLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    this.idenlace = result;
+  
+ 
    }
 
   ngOnInit() {
@@ -105,11 +126,18 @@ export class SolicitudPage implements OnInit {
   }
 
   async crearSolicitud(){
+    this.solicitud.idenlace = this.idenlace;
+    this.notificacionentrenador.idsolicitud = this.idenlace;
+    this.notificacionentrenador.identrenador = this.solicitud.entrenador;
     this.usuarioService.addSolicitud(this.solicitud).then(() => {
-      this.nav.navigateForward('menu-arquero'); 
-      this.mensaje="Se envió correctamente la solicitud de entrenamiento.";
-      this.mensajeingreso();
+      this.usuarioService.addNotificacionEntrenador(this.notificacionentrenador).then(() => {
+        this.nav.navigateForward('menu-arquero'); 
+        this.mensaje="Se envió correctamente la solicitud de entrenamiento.";
+        this.mensajeingreso();
+      });
+      
     });
+    
   }
 
   async mensajeingreso() {

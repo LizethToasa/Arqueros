@@ -8,4 +8,5 @@ export interface Solicitud {
   respuesta:string;
   mensajerespuesta:string;
   idusuario:string;
+  idenlace:string;
 }
