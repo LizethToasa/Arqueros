@@ -150,6 +150,12 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/solicitudes-entrenamiento/solicitudes-entrenamiento.module').then( m => m.SolicitudesEntrenamientoPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'ver-entrenamiento/:id',
+    loadChildren: () => import('./paginas/ver-entrenamiento/ver-entrenamiento.module').then( m => m.VerEntrenamientoPageModule),
+    canActivate: [EntrenadorGuard]
+  },
+
 
 
 

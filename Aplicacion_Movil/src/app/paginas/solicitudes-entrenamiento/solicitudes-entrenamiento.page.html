@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button routerLink="/menu-entrenador"></ion-back-button>
     </ion-buttons>
-    <ion-title>Solicitud entrenamientos</ion-title>
+    <ion-title>Solicitudes entrenamientos</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -47,7 +47,7 @@
       <img src="../../../assets/solicitudes/anulado.png" *ngIf="solicitud.respuesta==anulado" style="width: 50px; height: 50px;display:block;margin:auto;">
       <br/>
       Horario {{ solicitud.horario }}
-      <ion-button expand="block" [routerLink]="['/ver-solicitud', solicitud.id]">
+      <ion-button expand="block" [routerLink]="['/ver-entrenamiento', solicitud.id]">
         Ver
       </ion-button>
     </ion-card-content>
