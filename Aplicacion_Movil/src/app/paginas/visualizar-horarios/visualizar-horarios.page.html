@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="!horario || horario.length == 0">
+    <p class="centrarmensaje" style="margin-top: 10px;">No existe horarios registrados.</p>
+  </div>
   <ion-card *ngFor="let hora of horario" > 
     <ion-card-header>
       <ion-card-subtitle>{{hora.fecha}}</ion-card-subtitle>
@@ -39,7 +42,7 @@
             {{ hora.lugar }}
           </ion-col>
         </ion-row>
-        <ion-button expand="block" [routerLink]="['/ver-horario', hora.id]" *ngIf="fechaactual==hora.fecha">
+        <ion-button expand="block" [routerLink]="['/ver-horario', hora.id]" *ngIf="fechahoy==hora.fecha">
           Ver
         </ion-button>
       </ion-grid> 

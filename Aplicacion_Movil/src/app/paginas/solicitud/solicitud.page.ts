@@ -41,6 +41,7 @@ export class SolicitudPage implements OnInit {
   solicitud:Solicitud={
     nombresol: '',
     fechasol: '',
+    fecha:new Date(),
     entrenador: '',
     horario: '',
     mensaje: '',
@@ -53,6 +54,7 @@ export class SolicitudPage implements OnInit {
   notificacionentrenador:NotificacionEntrenador={
     identrenador: '',
     fecha: '',
+    fecha2: new Date(),
     color: "#EEEEEE",
     idsolicitud: '',
     nombrearquero:'',
@@ -67,6 +69,7 @@ export class SolicitudPage implements OnInit {
     var fec = this.fechaactual.toString();
     this.solicitud.fechasol=fec;
     this.notificacionentrenador.fecha = fec;
+    console.log(this.solicitud.fecha);
     this.entrenadorService.getactivos().subscribe((entrenador) =>{
       this.entrenadores = entrenador;
     });
@@ -135,7 +138,7 @@ export class SolicitudPage implements OnInit {
     this.notificacionentrenador.nombrearquero = this.usuario.nombre +" "+this.usuario.apellido;
     this.usuarioService.addSolicitud(this.solicitud).then(() => {
       this.usuarioService.addNotificacionEntrenador(this.notificacionentrenador).then(() => {
-        this.nav.navigateForward('menu-arquero'); 
+        this.nav.navigateForward('listado-solicitudes'); 
         this.mensaje="Se envió correctamente la solicitud de entrenamiento.";
         this.mensajeingreso();
       });

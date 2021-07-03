@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <br/>
   <form [formGroup]="formGroup" (ngSubmit)="guardarUsuario()" *ngIf="usuario" >
       <div class="row">  
           <img [src]="usuario.foto" style="height:150px;display:block;margin:auto"/>
@@ -30,11 +31,11 @@
         </p>
         <p class="form-error"
           *ngIf="formGroup.get('nombreControl').hasError('minlength')">
-          *Mínimo 7 caracteres 
+          *Mínimo 3 caracteres 
         </p>
         <p class="form-error"
           *ngIf="formGroup.get('nombreControl').hasError('maxlength')">
-          *Máximo 30 caracteres  
+          *Máximo 15 caracteres  
         </p>
         <p class="form-error"
           *ngIf="formGroup.get('nombreControl').hasError('pattern')">
@@ -52,11 +53,11 @@
         </p>
         <p class="form-error"
           *ngIf="formGroup.get('apellidoControl').hasError('minlength')">
-          *Mínimo 7 caracteres 
+          *Mínimo 3 caracteres 
         </p>
         <p class="form-error"
           *ngIf="formGroup.get('apellidoControl').hasError('maxlength')">
-          *Máximo 30 caracteres  
+          *Máximo 15 caracteres  
         </p>
         <p class="form-error"
           *ngIf="formGroup.get('apellidoControl').hasError('pattern')">

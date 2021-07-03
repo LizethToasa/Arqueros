@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FileI } from '../interfaces/file.interface';
+import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
@@ -67,7 +68,7 @@ export class EntrenadorService {
   }
 
   getAvancefecha(){
-    this.avanceCollection2 = this.db.collection<Avance>('avances', ref => ref.orderBy('fecha', "desc"));
+    this.avanceCollection2 = this.db.collection<Avance>('avances', ref => ref.orderBy('fecha'));
     this.avance2 = this.avanceCollection2.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -132,7 +133,7 @@ export class EntrenadorService {
     return this.horario2;
   }
   getHorarioentrena(){
-    this.horarioCollection2 = this.db.collection<Horario>('horarios', ref => ref.orderBy('fecha', "desc"));
+    this.horarioCollection2 = this.db.collection<Horario>('horarios', ref =>ref.orderBy('fecha2', "desc"));
     this.horario2 = this.horarioCollection2.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

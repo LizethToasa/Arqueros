@@ -56,7 +56,8 @@ const routes: Routes = [
   },
   {
     path: 'registro-entrenador',
-    loadChildren: () => import('./paginas/registro-entrenador/registro-entrenador.module').then( m => m.RegistroEntrenadorPageModule)
+    loadChildren: () => import('./paginas/registro-entrenador/registro-entrenador.module').then( m => m.RegistroEntrenadorPageModule),
+    canActivate: [EntrenadorGuard]
   },
  
   {
@@ -144,6 +145,12 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/notificaciones-entrenador/notificaciones-entrenador.module').then( m => m.NotificacionesEntrenadorPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'solicitudes-entrenamiento',
+    loadChildren: () => import('./paginas/solicitudes-entrenamiento/solicitudes-entrenamiento.module').then( m => m.SolicitudesEntrenamientoPageModule),
+    canActivate: [EntrenadorGuard]
+  },
+
 
 
 ];

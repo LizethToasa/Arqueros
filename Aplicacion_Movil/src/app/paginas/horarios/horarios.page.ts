@@ -23,7 +23,8 @@ export class HorariosPage implements OnInit {
     idusuario :'',
     horaentrada: '',
     horasalida: '',
-    fecha: '',
+    fecha:'',
+    fecha2: new Date(),
     lugar:''
   }
   mensaje:any;
@@ -36,11 +37,10 @@ export class HorariosPage implements OnInit {
     fecha.setDate(fecha.getDate() + dias);
     this.fechamanana = formatDate(new Date(fecha) , "dd/MM/yyyy", this.locale);
     this.horario.fecha = this.fechamanana;
-    console.log(this.horario.fecha);
+    this.horario.fecha2 = new Date(fecha);
     this.crearvalidaciones();
     this.usuarioId = firebase.auth().currentUser.uid;
     this.horario.idusuario = this.usuarioId;
-
     this.fechahoy = formatDate(new Date(fecha) , "dd/MM/yyyy", this.locale);
     this.HorarioService.getHorariosactual(this.usuarioId,this.fechahoy).subscribe((horar) =>{
       if(horar.length>=3){
@@ -59,8 +59,6 @@ export class HorariosPage implements OnInit {
   crearvalidaciones(){
     const horaentr = new FormControl('', Validators.compose([
         Validators.required,
-
-
     ]));
     const horasal = new FormControl('', Validators.compose([
       Validators.required,
@@ -68,7 +66,6 @@ export class HorariosPage implements OnInit {
     const lugar = new FormControl('', Validators.compose([
       Validators.required,
     ]));
-    
     this.formGroup = this.formBuilder.group({horaentr,horasal,lugar});
   }
 
@@ -100,7 +97,6 @@ export class HorariosPage implements OnInit {
   }
 
   async crearHorario(){
-    console.log(this.limite);
     if(this.limite==true){
       this.HorarioService.addHorario(this.horario).then(() => {
         this.nav.navigateForward('visualizar-horarios'); 

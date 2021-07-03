@@ -157,7 +157,7 @@ export class ArqueroService {
   }
 
   getSolicitudes(){
-    this.solicitudCollection2 = this.db.collection<Solicitud>('solicitudes', ref => ref.orderBy("fechasol", "desc") );
+    this.solicitudCollection2 = this.db.collection<Solicitud>('solicitudes', ref => ref.orderBy("fecha", "desc") );
     this.solicitud2= this.solicitudCollection2.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
