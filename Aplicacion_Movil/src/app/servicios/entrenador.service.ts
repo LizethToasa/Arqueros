@@ -68,7 +68,7 @@ export class EntrenadorService {
   }
 
   getAvancefecha(){
-    this.avanceCollection2 = this.db.collection<Avance>('avances', ref => ref.orderBy('fecha'));
+    this.avanceCollection2 = this.db.collection<Avance>('avances', ref => ref.orderBy('fecha2', "desc"));
     this.avance2 = this.avanceCollection2.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

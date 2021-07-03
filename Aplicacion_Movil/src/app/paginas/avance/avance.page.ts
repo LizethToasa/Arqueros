@@ -25,7 +25,8 @@ export class AvancePage implements OnInit {
     identrenador: '',
     idarquero: '',
     mensaje: '',
-    fecha:''
+    fecha:'',
+    fecha2: new Date()
   }
   formGroup: FormGroup;
   mensaje=null;

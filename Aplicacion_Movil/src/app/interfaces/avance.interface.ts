@@ -4,4 +4,5 @@ export interface Avance {
   idarquero:string;
   mensaje:string;
   fecha:string;
+  fecha2: Date;
   }
