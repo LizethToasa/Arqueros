@@ -9,7 +9,7 @@
 <ion-content>
 
 <ion-content>
-  <form *ngIf="solicitud">
+  <form [formGroup]="formGroup" *ngIf="solicitud">
     <ion-item>
       <ion-label position="stacked"><strong>Fecha solicitud:</strong></ion-label>
       <p>{{solicitud.fechasol}}</p>
@@ -22,13 +22,44 @@
       <ion-label position="stacked"><strong>Mensaje:</strong></ion-label>
       <p>{{solicitud.mensaje}}</p>
     </ion-item>
+    <ion-item >
+      <ion-label position="stacked" style="padding-bottom:20px !important">Respuesta:</ion-label>
+      <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar"
+      [(ngModel)]="solicitud.respuesta" name="respuesta" formControlName="respuesta">
+        <ion-select-option value="espera">Espera</ion-select-option>
+        <ion-select-option value="aceptar">Aceptar</ion-select-option>
+        <ion-select-option value="rechazar">Rechazar</ion-select-option>
+        <ion-select-option value="anulado">Anulado</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('respuesta').hasError('required')">
+        *Requerido
+      </p>
+    </div>
     <ion-item>
       <ion-label position="stacked"><strong>Mensaje entrenador:</strong></ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-textarea [(ngModel)]="solicitud.mensajerespuesta" name="menrespe" formControlName="mensaje">
+
+      </ion-textarea>
     </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('mensaje').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('minlength')">
+      *Mínimo 5 caracteres 
+    </p>
+    <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('maxlength')">
+      *Máximo 50 caracteres  
+    </p>
+    </div>
+    <ion-button [disabled]="!formGroup.valid" (click)="guardarentrenamiento()" expand="block">Guardar</ion-button>
    
     <br/>
- 
-    
   </form>
 </ion-content>

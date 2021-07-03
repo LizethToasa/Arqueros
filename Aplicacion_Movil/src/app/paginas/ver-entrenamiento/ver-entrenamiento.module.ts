@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { VerEntrenamientoPageRoutingModule } from './ver-entrenamiento-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { VerEntrenamientoPage } from './ver-entrenamiento.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { VerEntrenamientoPage } from './ver-entrenamiento.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     VerEntrenamientoPageRoutingModule
   ],
   declarations: [VerEntrenamientoPage]
