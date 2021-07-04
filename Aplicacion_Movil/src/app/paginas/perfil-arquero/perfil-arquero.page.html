@@ -67,7 +67,7 @@
   
     <ion-item>
       <ion-label position="stacked"><strong>Cédula</strong></ion-label>
-      <ion-input formControlName="cedulaControl" #cedula type="text" [(ngModel)]="usuario.cedula" placeholder="0400887599"></ion-input>
+      <ion-input formControlName="cedulaControl" #cedula type="tel" [(ngModel)]="usuario.cedula" placeholder="0400887599"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -90,7 +90,7 @@
   
     <ion-item>
       <ion-label position="stacked"><strong>Teléfono</strong></ion-label>
-      <ion-input formControlName="telefonoControl"#telefono  type="text" [(ngModel)]="usuario.telefono" placeholder="0999999999"></ion-input>
+      <ion-input formControlName="telefonoControl"#telefono  type="tel" [(ngModel)]="usuario.telefono" placeholder="0999999999"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -113,7 +113,7 @@
   
     <ion-item>
       <ion-label position="stacked"><strong>Teléfono Representante</strong></ion-label>
-      <ion-input formControlName="telefono2Control"#telefono  type="text" [(ngModel)]="usuario.telefono2" placeholder="0999999999"></ion-input>
+      <ion-input formControlName="telefono2Control" #telefono  type="tel" [(ngModel)]="usuario.telefono2" placeholder="0999999999"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"

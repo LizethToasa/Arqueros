@@ -163,7 +163,7 @@ export class PerfilArqueroPage implements OnInit {
 
     ]));
     const fechaControl = new FormControl('', Validators.compose([
-      Validators.minLength(1),
+      Validators.required,
       
     ]));
 

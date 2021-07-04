@@ -31,15 +31,15 @@ export class RegistroEntrenadorPage implements OnInit {
   crearvalidaciones(){
     const nombreControl = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(7),
-      Validators.maxLength(30),
+      Validators.minLength(3),
+      Validators.maxLength(15),
       Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$"),
     ]));
 
     const apellidoControl = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(7),
-      Validators.maxLength(30),
+      Validators.minLength(3),
+      Validators.maxLength(15),
       Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$"),
     ]));
 

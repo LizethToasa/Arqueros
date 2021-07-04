@@ -22,13 +22,12 @@ const routes: Routes = [
   },
   {
     path: 'verificar-email',
-    loadChildren: () => import('./paginas/verificar-email/verificar-email.module').then( m => m.VerificarEmailPageModule),
-    canActivate: [NoGuardGuard]
+    loadChildren: () => import('./paginas/verificar-email/verificar-email.module').then( m => m.VerificarEmailPageModule)
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [NoGuardGuard]
+    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule)
+    
   },
   {
     path: 'menu-entrenador',
@@ -57,7 +56,7 @@ const routes: Routes = [
   {
     path: 'registro-entrenador',
     loadChildren: () => import('./paginas/registro-entrenador/registro-entrenador.module').then( m => m.RegistroEntrenadorPageModule),
-    canActivate: [EntrenadorGuard]
+ 
   },
  
   {
