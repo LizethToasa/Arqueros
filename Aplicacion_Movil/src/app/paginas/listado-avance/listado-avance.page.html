@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="!avances || avances.length == 0">
+    <p class="centrarmensaje" style="margin-top: 10px;">No existe avances.</p>
+  </div>
   <ion-card *ngFor="let avance of avances">
     
     <ion-card-header>

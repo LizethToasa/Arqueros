@@ -26,7 +26,8 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
-    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./paginas/inicio/inicio.module').then( m => m.InicioPageModule),
+    canActivate: [NoGuardGuard]
     
   },
   {
