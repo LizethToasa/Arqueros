@@ -14,7 +14,8 @@ export class NotifientrenadorComponent implements OnInit {
   constructor(private usuarioService: ArqueroService) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificacionesEntrenador(this.usuarioId).subscribe(notifacion => {
-      if(notifacion.length==0){
+      this.notificaciones = notifacion;
+      if(this.notificaciones.length==0){
         this.noti="../../../assets/notificaciones/notifica2.png";
        }else{
         this.noti="../../../assets/notificaciones/notifi.png";
