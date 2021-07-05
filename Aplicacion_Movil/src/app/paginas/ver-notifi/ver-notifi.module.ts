@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { VerNotifiPageRoutingModule } from './ver-notifi-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { VerNotifiPage } from './ver-notifi.page';
 
 @NgModule({
@@ -13,6 +13,7 @@ import { VerNotifiPage } from './ver-notifi.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     VerNotifiPageRoutingModule
   ],
   declarations: [VerNotifiPage]

@@ -157,7 +157,8 @@ const routes: Routes = [
   },
   {
     path: 'ver-notifi/:id',
-    loadChildren: () => import('./paginas/ver-notifi/ver-notifi.module').then( m => m.VerNotifiPageModule)
+    loadChildren: () => import('./paginas/ver-notifi/ver-notifi.module').then( m => m.VerNotifiPageModule),
+    canActivate: [EntrenadorGuard]
   },
 
 

@@ -172,6 +172,22 @@ export class ArqueroService {
     return this.solicitud2;
   }
 
+  getSolicitudes2(id:string){
+    this.solicitudCollection2 = this.db.collection<Solicitud>('solicitudes', ref => ref.where('idenlace', '==', id) );
+    this.solicitud2= this.solicitudCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+
+    return this.solicitud2;
+  }
+
   getArqueros(){
     return this.arqueros;
   }
