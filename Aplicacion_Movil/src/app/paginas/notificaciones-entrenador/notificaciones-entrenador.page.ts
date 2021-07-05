@@ -13,9 +13,7 @@ export class NotificacionesEntrenadorPage implements OnInit {
   constructor(private usuarioService: ArqueroService) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificacionEntrenadores().subscribe(notificacion => {
-      this.notificaciones = notificacion.filter(noti=>noti.identrenador == this.usuarioId); 
-      console.log(this.notificaciones);
-    
+      this.notificaciones = notificacion.filter(noti=>noti.identrenador == this.usuarioId);     
     });
    }
 

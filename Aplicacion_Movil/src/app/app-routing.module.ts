@@ -155,6 +155,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/ver-entrenamiento/ver-entrenamiento.module').then( m => m.VerEntrenamientoPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'ver-notifi/:id',
+    loadChildren: () => import('./paginas/ver-notifi/ver-notifi.module').then( m => m.VerNotifiPageModule)
+  },
+
 
 
 

@@ -237,7 +237,7 @@ seleccionaenfermedades(){
     this.doc.text(this.ficha.nombpadre, 50, 182);
     this.doc.text("Apellidos:", 20, 189);
     this.doc.text(this.ficha.apellpadre, 80, 189);
-    this.doc.text("Numero de Cédula:", 50, 196);
+    this.doc.text("Numero de Cédula:", 20, 196);
     this.doc.text(this.ficha.cedpadre, 50, 196);
     this.doc.text("Lugar de Trabajo:", 20, 203);
     this.doc.text(this.ficha.lugartrabajopadre, 50, 203);
@@ -255,7 +255,7 @@ seleccionaenfermedades(){
     this.doc.text(this.ficha.nombpadre, 170, 196);
     this.doc.text("Lugar de Trabajo:", 120, 203);
     this.doc.text(this.ficha.nombpadre,170, 203);
-    this.doc.text("Email:", 170, 210);
+    this.doc.text("Email:", 120, 210);
     this.doc.text(this.ficha.nombpadre, 170, 210);
     this.doc.text("Telefonos:", 120, 217);
     this.doc.text(this.ficha.nombpadre, 170, 217);
