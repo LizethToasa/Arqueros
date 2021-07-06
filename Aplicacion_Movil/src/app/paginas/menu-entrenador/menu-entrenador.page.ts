@@ -98,4 +98,6 @@ export class MenuEntrenadorPage implements OnInit {
     this.authservice.logout();
   }
 
+
+
 }

@@ -3,6 +3,7 @@ import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-registro-entrenador',
   templateUrl: './registro-entrenador.page.html',
@@ -123,9 +124,10 @@ export class RegistroEntrenadorPage implements OnInit {
   //Redirigir 
   private redirectUser(isVerified: boolean): void {
     if (isVerified) {
-      this.router.navigate(['menu']);
+      //this.router.navigate(['menu']);
     } else {
-      this.router.navigate(['verificar-email']);
+      //this.router.navigate(['verificar-email2']);
+      this.authSvc.logout();
     }
   }
 

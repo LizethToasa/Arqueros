@@ -191,6 +191,18 @@ export class AuthService {
     }
   }
 
+  async logout2(): Promise<void> {
+    try {
+      await this.afAuth.signOut().then(() => {
+        window.location.href = 'registro-entrenador' ;
+        //this.nav.navigateForward('/login'); 
+        //window.location.href = 'login' ;
+      })
+    } catch (error) {
+      console.log('Error->', error);
+    }
+  }
+
 
   obtenerUsuario(id: string){
     return this.usuariosCollection.doc<DatosUsuario>(id).valueChanges();
