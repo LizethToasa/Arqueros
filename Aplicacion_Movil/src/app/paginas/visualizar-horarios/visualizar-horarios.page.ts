@@ -23,7 +23,7 @@ export class VisualizarHorariosPage implements OnInit {
       fecha.setDate(fecha.getDate() + dias);
       this.id = firebase.auth().currentUser.uid;
       this.fechahoy = formatDate(new Date(fecha) , "dd/MM/yyyy", this.locale);
-      console.log(this.fechahoy);
+   
       this.Servicio.getHorarioentrena().subscribe((horar) =>{
         this.horario = horar.filter(ho=>ho.idusuario == this.id); 
       })

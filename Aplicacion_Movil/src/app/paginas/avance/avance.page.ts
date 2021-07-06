@@ -38,7 +38,7 @@ export class AvancePage implements OnInit {
     this.avance.fecha = this.fechaactual;
     this.usuarioService.getArquero(this.idarquero).subscribe(usuario => {
       this.usuario = usuario;
-      console.log(this.usuario);
+  
     });
     this.crearvalidaciones();
    }

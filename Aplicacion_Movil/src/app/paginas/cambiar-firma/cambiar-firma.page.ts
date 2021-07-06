@@ -38,7 +38,7 @@ export class CambiarFirmaPage implements OnInit {
   }
   ngOnInit() {
     this.usuarioId = firebase.auth().currentUser.uid;
-    console.log(this.usuarioId);
+
     if (this.usuarioId){
       this.cargarUsuario();
      
@@ -49,7 +49,7 @@ export class CambiarFirmaPage implements OnInit {
   async cargarUsuario(){
     this.usuarioService.getEntrenador(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
-      console.log(usuario);
+    
     });
   }
 
@@ -88,7 +88,7 @@ export class CambiarFirmaPage implements OnInit {
   drawComplete() {
     // will be notified of szimek/signature_pad's onEnd event
     this.firma = this.signaturePad.toDataURL();
-    console.log(this.signaturePad.toDataURL());
+  
 
   }
 

@@ -21,7 +21,7 @@ export class SolicitudesEntrenamientoPage implements OnInit {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getSolicitudes().subscribe((solicit) =>{
       this.solicitudes = solicit.filter(soli=>soli.entrenador == this.usuarioId); 
-      console.log(this.solicitudes);
+    
     });
     this.usuarioService.getArqueros().subscribe(usuario => {
       this.arqueros = usuario;

@@ -24,7 +24,7 @@ export class VerAvancePage implements OnInit {
       this.avance = avance;
       this.usuarioService.getArquero(this.avance.idarquero).subscribe((arquero) =>{
         this.arquero = arquero;
-        console.log(this.arquero );
+   
       })
     })
     this.crearvalidaciones();

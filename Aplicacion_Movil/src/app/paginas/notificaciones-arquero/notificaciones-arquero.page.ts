@@ -14,7 +14,7 @@ export class NotificacionesArqueroPage implements OnInit {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificacionesArquero().subscribe(notificacion => {
       this.notificaciones = notificacion.filter(noti=>noti.idarquero == this.usuarioId);     
-      console.log(this.notificaciones);
+
     });
   }
 

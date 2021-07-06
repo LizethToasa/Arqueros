@@ -88,7 +88,7 @@ export class LoginPage implements OnInit {
   private redirectUser(isVerified: boolean,id:string): void {
     if (isVerified) {
       this.authSvc.obtenerUsuario(id).subscribe(usuario => {
-        console.log(usuario);
+      
         
         if (usuario === undefined) {
           this.authSvc.obtenerEntrenador(id).subscribe(entrenador => {

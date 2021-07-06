@@ -69,7 +69,7 @@ export class SolicitudPage implements OnInit {
     var fec = this.fechaactual.toString();
     this.solicitud.fechasol=fec;
     this.notificacionentrenador.fecha = fec;
-    console.log(this.solicitud.fecha);
+   
     this.entrenadorService.getactivos().subscribe((entrenador) =>{
       this.entrenadores = entrenador;
     });

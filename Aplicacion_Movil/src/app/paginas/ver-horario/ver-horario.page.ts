@@ -74,7 +74,7 @@ export class VerHorarioPage implements OnInit {
       minutos="0"+minutos;
     }
     this.horario.horasalida = horas+':'+minutos;
-    console.log(this.horario.horasalida);
+ 
   }
 
   async mensajes() {

@@ -20,7 +20,6 @@ export class NoGuardGuard implements CanActivate {
         }else{
 
           this.usuarioService.getArquero(auth.uid).subscribe(usuario => {
-            console.log(usuario);
             if(usuario){
               this.router.navigate(['/menu-arquero']);
             }else{

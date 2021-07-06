@@ -87,7 +87,7 @@ export class FichaPage implements OnInit {
     this.Service.busquedauser(busquedatienda.value).subscribe((alumno) =>{
       this.alumno = alumno[0];
       //this.alumno.fecha_naciento = new Date(this.alumno.fecha_naciento['seconds']*1000);
-      console.log(this.alumno.nombre);
+   
       if(alumno){
         var element = <HTMLInputElement> document.getElementById("formainputid");
         element.style.display = 'inline';
@@ -101,7 +101,7 @@ export class FichaPage implements OnInit {
 
   edad(event){
     var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
-    console.log(probar4.toString());
+
 
    
   }
@@ -120,7 +120,7 @@ export class FichaPage implements OnInit {
     // will be notified of szimek/signature_pad's onEnd event
     this.firmarepresentante=this.signaturePad.toDataURL();
     this.ficha.firma = this.firmarepresentante
-    console.log(this.signaturePad.toDataURL());
+  
     
   }
 

@@ -110,7 +110,7 @@ export class RegistroPage implements OnInit {
     var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
     this.fechacumple = probar4.toString();
     console.log(probar4.toString());
-    console.log(new Date('10/1/2020'));
+    
     /*this.fechacumple=new Date(event.detail.value);  
     if(this.age){
       var fec = new Date(this.age);

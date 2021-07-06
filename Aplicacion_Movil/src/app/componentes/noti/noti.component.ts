@@ -15,7 +15,7 @@ export class NotiComponent implements OnInit {
   constructor(private usuarioService: ArqueroService,private localNotifications: LocalNotifications,private router: Router,) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificaciones(this.usuarioId).subscribe(notifacion => {
-      console.log(notifacion);
+  
      if(notifacion.length==0){
       this.noti="../../../assets/notificaciones/notifica2.png";
      }else{
