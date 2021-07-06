@@ -9,6 +9,7 @@ import { NotificacionArquero } from '../../interfaces/notificacion-arquero.inter
 import { AlertController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { NavController, LoadingController } from '@ionic/angular';
+import { EntrenadorService} from '../../servicios/entrenador.service';
 @Component({
   selector: 'app-ver-notifi',
   templateUrl: './ver-notifi.page.html',
@@ -35,7 +36,7 @@ export class VerNotifiPage implements OnInit {
   };
   usuarioId= null;
   mensaje=null;
-  constructor(private alertCtrl: AlertController, public formBuilder: FormBuilder,private usuarioService: ArqueroService,private route: ActivatedRoute,private nav: NavController) { 
+  constructor(private entrenadorService: EntrenadorService,private alertCtrl: AlertController, public formBuilder: FormBuilder,private usuarioService: ArqueroService,private route: ActivatedRoute,private nav: NavController) { 
     this.idnotificacion=this.route.snapshot.params['id'];
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificacionEntrenador(this.idnotificacion).subscribe(notificacion => {
@@ -49,6 +50,9 @@ export class VerNotifiPage implements OnInit {
         });
 
       }
+    });
+    this.entrenadorService.getEntrenador(this.usuarioId).subscribe(usuario => {
+      this.notificacionarquero.nombreentrenador = usuario.nombres + " " + usuario.apellidos;
     });
     this.crearvalidaciones();
 
@@ -73,21 +77,23 @@ export class VerNotifiPage implements OnInit {
   }
 
   async guardarentrenamiento(id){
-    console.log(id);
     this.notificacionarquero.identrenador = this.usuarioId;
     this.notificacionarquero.mensaje = this.solicitud.mensajerespuesta;
     this.notificacionarquero.respuesta = this.solicitud.respuesta;
     this.notificacionarquero.idsolicitud = id;
     this.notificacionarquero.idarquero = this.solicitud.idusuario;
-    this.usuarioService.updateSolicitud(this.solicitud, id).then(() => {
-      this.usuarioService.addNotificacionArquero(this.notificacionarquero).then(() => {
-        this.nav.navigateForward('listado-solicitudes'); 
-        this.mensaje="Se editó correctamente la solicitud de entrenamiento.";
-        this.mensajeingreso();
-      });
+      this.usuarioService.updateSolicitud(this.solicitud, id).then(() => {
+        this.usuarioService.addNotificacionArquero(this.notificacionarquero).then(() => {
+          this.nav.navigateForward('notificaciones-entrenador'); 
+          this.mensaje="Se editó correctamente la solicitud de entrenamiento.";
+          this.mensajeingreso();
+        });
 
-    });
+      });
+    
   }
+
+
   async mensajeingreso() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',

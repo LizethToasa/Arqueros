@@ -20,8 +20,5 @@ export class NotificacionesEntrenadorPage implements OnInit {
   ngOnInit() {
   }
 
-  ver(entra){
-    console.log(entra)
-  }
 
 }

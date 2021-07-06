@@ -59,7 +59,7 @@ export class ArqueroService {
       })
     );
 
-    this.notificacionCollection = db.collection<NotificacionArquero>('notificacionarquero');
+    this.notificacionCollection = db.collection<NotificacionArquero>('notificacionarquero' ,ref => ref.orderBy("fecha", "desc"));
     this.notificacion = this.notificacionCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -128,8 +128,12 @@ export class ArqueroService {
     return this.notificacionCollection.doc<NotificacionArquero>(id).valueChanges();
   }
 
+  getNotificacionesArquero(){
+    return this.notificacion;
+  }
+
   getNotificaciones(id:string){
-    this.notificacionCollection2 = this.db.collection<NotificacionArquero>('notificacionarquero', ref  => ref.where('idsolicitud', '==', id));
+    this.notificacionCollection2 = this.db.collection<NotificacionArquero>('notificacionarquero', ref  => ref.where('idarquero', '==', id).where('color', '==', '#EEEEEE'));
     this.notificacion2= this.notificacionCollection2.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

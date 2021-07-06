@@ -160,6 +160,12 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/ver-notifi/ver-notifi.module').then( m => m.VerNotifiPageModule),
     canActivate: [EntrenadorGuard]
   },
+  {
+    path: 'ver-noti/:id',
+    loadChildren: () => import('./paginas/ver-noti/ver-noti.module').then( m => m.VerNotiPageModule),
+    canActivate: [AuthGuard]
+  },
+
 
 
 
