@@ -10,6 +10,7 @@ import { ArqueroService } from '../../servicios/arquero.service';
 export class NotificacionesEntrenadorPage implements OnInit {
   usuarioId=null;
   notificaciones:NotificacionEntrenador[];
+  pageActual: number= 1;
   constructor(private usuarioService: ArqueroService) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificacionEntrenadores().subscribe(notificacion => {

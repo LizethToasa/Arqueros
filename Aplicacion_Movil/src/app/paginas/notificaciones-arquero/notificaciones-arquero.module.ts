@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { NotificacionesArqueroPageRoutingModule } from './notificaciones-arquero-routing.module';
 
 import { NotificacionesArqueroPage } from './notificaciones-arquero.page';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificacionesArqueroPageRoutingModule
+    NotificacionesArqueroPageRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [NotificacionesArqueroPage]
 })

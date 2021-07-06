@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { NotificacionesEntrenadorPageRoutingModule } from './notificaciones-entrenador-routing.module';
 
 import { NotificacionesEntrenadorPage } from './notificaciones-entrenador.page';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificacionesEntrenadorPageRoutingModule
+    NotificacionesEntrenadorPageRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [NotificacionesEntrenadorPage]
 })

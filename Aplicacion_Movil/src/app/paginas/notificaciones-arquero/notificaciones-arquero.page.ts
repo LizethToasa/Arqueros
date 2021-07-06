@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { NotificacionArquero } from '../../interfaces/notificacion-arquero.interface';
 import { ArqueroService } from '../../servicios/arquero.service';
+
 @Component({
   selector: 'app-notificaciones-arquero',
   templateUrl: './notificaciones-arquero.page.html',
@@ -10,6 +11,7 @@ import { ArqueroService } from '../../servicios/arquero.service';
 export class NotificacionesArqueroPage implements OnInit {
   usuarioId=null;
   notificaciones:NotificacionArquero[];
+  pageActual: number= 1;
   constructor(private usuarioService: ArqueroService) { 
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getNotificacionesArquero().subscribe(notificacion => {

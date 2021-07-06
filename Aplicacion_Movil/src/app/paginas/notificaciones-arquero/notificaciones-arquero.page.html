@@ -11,7 +11,7 @@
   <div *ngIf="!notificaciones || notificaciones.length == 0">
     <p class="centrarmensaje" style="margin-top: 10px;">No existe notificaciones.</p>
   </div>
-  <div *ngFor="let notificacion of notificaciones">
+  <div *ngFor="let notificacion of notificaciones | paginate: { itemsPerPage: 5, currentPage: pageActual };let indice=index">
   <ion-card [ngStyle]="{'background':notificacion.color}">
     
     <ion-card-header>
@@ -45,4 +45,5 @@
     
   </ion-card>
   </div>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </ion-content>

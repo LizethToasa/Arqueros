@@ -17,6 +17,7 @@ export class SolicitudesEntrenamientoPage implements OnInit {
   aceptar = "aceptar";
   rechazar = "rechazar";
   anulado = "anulado";
+  pageActual: number= 1;
   constructor(private usuarioService: ArqueroService) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.usuarioService.getSolicitudes().subscribe((solicit) =>{

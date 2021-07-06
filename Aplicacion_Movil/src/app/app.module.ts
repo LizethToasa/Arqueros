@@ -12,11 +12,13 @@ import { environment } from 'src/environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
+    NgxPaginationModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,

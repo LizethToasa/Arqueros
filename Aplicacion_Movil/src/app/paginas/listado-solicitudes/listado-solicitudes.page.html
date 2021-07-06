@@ -30,7 +30,7 @@
   <div *ngIf="!solicitudes || solicitudes.length == 0">
     <p class="centrarmensaje" style="margin-top: 10px;">No existe solicitudes enviadas.</p>
   </div>
-  <ion-card *ngFor="let solicitud of solicitudes">
+  <ion-card *ngFor="let solicitud of solicitudes | paginate: { itemsPerPage: 5, currentPage: pageActual };let indice=index">
     
     <ion-card-header>
       <ion-card-subtitle>{{solicitud.fechasol}}</ion-card-subtitle>
@@ -50,4 +50,5 @@
     </ion-card-content>
    
   </ion-card>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </ion-content>

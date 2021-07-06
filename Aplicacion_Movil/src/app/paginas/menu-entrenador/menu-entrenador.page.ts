@@ -46,7 +46,7 @@ export class MenuEntrenadorPage implements OnInit {
         this.menu4=false;
         this.menu5=false;
         this.menu6=false;
-        this.menu7=true;
+        this.menu7=false;
       }
     });
    }

@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ArqueroAvancePageRoutingModule } from './arquero-avance-routing.module';
 
 import { ArqueroAvancePage } from './arquero-avance.page';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ArqueroAvancePageRoutingModule
+    ArqueroAvancePageRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [ArqueroAvancePage]
 })

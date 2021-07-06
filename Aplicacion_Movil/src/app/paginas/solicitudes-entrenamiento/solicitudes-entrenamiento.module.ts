@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { SolicitudesEntrenamientoPageRoutingModule } from './solicitudes-entrenamiento-routing.module';
 
 import { SolicitudesEntrenamientoPage } from './solicitudes-entrenamiento.page';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SolicitudesEntrenamientoPageRoutingModule
+    SolicitudesEntrenamientoPageRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [SolicitudesEntrenamientoPage]
 })

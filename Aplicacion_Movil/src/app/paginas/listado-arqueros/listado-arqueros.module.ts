@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ListadoArquerosPageRoutingModule } from './listado-arqueros-routing.module';
 
 import { ListadoArquerosPage } from './listado-arqueros.page';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ListadoArquerosPageRoutingModule
+    ListadoArquerosPageRoutingModule,
+    NgxPaginationModule
   ],
   declarations: [ListadoArquerosPage]
 })

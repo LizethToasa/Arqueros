@@ -11,7 +11,7 @@
   <div *ngIf="!horario || horario.length == 0">
     <p class="centrarmensaje" style="margin-top: 10px;">No existe horarios registrados.</p>
   </div>
-  <ion-card *ngFor="let hora of horario" > 
+  <ion-card *ngFor="let hora of horario | paginate: { itemsPerPage: 5, currentPage: pageActual };let indice=index"> 
     <ion-card-header>
       <ion-card-subtitle>{{hora.fecha}}</ion-card-subtitle>
     </ion-card-header>
@@ -49,4 +49,5 @@
       
     </ion-card-content>
   </ion-card>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </ion-content>

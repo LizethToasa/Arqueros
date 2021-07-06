@@ -12,6 +12,7 @@ export class ArqueroAvancePage implements OnInit {
   usuarioId= null;
   avances: Avance[];
   entrenadores: DatosEntrenador[];
+  pageActual: number= 1;
   constructor(private AvanceService: EntrenadorService) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.AvanceService.getAvancefecha().subscribe((avance) =>{

@@ -15,6 +15,7 @@ export class VisualizarHorariosPage implements OnInit {
   format = 'EEEE';
   locale = 'en-US';
   fechahoy :any;
+  pageActual: number= 1;
   fechaactual = formatDate(new Date() , "dd/MM/yyyy", this.locale);
   constructor(private Servicio:EntrenadorService,
     private route: ActivatedRoute) {

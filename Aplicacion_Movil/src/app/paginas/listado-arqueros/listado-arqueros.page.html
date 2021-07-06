@@ -18,7 +18,7 @@
   <div *ngIf="!arqueros || arqueros.length == 0">
     <p class="centrarmensaje" style="margin-top: 10px;">No existe arqueros.</p>
   </div>
-  <ion-card *ngFor="let arquero of arqueros">
+  <ion-card *ngFor="let arquero of arqueros| paginate: { itemsPerPage: 5, currentPage: pageActual };let indice=index">
     
     <ion-card-header>
       <ion-card-subtitle>{{arquero.nombre}} {{arquero.apellido}}</ion-card-subtitle>
@@ -49,4 +49,5 @@
     
     
   </ion-card>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </ion-content>

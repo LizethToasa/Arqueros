@@ -13,6 +13,7 @@ export class ListadoAvancePage implements OnInit {
   avances: Avance[];
   usuarioId= null;
   arqueros: DatosUsuario[];
+  pageActual: number= 1;
   constructor(private AvanceService: EntrenadorService,private usuarioService: ArqueroService) {
     this.usuarioId = firebase.auth().currentUser.uid;
     this.AvanceService.getAvancefecha().subscribe((avance) =>{

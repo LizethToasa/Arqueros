@@ -11,7 +11,7 @@
   <div *ngIf="!avances || avances.length == 0">
     <p class="centrarmensaje" style="margin-top: 10px;">No existe avances registrados.</p>
   </div>
-  <ion-card *ngFor="let avance of avances">
+  <ion-card *ngFor="let avance of avances | paginate: { itemsPerPage: 5, currentPage: pageActual };let indice=index">
     <ion-card-header>
       <ion-card-subtitle>{{avance.fecha}}</ion-card-subtitle>
     </ion-card-header>
@@ -59,4 +59,5 @@
       </div>
     </ion-card-content>
   </ion-card>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </ion-content>

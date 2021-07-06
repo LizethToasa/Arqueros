@@ -8,6 +8,7 @@ import { ArqueroService} from '../../servicios/arquero.service';
 })
 export class ListadoArquerosPage implements OnInit {
   arqueros: DatosUsuario[];
+  pageActual: number= 1;
   constructor(private usuarioService: ArqueroService) {
     this.usuarioService.getArqueros().subscribe(usuario => {
       this.arqueros = usuario;

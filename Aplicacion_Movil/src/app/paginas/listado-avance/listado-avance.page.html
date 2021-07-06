@@ -19,7 +19,7 @@
     </ion-card-header>
   
     <ion-card-content>
-      <div *ngFor="let arquero of arqueros">
+      <div *ngFor="let arquero of arqueros | paginate: { itemsPerPage: 5, currentPage: pageActual };let indice=index">
         <div *ngIf="arquero.uid==avance.idarquero">
           <div class="row">  
             <img [src]="arquero.foto" style="height:150px;display:block;margin:auto"/>
@@ -60,4 +60,5 @@
     </ion-card-content>
    
   </ion-card>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
 </ion-content>
