@@ -17,7 +17,7 @@
         </button>
       </ion-col>
       <ion-col>
-        <button routerLink="/listado-arqueros" block >
+        <button routerLink="/listado-arqueros" block [disabled]="menu1">
           <img src="../../../assets/menu/search.png">
         </button>
       </ion-col>
@@ -32,14 +32,14 @@
       </ion-col>
     </ion-row>
   
-    <ion-row>
+    <ion-row > 
       <ion-col>
-        <button routerLink="/horarios" block >
+        <button routerLink="/horarios" block [disabled]="menu2">
           <img src="../../../assets/menu/list.png">
         </button>
       </ion-col>
       <ion-col >
-        <button routerLink="/visualizar-horarios" block >
+        <button routerLink="/visualizar-horarios" block [disabled]="menu3">
           <img src="../../../assets/menu/analytics.png">
         </button>
       </ion-col>
@@ -54,13 +54,13 @@
     </ion-row>
     <ion-row>
       <ion-col >
-        <button routerLink="/listado-avance" block >
+        <button routerLink="/listado-avance" block [disabled]="menu4">
           <img src="../../../assets/menu/avance.png">
         </button>
       </ion-col>
       <ion-col >
-        <button routerLink="/ficha" block >
-          <img src="../../../assets/menu/ficha.png">
+        <button routerLink="/ficha" block [disabled]="menu5" >
+          <img src="../../../assets/menu/ficha.png" >
         </button>
       </ion-col>
     </ion-row>
@@ -74,12 +74,12 @@
     </ion-row>
     <ion-row>
       <ion-col >
-        <button routerLink="/registro-entrenador" block >
+        <button routerLink="/registro-entrenador" block [disabled]="menu6">
           <img src="../../../assets/menu/entrenadornuevo.png">
         </button>
       </ion-col>
       <ion-col >
-        <button routerLink="/solicitudes-entrenamiento" block >
+        <button routerLink="/solicitudes-entrenamiento" block [disabled]="menu7">
           <img src="../../../assets/menu/solicitud.png">
         </button>
       </ion-col>
