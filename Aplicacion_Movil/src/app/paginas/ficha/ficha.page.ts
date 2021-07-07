@@ -5,7 +5,10 @@ import { DatosUsuario } from '../../interfaces/user.interface';
 import { Ficha } from '../../interfaces/ficha.interface';
 import { ArqueroService } from '../../servicios/arquero.service';
 import { formatDate } from "@angular/common";
-import { ignoreElements } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { EntrenadorService} from '../../servicios/entrenador.service';
+import * as firebase from 'firebase';
+import { DatosEntrenador } from '../../interfaces/entrenador.interface';
 
 @Component({
   selector: 'app-ficha',
@@ -27,6 +30,7 @@ export class FichaPage implements OnInit {
     tipo:'',
     ficha:''
   }
+  usuario: DatosEntrenador;
 
   ficha: Ficha={
     idarquero:'',
@@ -46,6 +50,8 @@ export class FichaPage implements OnInit {
     descripcionoperaciones:'',
     enfermedades:'',
     descripcionenfermades:'',
+    medicamentos:'',
+	  descripcionmedicamentos:'',
     nombpadre:'',
     apellpadre:'',
     cedpadre:'',
@@ -60,11 +66,13 @@ export class FichaPage implements OnInit {
     telefonomadre:'',
     telefonemergencia:'',
     firma:'',
+    identrenador:''
   }
 
   age:any;
   format = 'EEEE';
   locale = 'en-US';
+  usuarioId= null;
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
   firmarepresentante:any;
@@ -76,11 +84,23 @@ export class FichaPage implements OnInit {
   };
 
   doc = new jsPDF();
-  constructor(private Service: ArqueroService) {
-  
+  constructor(private Service: ArqueroService,private usuarioService: EntrenadorService,) {
+    this.usuarioId = firebase.auth().currentUser.uid;
+    if (this.usuarioId){
+      this.cargarUsuario();
+     
+    } 
   }
 
   ngOnInit() {
+  }
+
+  //Cargar usuario
+  async cargarUsuario(){
+    this.usuarioService.getEntrenador(this.usuarioId).subscribe(usuario => {
+      this.usuario = usuario;
+     console.log(this.usuario);
+    });
   }
 
   buscar(busquedatienda){   
@@ -176,6 +196,15 @@ seleccionaenfermedades(){
      element.style.display = 'none';
    }
 }
+
+seleccionamedicamentos(){
+  var element = <HTMLInputElement> document.getElementById("medi");
+   if(this.ficha.medicamentos=="Si"){
+     element.style.display = 'inline';
+   }else{
+     element.style.display = 'none';
+   }
+}
   
   async generarPdf(){
     this.doc.addImage("../../assets/PDF/logo.jpg", "JPEG", 10, 5, 40,40)
@@ -185,92 +214,105 @@ seleccionaenfermedades(){
     this.doc.setFont("helvetica", "bold");
     this.doc.text("DATOS PERSONALES DEL ALUMNO", 70, 50);
     this.doc.setFontSize(10)
-    this.doc.text("Nombres:", 20, 60);
-    this.doc.text(this.alumno.nombre, 80, 60);
-    this.doc.text("Apellidos:", 20, 67);
-    this.doc.text(this.alumno.apellido, 80, 67);
-    this.doc.text("Número de Cédula:", 20, 74);
-    this.doc.text(this.alumno.cedula, 80, 74);
-    this.doc.text("Fecha de Ingreso a la Esc Arq:", 20, 81);
-    this.doc.text("Fecha de Nacimiento:", 20, 88);
-    this.doc.text(this.alumno.fecha_naciento, 80, 88);
-    this.doc.text("Lugar de Nacimiento:", 20, 95);
-    this.doc.text(this.ficha.lugarnacimiento, 80, 95);
-    this.doc.text("Dirección de domicilio:", 20, 102);
-    this.doc.text(this.ficha.direccion, 80, 102);
-    this.doc.text("Escuela / Colegio / Universidad", 20, 109);
-    this.doc.text(this.ficha.institucion, 80, 109);
-    this.doc.text("Donde Trabaja:", 20, 116);
-    this.doc.text(this.ficha.dondetrabaja, 80, 116);
-    this.doc.text("Dirección de Trabajo:", 20, 123);
-    this.doc.text(this.ficha.direcciontrabajo, 80, 123);
-    this.doc.text("Estatura:", 20, 130);
-    this.doc.text(this.ficha.estatura, 80, 130);
-    this.doc.text("Peso:", 20, 137);
-    this.doc.text(this.ficha.peso, 80, 137);
-    this.doc.text("Tipo de Sangre:", 20, 144);
-    this.doc.text(this.ficha.tiposangre, 80, 144);
-    this.doc.text("Posee alergias? Cuales son?:", 20, 151);
+    this.doc.text("Nombres:", 20, 57);
+    this.doc.text(this.alumno.nombre, 80, 57);
+    this.doc.text("Apellidos:", 20, 63);
+    this.doc.text(this.alumno.apellido, 80, 63);
+    this.doc.text("Número de Cédula:", 20, 69);
+    this.doc.text(this.alumno.cedula, 80, 69);
+    this.doc.text("Fecha de Ingreso a la Esc Arq:", 20, 75);
+    this.doc.text("Fecha de Nacimiento:", 20, 81);
+    this.doc.text(this.alumno.fecha_naciento, 80, 81);
+    this.doc.text("Lugar de Nacimiento:", 20, 87);
+    this.doc.text(this.ficha.lugarnacimiento, 80, 87);
+    this.doc.text("Dirección de domicilio:", 20, 93);
+    this.doc.text(this.ficha.direccion, 80, 93);
+    this.doc.text("Escuela / Colegio / Universidad", 20, 99);
+    this.doc.text(this.ficha.institucion, 80, 99);
+    this.doc.text("Donde Trabaja:", 20, 105);
+    this.doc.text(this.ficha.dondetrabaja, 80, 105);
+    this.doc.text("Dirección de Trabajo:", 20, 111);
+    this.doc.text(this.ficha.direcciontrabajo, 80, 111);
+    this.doc.text("Estatura:", 20, 117);
+    this.doc.text(this.ficha.estatura, 80, 117);
+    this.doc.text("Peso:", 20, 123);
+    this.doc.text(this.ficha.peso, 80, 123);
+    this.doc.text("Tipo de Sangre:", 20, 129);
+    this.doc.text(this.ficha.tiposangre, 80, 129);
+    this.doc.text("Posee alergias? Cuales son?:", 20, 135);
     if(this.ficha.alergias=="Si"){
-      this.doc.text("X", 85, 151);
+      this.doc.text("X", 85, 135);
     }else{
-      this.doc.text("X", 95, 151);
+      this.doc.text("X", 97, 135);
     }
-    this.doc.text("SI/", 80, 151);
-    this.doc.text("NO/", 90, 151);
-    this.doc.text("Fracturas? Cuales son?:", 20, 158);
+    this.doc.text("SI/", 80, 135);
+    this.doc.text("NO/", 90, 135);
+    this.doc.text("8989", 20, 141);
+    this.doc.text("Fracturas? Cuales son?:", 20, 147);
     if(this.ficha.fracturas=="Si"){
-      this.doc.text("X", 85, 158);
+      this.doc.text("X", 85, 147);
     }else{
-      this.doc.text("X", 95, 158);
+      this.doc.text("X", 97, 147);
     }
-    this.doc.text("SI/", 80, 158);
-    this.doc.text("NO/", 90, 158);
-    this.doc.text("Toma Medicamentos? Por? / Para?", 20, 165);
-    this.doc.text("SI/", 80, 165);
-    this.doc.text("NO/", 90, 165);
+    this.doc.text("SI/", 80, 147);
+    this.doc.text("NO/", 90, 147);
+    this.doc.text("8989", 20, 153);
+    this.doc.text("Operaciones? Cuales son?", 20, 159);
+    this.doc.text("SI/", 80, 159);
+    this.doc.text("NO/", 90, 159);
+    this.doc.text("8989", 20, 165);
+    this.doc.text("Enfermedades? Cuales son?", 20, 171);
+    this.doc.text("SI/", 80, 171);
+    this.doc.text("NO/", 90, 171);
+    this.doc.text("8989", 20, 177);
+    this.doc.text("Toma Medicamentos? Por? / Para?", 20, 183);
+    this.doc.text("SI/", 80, 183);
+    this.doc.text("NO/", 90, 183);
+    this.doc.text("8989", 20, 189);
     this.doc.setFontSize(12);
-    this.doc.text("DATOS MADRE", 20, 175);
-    this.doc.text("DATOS PADRE", 120, 175);
+    this.doc.text("DATOS MADRE", 20, 195);
+    this.doc.text("DATOS PADRE", 120, 195);
     this.doc.setFontSize(10);
-    this.doc.text("Nombres:", 20, 182);
-    this.doc.text(this.ficha.nombpadre, 50, 182);
-    this.doc.text("Apellidos:", 20, 189);
-    this.doc.text(this.ficha.apellpadre, 80, 189);
-    this.doc.text("Numero de Cédula:", 20, 196);
-    this.doc.text(this.ficha.cedpadre, 50, 196);
-    this.doc.text("Lugar de Trabajo:", 20, 203);
-    this.doc.text(this.ficha.lugartrabajopadre, 50, 203);
-    this.doc.text("Email:", 20, 210);
-    this.doc.text(this.ficha.emailpadre, 50, 210);
-    this.doc.text("Telefonos:", 20, 217);
-    this.doc.text(this.ficha.telefonopadre, 50, 217);
+    this.doc.text("Nombres:", 20, 200);
+    this.doc.text(this.ficha.nombpadre, 50, 200);
+    this.doc.text("Apellidos:", 20, 206);
+    this.doc.text(this.ficha.apellpadre, 80, 206);
+    this.doc.text("Numero de Cédula:", 20, 212);
+    this.doc.text(this.ficha.cedpadre, 50, 212);
+    this.doc.text("Lugar de Trabajo:", 20, 218);
+    this.doc.text(this.ficha.lugartrabajopadre, 50, 218);
+    this.doc.text("Email:", 20, 224);
+    this.doc.text(this.ficha.emailpadre, 50, 224);
+    this.doc.text("Telefonos:", 20, 230);
+    this.doc.text(this.ficha.telefonopadre, 50, 230);
     
 
-    this.doc.text("Nombres:", 120, 182);
-    this.doc.text(this.ficha.nombpadre, 170, 182);
-    this.doc.text("Apellidos:", 120, 189);
-    this.doc.text(this.ficha.nombpadre, 170, 189);
-    this.doc.text("Numero de Cédula:", 120, 196);
-    this.doc.text(this.ficha.nombpadre, 170, 196);
-    this.doc.text("Lugar de Trabajo:", 120, 203);
-    this.doc.text(this.ficha.nombpadre,170, 203);
-    this.doc.text("Email:", 120, 210);
-    this.doc.text(this.ficha.nombpadre, 170, 210);
-    this.doc.text("Telefonos:", 120, 217);
-    this.doc.text(this.ficha.nombpadre, 170, 217);
+    this.doc.text("Nombres:", 120, 200);
+    this.doc.text(this.ficha.nombpadre, 170, 200);
+    this.doc.text("Apellidos:", 120, 206);
+    this.doc.text(this.ficha.nombpadre, 170, 206);
+    this.doc.text("Numero de Cédula:", 120, 212);
+    this.doc.text(this.ficha.nombpadre, 170, 212);
+    this.doc.text("Lugar de Trabajo:", 120, 218);
+    this.doc.text(this.ficha.nombpadre,170, 218);
+    this.doc.text("Email:", 120, 224);
+    this.doc.text(this.ficha.nombpadre, 170, 224);
+    this.doc.text("Telefonos:", 120, 230);
+    this.doc.text(this.ficha.nombpadre, 170, 230);
 
-    this.doc.text("Autorizo la participacion de mi hijo/a, o me hago responsable de mi participación en la Escuela de", 20, 224);
-    this.doc.text("Arqueros R.Medina en todas sus actividades, renunciando expresamente a exigir responsabilidad alguna", 20, 231);
-    this.doc.text("por las eventuales lesiones o accidentes que pudieran derivarse como consecuencia de la práctica", 20, 238);
-    this.doc.text("ordinaria de las actividades propias de la Escuela de Arqueros. Me comprometo a respetar a los", 20, 245);
-    this.doc.text("Entrenadores y a los compañeros que formen parte de la Escuela, Además a la entrega de la correcta", 20, 252);
-    this.doc.text("informacíon de mi hijo/a para el conocimiento y manejo de la misma dentro de la Escuela.", 20, 259);
-    this.doc.text("He leído y acepto todas las condiciones incluidas y la información entregada.", 20, 266);
-    this.doc.addImage(this.firmarepresentante, "JPEG", 55, 267, 20,20)
-    this.doc.text("FIRMA DEL REPRESENTANTE:", 40, 290);
-    this.doc.text("FIRMA PERSONAL AUTORIZADA:", 120, 290);
-    this.doc.save("Ficha.pdf");
+    this.doc.text("Autorizo la participacion de mi hijo/a, o me hago responsable de mi participación en la Escuela de", 20, 235);
+    this.doc.text("Arqueros R.Medina en todas sus actividades, renunciando expresamente a exigir responsabilidad alguna", 20, 240);
+    this.doc.text("por las eventuales lesiones o accidentes que pudieran derivarse como consecuencia de la práctica", 20, 245);
+    this.doc.text("ordinaria de las actividades propias de la Escuela de Arqueros. Me comprometo a respetar a los", 20, 250);
+    this.doc.text("Entrenadores y a los compañeros que formen parte de la Escuela, Además a la entrega de la correcta", 20, 255);
+    this.doc.text("informacíon de mi hijo/a para el conocimiento y manejo de la misma dentro de la Escuela.", 20, 260);
+    this.doc.text("He leído y acepto todas las condiciones incluidas y la información entregada.", 20, 265);
+    this.doc.addImage(this.firmarepresentante, "JPEG", 55, 270, 20,20)
+    this.doc.addImage(this.usuario.firma, "JPEG", 135, 270, 20,20)
+    this.doc.text("FIRMA DEL REPRESENTANTE:", 40, 293);
+    this.doc.text("FIRMA PERSONAL AUTORIZADA:", 120, 293);
+    this.doc.output();
+    
   }
 
 }

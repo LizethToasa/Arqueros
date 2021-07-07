@@ -128,6 +128,17 @@
         <ion-textarea [(ngModel)]="ficha.descripcionenfermades" name="descripcionenfermades">
         </ion-textarea>
       </ion-item>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Toma Medicamentos? Por? / Para?:</ion-label>
+        <ion-select placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.medicamentos" name="medicamentos" (ionChange)="seleccionamedicamentos()">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item id="medi" style="display: none;">
+        <ion-textarea [(ngModel)]="ficha.descripcionmedicamentos" name="descripcionmedicamentos">
+        </ion-textarea>
+      </ion-item>
       <br/>
       <ion-item lines="none" color="primary" style="text-align: center;">
         <h4 style="text-align: center;">DATOS DEL PADRE</h4>
