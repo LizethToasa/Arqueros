@@ -31,6 +31,7 @@ export class ArqueroService {
   private notificacionentre: Observable<NotificacionEntrenador[]>;
   private notificacionentreCollection2: AngularFirestoreCollection<NotificacionEntrenador>;
   private notificacionentre2: Observable<NotificacionEntrenador[]>;
+  
   public photoURL = null;
   private filePath: string;
   constructor(

@@ -11,7 +11,7 @@
   <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono)">
     <ion-item>
       <ion-label position="floating"><strong>Nombre</strong></ion-label>
-      <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Lizeth"></ion-input>
+      <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Nombre1"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -34,7 +34,7 @@
 
     <ion-item>
       <ion-label position="floating"><strong>Apellido</strong></ion-label>
-      <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Toasa"></ion-input>
+      <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Apellido1"></ion-input>
     </ion-item>
 
     <div class="validation-errors">

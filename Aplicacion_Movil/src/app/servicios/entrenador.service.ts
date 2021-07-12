@@ -10,6 +10,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { FileI } from '../interfaces/file.interface';
 import * as firebase from 'firebase';
+import { Ficha } from '../interfaces/ficha.interface';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +28,8 @@ export class EntrenadorService {
   private avance: Observable<Avance[]>;
   private avanceCollection2: AngularFirestoreCollection<Avance>;
   private avance2: Observable<Avance[]>;
+  private fichaCollection: AngularFirestoreCollection<Ficha>;
+  private ficha: Observable<Ficha[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -65,6 +69,17 @@ export class EntrenadorService {
         });
       })
     );
+    this.fichaCollection = db.collection<Ficha>('ficha');
+    this.ficha = this.fichaCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
   }
 
   getAvancefecha(){
@@ -80,6 +95,10 @@ export class EntrenadorService {
       })
     );
     return this.avance2;
+  }
+
+  addFicha(ficha: Ficha){
+    return this.fichaCollection.add(ficha);
   }
 
   getAvance(id: string){

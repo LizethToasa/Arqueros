@@ -13,6 +13,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { NgxPaginationModule } from 'ngx-pagination';
+// imports
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,7 +27,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AngularFireAuthModule,
     AngularFireStorageModule,
     NgbModule],
-  providers: [LocalNotifications,
+  providers: [
+    File,
+    FileOpener,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

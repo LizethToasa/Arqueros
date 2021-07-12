@@ -33,5 +33,6 @@ export interface Ficha {
   telefonemergencia:string;
   firma:string;
   identrenador:string;
+  fechaescuela:Date;
   }
   
