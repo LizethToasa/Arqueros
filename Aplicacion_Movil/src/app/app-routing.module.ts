@@ -165,6 +165,11 @@ const routes: Routes = [
     loadChildren: () => import('./paginas/ver-noti/ver-noti.module').then( m => m.VerNotiPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'ver-ficha/:id',
+    loadChildren: () => import('./paginas/ver-ficha/ver-ficha.module').then( m => m.VerFichaPageModule)
+  },
+
 
 
 

@@ -45,9 +45,16 @@
         Ver
       </ion-button>
       <ion-button expand="block" color="secondary" [routerLink]="['/avance', arquero.uid]">Añadir Avances</ion-button>
+      <ion-button expand="block" (click)="descargar(arquero.cedula)" *ngIf="arquero.ficha == valida">
+        Descargar Ficha
+      </ion-button>
     </ion-card-content>
     
     
   </ion-card>
   <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+  <div class="print-pdf">
+    <div class="print-wrapper" id="print-wrapper">
+    </div>
+  </div>
 </ion-content>

@@ -30,6 +30,8 @@ export class EntrenadorService {
   private avance2: Observable<Avance[]>;
   private fichaCollection: AngularFirestoreCollection<Ficha>;
   private ficha: Observable<Ficha[]>;
+  private fichaCollection2: AngularFirestoreCollection<Ficha>;
+  private ficha2: Observable<Ficha[]>;
   public photoURL = null;
   private filePath: string;
   constructor(
@@ -99,6 +101,20 @@ export class EntrenadorService {
 
   addFicha(ficha: Ficha){
     return this.fichaCollection.add(ficha);
+  }
+  getFicha(iduser:string){
+    this.fichaCollection2 = this.db.collection<Ficha>('ficha', ref => ref.where('idarquero', '==', iduser));
+    this.ficha2 = this.fichaCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
+    return this.ficha2;
   }
 
   getAvance(id: string){
