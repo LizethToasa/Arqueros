@@ -43,7 +43,6 @@ export class ListadoArquerosPage implements OnInit {
       this.arquero = alumno[0];
       this.Service.getFicha(this.arquero.uid).subscribe((ficha) =>{
         this.ficha = ficha[0];
-        console.log(this.ficha);
         const pdfBlock = document.getElementById("print-wrapper");
     
         const options = { 
@@ -53,7 +52,6 @@ export class ListadoArquerosPage implements OnInit {
         };
         var hola = new Date(this.ficha.fechaescuela['seconds']*1000);
         var fech = formatDate(new Date(hola) , "dd/MM/yyyy", this.locale);
-        console.log(fech);
         domtoimage.toPng(pdfBlock, options).then((fileUrl) => {
           //var doc = new JSPDF("p","mm","a4");
           //doc.addImage(fileUrl, 'PNG', 10, 10, 240, 180);
