@@ -12,7 +12,7 @@
   <form [formGroup]="formGroup">
     <ion-item >
       <ion-label position="stacked"><strong>Cédula</strong></ion-label>
-      <ion-input placeholder="Ingrese su cédula" #busquedacedula formControlName="cedula" type="tel"></ion-input>
+      <ion-input placeholder="1704040404" #busquedacedula formControlName="cedula" type="tel"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error" 
@@ -646,7 +646,7 @@
       </div>
       <ion-row>
         <ion-col>
-            <ion-button [disabled]="!formGroup2.valid" expand="block" color="tertiary" (click)="habilitarfirverif()">Registrarse</ion-button>
+            <ion-button [disabled]="!formGroup2.valid" expand="block" color="tertiary" (click)="habilitarfirverif()">Siguiente</ion-button>
         </ion-col>
       </ion-row>
      
@@ -660,17 +660,17 @@
   <div id="formainputid2" style="display: none;">
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="primary" (click)="drawComplete()" >Guardar Firma</ion-button>
+        <ion-button expand="block" color="success" (click)="drawComplete()">Confirmar</ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="primary" (click)="borrarfirma()" >Borrar</ion-button>
+        <ion-button expand="block" color="danger" (click)="borrarfirma()" [disabled]="final==null">Borrar</ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="primary" (click)="guardarficha()" [disabled]="!formGroup2.valid" *ngIf="final">Guardar Ficha</ion-button>
+        <ion-button expand="block" color="primary" (click)="guardarficha()" [disabled]="!formGroup2.valid || final==null">Guardar Ficha</ion-button>
       </ion-col>
     </ion-row>
   </div>

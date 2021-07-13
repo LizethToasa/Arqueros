@@ -94,7 +94,7 @@ export class FichaPage implements OnInit {
     'canvasWidth': 300,
     'canvasHeight': 300
   };
-  final = "";
+  final = null;
   mensaje = null;
 
   formGroup: FormGroup; 
@@ -308,11 +308,9 @@ export class FichaPage implements OnInit {
 
   }
 
-  //Cargar usuario
   async cargarUsuario(){
     this.usuarioService.getEntrenador(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
-     console.log(this.usuario);
     });
   }
 
@@ -344,7 +342,8 @@ export class FichaPage implements OnInit {
   borrarfirma(){
     this.ficha.firma = "";
     this.signaturePad.clear(); 
-    this.final ="";
+    this.final =null;
+    this.ficha.firma = null;
   }
 
   drawComplete() {
