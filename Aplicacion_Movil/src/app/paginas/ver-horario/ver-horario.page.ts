@@ -126,7 +126,7 @@ export class VerHorarioPage implements OnInit {
   async editarhorario(){
     this.entrenadorservice.updateHorario(this.horario, this.idhorario).then(() => {
       this.nav.navigateForward('/menu-entrenador');
-      this.mensaje = "Se edito correctamente el horario.";
+      this.mensaje = "Se actualizo correctamente el horario.";
       this.mensajes();
     });
   }

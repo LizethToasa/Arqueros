@@ -31,7 +31,8 @@ export class HorariosPage implements OnInit {
   formGroup: FormGroup; 
   fechahoy :any;
   limite = true;
-  constructor(public formBuilder: FormBuilder,private HorarioService: EntrenadorService,private nav: NavController,private alertCtrl: AlertController) { 
+  constructor(public formBuilder: FormBuilder,private HorarioService: EntrenadorService,
+    private nav: NavController,private alertCtrl: AlertController) { 
     var fecha = new Date();
     var dias = 1; // Número de días a agregar
     fecha.setDate(fecha.getDate() + dias);
@@ -83,6 +84,7 @@ export class HorariosPage implements OnInit {
     this.seleccion1 = false;
     this.formGroup.controls['horasal'].setValue(null);
   }
+
   horasali(event){
     var horas = new Date(event.detail.value).getHours().toString();
     if(horas=="6"||horas=="7"||horas=="8"||horas=="9"){
@@ -100,16 +102,13 @@ export class HorariosPage implements OnInit {
     if(this.limite==true){
       this.HorarioService.addHorario(this.horario).then(() => {
         this.nav.navigateForward('visualizar-horarios'); 
-        this.mensaje="Se envió correctamente el horario.";
+        this.mensaje="Se registro correctamente el horario.";
         this.mensajeingreso();
       });
     }else{
       this.mensaje="Maximo 3.";
         this.mensajeingreso();
-    }
-    
- 
-    
+    } 
   }
 
   async mensajeingreso() {

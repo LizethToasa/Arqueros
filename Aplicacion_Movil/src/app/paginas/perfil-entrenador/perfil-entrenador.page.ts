@@ -88,7 +88,7 @@ export class PerfilEntrenadorPage implements OnInit {
   async cambiarcontra(){
 
     this.Service.resetPassword(this.usuario.correo).then(() => {
-      this.mensaje="Se envió un correo para cambiar la contraseña. ";
+      this.mensaje="Se envió un mensaje a su correo para modificar la contraseña.";
       this.mensajeerror();
     });
   }
@@ -96,7 +96,10 @@ export class PerfilEntrenadorPage implements OnInit {
   async subirImagen(event: any): Promise<void> {
     this.image = event.target.files[0];
     this.usuarioService.updateImagen(this.usuario,this.usuarioId,this.image);
-    this.cargarUsuario();
+    //this.cargarUsuario();
+    this.nav.navigateForward('menu-entrenador');
+        this.mensaje="Se actualizó correctamente su perfil.";
+        this.mensajeconfirmacion();
   }
 
   crearvalidaciones(){
@@ -132,7 +135,6 @@ export class PerfilEntrenadorPage implements OnInit {
     this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl });
   }
 
-  //Cargar usuario
   async cargarUsuario(){
     this.usuarioService.getEntrenador(this.usuarioId).subscribe(usuario => {
       this.usuario = usuario;
@@ -140,7 +142,6 @@ export class PerfilEntrenadorPage implements OnInit {
     });
   }
 
-  //Guardar Usuario
   async guardarUsuario() {
     if (this.usuarioId) {
       this.usuarioService.updateEntrenador(this.usuario, this.usuarioId).then(() => {
