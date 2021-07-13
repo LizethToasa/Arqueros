@@ -40,7 +40,7 @@
     
   </form> 
   <br/>
-  <div *ngIf="!alumno || alumno.length == 0">
+  <div *ngIf="!alumno">
     <p class="centrarmensaje" style="margin-top: 10px;">No existe alumnos.</p>
   </div>
   <div *ngIf="mostrarform">
@@ -69,7 +69,7 @@
       <p style="color: black">{{alumno.fecha_naciento }}</p>
     </ion-item>
     <form [formGroup]="formGroup2" >
-      <ion-item>
+      <ion-item *ngIf="fechaactual">
         <ion-label position="stacked">Seleccione la fecha de devolución</ion-label>
         <ion-datetime displayFormat="DD/MM/YYYY"   
         (ionChange)="cambiofecha2($event)"

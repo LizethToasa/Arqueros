@@ -1,4 +1,5 @@
 export interface Ficha {
+  id?: string;
   idarquero:string;
   lugarnacimiento:string;
   direccion:string;

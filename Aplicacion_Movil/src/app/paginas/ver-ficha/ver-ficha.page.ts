@@ -20,6 +20,7 @@ export class VerFichaPage implements OnInit {
   formGroup2: FormGroup; 
   fechaingreso: Date;
   SI = "Si";
+  fechaactual: Date = new Date();
   constructor(private nav: NavController,private usuarioService: ArqueroService,private Service: EntrenadorService,private route: ActivatedRoute,public formBuilder: FormBuilder,private alertCtrl: AlertController) {
     this.idalumno=this.route.snapshot.params['id'];
     console.log(this.idalumno);
@@ -248,7 +249,7 @@ export class VerFichaPage implements OnInit {
     }
  }
 
- actualizarficha(idficha:string){
+ actualizarfichas(idficha:string){
   console.log(idficha);
   this.Service.updateFicha(this.ficha,idficha).then(() => {
       this.nav.navigateForward('menu-arquero');

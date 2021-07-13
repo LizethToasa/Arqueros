@@ -98,11 +98,21 @@ export class SolicitudPage implements OnInit {
     if(this.solicitud.entrenador == "" || this.solicitud.entrenador == undefined){
       console.log("Vacio");
     }else{
+      var horas = new Date().getHours().toString();
+      if(horas=="0"||horas=="1"||horas=="2"||horas=="3"||horas=="4"||horas=="5"||horas=="6"||horas=="7"||horas=="8"||horas=="9"){
+        horas="0"+horas;
+      }
+      var minutos= new Date().getMinutes().toString();
+      if(minutos=="1"||minutos=="2"||minutos=="3"||minutos=="4"||minutos=="5"||minutos=="6"||minutos=="7"||minutos=="8"||minutos=="9"||minutos=="0"){
+        minutos="0"+minutos;
+      }
+      var horaactual= horas+':'+minutos;
+      console.log(horaactual);
       this.fechahoy = formatDate(new Date() , "dd/MM/yyyy", this.locale);
       this.seleccion1 = false;
       this.formGroup.controls['hora'].setValue(null);
       this.entrenadorService.getHorariosactual(this.solicitud.entrenador,this.fechahoy).subscribe((horario) =>{
-        this.hararios = horario
+        this.hararios = horario.filter(hora=>horaactual < hora.horaentrada); 
       });
     }
   }
