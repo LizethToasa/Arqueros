@@ -22,7 +22,7 @@
   </div>
     <ion-item>
       <ion-label position="stacked"><strong>Nombres</strong></ion-label>
-      <ion-input formControlName="nombreControl" type="text" #nombre [(ngModel)]="usuario.nombre" placeholder="Bryan"></ion-input>
+      <ion-input formControlName="nombreControl" type="text" #nombre [(ngModel)]="usuario.nombre" placeholder="Nombre1"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -44,7 +44,7 @@
     </div>
     <ion-item>
       <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
-      <ion-input formControlName="apellidoControl" #apellido type="text" [(ngModel)]="usuario.apellido" placeholder="Molina"></ion-input>
+      <ion-input formControlName="apellidoControl" #apellido type="text" [(ngModel)]="usuario.apellido" placeholder="Apellido"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -148,13 +148,6 @@
         (ionChange)="edad($event)"
       ></ion-datetime>
     </ion-item>
-
-    <div class="validation-errors">
-      <p class="form-error"
-        *ngIf="formGroup.get('telefono2Control').hasError('minlength')">
-        *Requerido
-      </p>
-    </div>
   
     <ion-item>
       <ion-label position="stacked"><strong>Correo electrónico</strong></ion-label>
@@ -162,7 +155,7 @@
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" [disabled]="!formGroup.valid" expand="block">Guardar</ion-button>
+        <ion-button type="submit" [disabled]="!formGroup.valid" expand="block">Actualizar</ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -170,7 +163,6 @@
         <ion-button type="button" expand="block" color="tertiary" (click)="cambiarcontra()">Cambiar contraseña</ion-button>
       </ion-col>
     </ion-row>  
-    
     
   </form>
 </ion-content>

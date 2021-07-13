@@ -18,7 +18,9 @@ export class VerSolicitudPage implements OnInit {
   aceptar = "aceptar";
   rechazar = "rechazar";
   anulado = "anulado";
-  constructor(private nav: NavController,private alertCtrl: AlertController,private route: ActivatedRoute,private ArqueroService: ArqueroService,private entrenadorService: EntrenadorService) { 
+  constructor(
+    private nav: NavController,private alertCtrl: AlertController,private route: ActivatedRoute,
+    private ArqueroService: ArqueroService,private entrenadorService: EntrenadorService) { 
     this.idsolicitud=this.route.snapshot.params['id'];
     this.ArqueroService.getSolicitud(this.idsolicitud).subscribe((solicitud) =>{
       this.solicitud = solicitud;
@@ -36,7 +38,7 @@ export class VerSolicitudPage implements OnInit {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Mensaje',
-      message: 'Esta seguro de anular la solicitud de entrenamiento.',
+      message: '¿Esta seguro de anular la solicitud de entrenamiento?',
       buttons: [
        {
           text: 'Aceptar',

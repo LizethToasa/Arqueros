@@ -64,7 +64,6 @@ export class PerfilArqueroPage implements OnInit {
     this.usuarioId = firebase.auth().currentUser.uid;
     if (this.usuarioId){
       this.cargarUsuario();
-     
     } 
   }
 
@@ -107,7 +106,7 @@ export class PerfilArqueroPage implements OnInit {
 
   async cambiarcontra(){
     this.Service.resetPassword(this.usuario.correo).then(() => {
-      this.mensaje="Se envió un correo para modificar la contraseña.";
+      this.mensaje="Se envió un mensaje a su correo para modificar la contraseña.";
       this.mensajeerror();
     });
   }
@@ -115,10 +114,12 @@ export class PerfilArqueroPage implements OnInit {
   async subirImagen(event: any): Promise<void> {
     this.image = event.target.files[0];
     this.usuarioService.updateImagen(this.usuario,this.usuarioId,this.image);
-    this.cargarUsuario();
+    //this.cargarUsuario();
+    this.nav.navigateForward('menu-arquero');
+    this.mensaje="Se actualizó correctamente su perfil.";
+    this.mensajeconfirmacion();
   }
 
-  //Crear validaciones
   crearvalidaciones(){
     const nombreControl = new FormControl('', Validators.compose([
       Validators.required,
@@ -156,7 +157,7 @@ export class PerfilArqueroPage implements OnInit {
     ]));
 
     const fechaControl = new FormControl('', Validators.compose([
-      Validators.required,
+      Validators.minLength(7),
       
     ]));
 
