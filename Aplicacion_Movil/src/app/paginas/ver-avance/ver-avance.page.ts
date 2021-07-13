@@ -48,7 +48,7 @@ export class VerAvancePage implements OnInit {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
       header: 'Mensaje',
-      message: "Esta seguro de eliminar el avance.",
+      message: "¿Esta seguro de eliminar el avance?",
       buttons: [
         {
           text: 'Aceptar',
