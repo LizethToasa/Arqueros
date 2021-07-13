@@ -76,7 +76,7 @@ export class AvancePage implements OnInit {
   async guardarAvance(){
     this.entreadorservice.addAvance(this.avance).then(() => {
       this.nav.navigateForward('listado-avance'); 
-      this.mensaje="Se envió correctamente el avance.";
+      this.mensaje="Se registro correctamente el avance.";
       this.mensajeingreso();
     });
   }

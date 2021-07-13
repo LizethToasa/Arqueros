@@ -41,14 +41,14 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button expand="block" [routerLink]="['/ver-arquero', arquero.uid]">
+      <ion-button expand="block" color="primary" [routerLink]="['/ver-arquero', arquero.uid]">
         Ver
       </ion-button>
       <ion-button expand="block" color="secondary" [routerLink]="['/avance', arquero.uid]">Añadir Avances</ion-button>
-      <ion-button expand="block" (click)="descargar(arquero.cedula)" *ngIf="arquero.ficha == valida">
+      <ion-button expand="block" color="tertiary" (click)="descargar(arquero.cedula)" *ngIf="arquero.ficha == valida">
         Descargar Ficha
       </ion-button>
-      <ion-button expand="block" [routerLink]="['/ver-ficha', arquero.cedula]" *ngIf="arquero.ficha == valida">
+      <ion-button expand="block"color="success" [routerLink]="['/ver-ficha', arquero.cedula]" *ngIf="arquero.ficha == valida">
         Editar Ficha
       </ion-button>
     </ion-card-content>
