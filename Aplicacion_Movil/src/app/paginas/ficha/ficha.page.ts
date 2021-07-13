@@ -168,7 +168,7 @@ export class FichaPage implements OnInit {
     ]));
     const tipsang = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(2),
       Validators.maxLength(15),
     ]));
     const posale = new FormControl('', Validators.compose([
@@ -377,7 +377,7 @@ export class FichaPage implements OnInit {
 
  async habilitarfirverif(){
   if(this.alumno.ficha == "No"){
-    this.mensaje = "El arquero ya se encuentra registrada una ficha.";
+    this.mensaje = "El arquero ya tiene registrada una ficha.";
     this.mensajeingreso();
     
   }else{

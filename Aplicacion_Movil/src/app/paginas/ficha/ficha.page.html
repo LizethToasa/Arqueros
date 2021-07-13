@@ -90,7 +90,7 @@
   
       <ion-item>
         <ion-label position="stacked">Lugar de nacimiento:</ion-label>
-        <ion-textarea [(ngModel)]="ficha.lugarnacimiento" name="lugarnaci" formControlName="lugarnacimiento">
+        <ion-textarea [(ngModel)]="ficha.lugarnacimiento" name="lugarnaci" formControlName="lugarnacimiento" placeholder="La Marin">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
@@ -114,7 +114,7 @@
       
       <ion-item>
         <ion-label position="stacked">Dirección de domicilio:</ion-label>
-        <ion-textarea [(ngModel)]="ficha.direccion" name="direccdomici" formControlName="direcciondomi">
+        <ion-textarea [(ngModel)]="ficha.direccion" name="direccdomici" formControlName="direcciondomi" placeholder="Carcelen bajo calles">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
@@ -133,7 +133,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Escuela / Colegio / Universidad:</ion-label>
-        <ion-input  [(ngModel)]="ficha.institucion" name="instucion" formControlName="institucion"></ion-input>
+        <ion-input  [(ngModel)]="ficha.institucion" name="instucion" formControlName="institucion" placeholder="Colegio Simón Bolivar"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -155,7 +155,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Donde Trabaja:</ion-label>
-        <ion-input [(ngModel)]="ficha.dondetrabaja" name="diretrabajo" formControlName="dondetrabaja"></ion-input>
+        <ion-input [(ngModel)]="ficha.dondetrabaja" name="diretrabajo" formControlName="dondetrabaja" placeholder="Supermaxi"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -173,7 +173,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Dirección de Trabajo:</ion-label>
-        <ion-input [(ngModel)]="ficha.direcciontrabajo" name="direecciontraba" formControlName="direcciontrabajo"></ion-input>
+        <ion-input [(ngModel)]="ficha.direcciontrabajo" name="direecciontraba" formControlName="direcciontrabajo" placeholder="La Carolina calles"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -191,7 +191,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Estatura:</ion-label>
-        <ion-input [(ngModel)]="ficha.estatura" name="estatura" formControlName="estatur"></ion-input>
+        <ion-input [(ngModel)]="ficha.estatura" name="estatura" formControlName="estatur" placeholder="1,50 cm"></ion-input>
         
       </ion-item>
       <div class="validation-errors">
@@ -210,7 +210,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Peso:</ion-label>
-        <ion-input [(ngModel)]="ficha.peso" name="peso" formControlName="pes"></ion-input>
+        <ion-input [(ngModel)]="ficha.peso" name="peso" formControlName="pes" placeholder="20 kg"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -228,7 +228,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Tipo de Sangre:</ion-label>
-        <ion-input [(ngModel)]="ficha.tiposangre" name="tiposangre" formControlName="tipsang"></ion-input>
+        <ion-input [(ngModel)]="ficha.tiposangre" name="tiposangre" formControlName="tipsang" placeholder="O+"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -237,7 +237,7 @@
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('tipsang').hasError('minlength')">
-        *Mínimo 3 caracteres 
+        *Mínimo 2 caracteres 
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('tipsang').hasError('maxlength')">
@@ -258,7 +258,7 @@
         </p>
       </div>
       <ion-item id="aler" style="display: none;">
-        <ion-textarea formControlName="desposale" [(ngModel)]="ficha.descripcionalergias" name="descripcionalergias">
+        <ion-textarea formControlName="desposale" [(ngModel)]="ficha.descripcionalergias" name="descripcionalergias" placeholder="Alergias">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
@@ -281,7 +281,7 @@
         </p>
       </div>
       <ion-item id="frac" style="display: none;">
-        <ion-textarea formControlName="desfractcua" [(ngModel)]="ficha.descripcionfracturas" name="descripcionfracturas">
+        <ion-textarea formControlName="desfractcua" [(ngModel)]="ficha.descripcionfracturas" name="descripcionfracturas" placeholder="Fracturas">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
@@ -304,7 +304,7 @@
         </p>
       </div>
       <ion-item id="opera" style="display: none;">
-        <ion-textarea formControlName="desoperacion" [(ngModel)]="ficha.descripcionoperaciones" name="descripcionoperaciones">
+        <ion-textarea formControlName="desoperacion" [(ngModel)]="ficha.descripcionoperaciones" name="descripcionoperaciones" placeholder="Operaciones">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
@@ -327,7 +327,7 @@
         </p>
       </div>
       <ion-item id="enfer" style="display: none;">
-        <ion-textarea formControlName="desenfer" [(ngModel)]="ficha.descripcionenfermades" name="descripcionenfermades">
+        <ion-textarea formControlName="desenfer" [(ngModel)]="ficha.descripcionenfermades" name="descripcionenfermades" placeholder="Enfermedades">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
@@ -351,7 +351,7 @@
         
       </div>
       <ion-item id="medi" style="display: none;">
-        <ion-textarea formControlName="destommedo" [(ngModel)]="ficha.descripcionmedicamentos" name="descripcionmedicamentos">
+        <ion-textarea formControlName="destommedo" [(ngModel)]="ficha.descripcionmedicamentos" name="descripcionmedicamentos" placeholder="Medicamentos">
         </ion-textarea>
       </ion-item>
       <div class="validation-errors">
