@@ -72,7 +72,7 @@ export class VerEntrenamientoPage implements OnInit {
     this.ArqueroService.updateSolicitud(this.solicitud, this.idsolicitud).then(() => {
       this.ArqueroService.addNotificacionArquero(this.notificacionarquero).then(() => {
         this.nav.navigateForward('listado-solicitudes'); 
-        this.mensaje="Se editó correctamente la solicitud de entrenamiento.";
+        this.mensaje="Se respondió correctamente la solicitud de entrenamiento.";
         this.mensajeingreso();
       });
 

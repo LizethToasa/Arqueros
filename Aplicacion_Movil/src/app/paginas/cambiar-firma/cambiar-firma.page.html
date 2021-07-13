@@ -11,12 +11,12 @@
   <signature-pad (onBeginEvent)="drawStart()"></signature-pad>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" color="primary" (click)="drawComplete()" >Confirmar</ion-button>
+      <ion-button expand="block" color="success" (click)="drawComplete()" >Confirmar</ion-button>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col>
-      <ion-button expand="block" color="primary" (click)="borrarfirma()" >Borrar</ion-button>
+      <ion-button expand="block" color="danger" (click)="borrarfirma()" [disabled]="firma==null">Borrar</ion-button>
     </ion-col>
   </ion-row>
   

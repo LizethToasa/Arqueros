@@ -85,7 +85,7 @@ export class VerNotifiPage implements OnInit {
       this.usuarioService.updateSolicitud(this.solicitud, id).then(() => {
         this.usuarioService.addNotificacionArquero(this.notificacionarquero).then(() => {
           this.nav.navigateForward('notificaciones-entrenador'); 
-          this.mensaje="Se editó correctamente la solicitud de entrenamiento.";
+          this.mensaje="Se respondió correctamente la solicitud de entrenamiento.";
           this.mensajeingreso();
         });
 
