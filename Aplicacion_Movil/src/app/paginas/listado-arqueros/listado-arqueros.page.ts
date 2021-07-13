@@ -226,7 +226,7 @@ export class ListadoArquerosPage implements OnInit {
         this.doc.text("informacíon de mi hijo/a para el conocimiento y manejo de la misma dentro de la Escuela.", 20, 260);
         this.doc.text("He leído y acepto todas las condiciones incluidas y la información entregada.", 20, 265);
         this.doc.addImage(this.ficha.firma, "JPEG", 55, 270, 20,20)
-        //this.doc.addImage(this.usuario.firma, "JPEG", 135, 270, 20,20)
+        this.doc.addImage(this.ficha.firmaentrenador, "JPEG", 135, 270, 20,20)
         this.doc.text("FIRMA DEL REPRESENTANTE:", 40, 293);
         this.doc.text("FIRMA PERSONAL AUTORIZADA:", 120, 293);
         this.doc.save("ficha");

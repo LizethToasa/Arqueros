@@ -15,7 +15,6 @@ export class RegistroEntrenadorPage implements OnInit {
   public mensaje:string;
   public image: any;
   constructor(
-
     private authSvc: AuthService, 
     private router: Router,
     public formBuilder: FormBuilder,
@@ -28,7 +27,6 @@ export class RegistroEntrenadorPage implements OnInit {
   ngOnInit() {
   }
 
-  //Crear validaciones
   crearvalidaciones(){
     const nombreControl = new FormControl('', Validators.compose([
       Validators.required,
@@ -79,12 +77,10 @@ export class RegistroEntrenadorPage implements OnInit {
     this.formGroup = this.formBuilder.group({nombreControl,apellidoControl,cedulaControl,telefonoControl,emailControl,passwordControl,foto });
   }
 
-  //Imagen
   enviarimagen(event: any): void {
     this.image = event.target.files[0];
   }
 
-  //Mensaje de alert de confirmacion
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
@@ -103,7 +99,6 @@ export class RegistroEntrenadorPage implements OnInit {
     await alert.present();
   }
 
-  //Registrar nuevo usuario
   async onRegister(email, password, nombre, apellido, cedula, telefono) {
     try {
       const user = await this.authSvc.registerentrenador(email.value, password.value, nombre.value, apellido.value, cedula.value, telefono.value,this.image);
@@ -112,7 +107,7 @@ export class RegistroEntrenadorPage implements OnInit {
         this.redirectUser(isVerified);
       }else{
         if(this.authSvc.errores=="The email address is already in use by another account."){
-          this.mensaje="El correo ya está usado por otro usuario.";
+          this.mensaje="El correo ya se encuentra usado por otro usuario."
           this.presentAlertConfirm();
         }
       }
@@ -121,7 +116,6 @@ export class RegistroEntrenadorPage implements OnInit {
     }
   }
 
-  //Redirigir 
   private redirectUser(isVerified: boolean): void {
     if (isVerified) {
       //this.router.navigate(['menu']);
@@ -131,7 +125,6 @@ export class RegistroEntrenadorPage implements OnInit {
     }
   }
 
-  //Mostrar contraseña
   showPassword() {
     this.passwordTypeInput = this.passwordTypeInput === 'text' ? 'password' : 'text';
   }

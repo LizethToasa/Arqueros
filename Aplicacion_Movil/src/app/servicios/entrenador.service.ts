@@ -102,6 +102,10 @@ export class EntrenadorService {
   addFicha(ficha: Ficha){
     return this.fichaCollection.add(ficha);
   }
+
+  updateFicha(ficha:Ficha, id: string){
+    return this.fichaCollection.doc(id).update(ficha);
+  }
   getFicha(iduser:string){
     this.fichaCollection2 = this.db.collection<Ficha>('ficha', ref => ref.where('idarquero', '==', iduser));
     this.ficha2 = this.fichaCollection2.snapshotChanges().pipe(

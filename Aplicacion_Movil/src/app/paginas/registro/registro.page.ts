@@ -24,7 +24,6 @@ export class RegistroPage implements OnInit {
   format = 'EEEE';
   locale = 'en-US';
   constructor(
-
     private authSvc: AuthService, 
     private router: Router,
     public formBuilder: FormBuilder,
@@ -44,7 +43,6 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
   }
 
-  //Crear validaciones
   crearvalidaciones(){
     const nombreControl = new FormControl('', Validators.compose([
       Validators.required,
@@ -109,24 +107,12 @@ export class RegistroPage implements OnInit {
   edad(event){
     var probar4 = formatDate(new Date(this.age) , "MM/dd/yyyy", this.locale);
     this.fechacumple = probar4.toString();
-    console.log(probar4.toString());
-    
-    /*this.fechacumple=new Date(event.detail.value);  
-    if(this.age){
-      var fec = new Date(this.age);
-      console.log(fec.getDay());
-      const convertAge = new Date(this.age);
-      const timeDiff = Math.abs(Date.now() - convertAge.getTime());
-      this.showAge = Math.floor((timeDiff / (1000 * 3600 * 24))/365);
-    }*/
   }
 
-  //Imagen
   enviarimagen(event: any): void {
     this.image = event.target.files[0];
   }
 
-  //Mensaje de alert de confirmacion
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',
@@ -145,7 +131,6 @@ export class RegistroPage implements OnInit {
     await alert.present();
   }
 
-  //Registrar nuevo usuario
   async onRegister(email, password, nombre, apellido, cedula, telefono,telefono2) {
     try {
       const user = await this.authSvc.register(email.value, password.value, nombre.value, apellido.value, cedula.value, telefono.value,telefono2.value,this.fechacumple,this.image);
@@ -154,7 +139,7 @@ export class RegistroPage implements OnInit {
         this.redirectUser(isVerified);
       }else{
         if(this.authSvc.errores=="The email address is already in use by another account."){
-          this.mensaje="El correo ya está usado por otro usuario.";
+          this.mensaje="El correo ya se encuentra usado por otro usuario.";
           this.presentAlertConfirm();
         }
       }
@@ -163,7 +148,6 @@ export class RegistroPage implements OnInit {
     }
   }
 
-  //Redirigir 
   private redirectUser(isVerified: boolean): void {
     if (isVerified) {
       this.router.navigate(['menu']);
@@ -172,7 +156,6 @@ export class RegistroPage implements OnInit {
     }
   }
 
-  //Mostrar contraseña
   showPassword() {
     this.passwordTypeInput = this.passwordTypeInput === 'text' ? 'password' : 'text';
   }

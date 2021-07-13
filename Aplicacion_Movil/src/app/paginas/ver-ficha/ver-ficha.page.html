@@ -1,9 +1,622 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>ver-ficha</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/listado-arqueros"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Ficha</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf="ficha">
+    
+    <ion-item lines="none" color="primary" style="text-align: center;">
+      <h4 style="text-align: center;">DATOS PERSONALES DEL ALUMNO</h4>
+    </ion-item>
+    <br/>
+    <ion-item lines="none">  
+      <img [src]="alumno.foto" style="height:150px;display:block;margin:auto"/>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Nombres</strong></ion-label>
+      <p style="color: black">{{alumno.nombre}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
+      <p style="color: black">{{alumno.apellido}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Número de Cédula</strong></ion-label>
+      <p style="color: black">{{alumno.cedula}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><strong>Fecha Nacimiento</strong></ion-label>
+      <p style="color: black">{{alumno.fecha_naciento }}</p>
+    </ion-item>
+    <form [formGroup]="formGroup2" >
+      <ion-item>
+        <ion-label position="stacked">Seleccione la fecha de devolución</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY"   
+        (ionChange)="cambiofecha2($event)"
+        placeholder="Dia Mes Año"    
+        max="{{fechaactual | date: 'yyyy-MM-dd'}}"
+        cancelText="Cancelar"
+        doneText="Seleccionar"
+        formControlName="fechadev"
+        [ngModel]="fechaingreso.toISOString()"
+        name="fechain"
+        >
+        </ion-datetime>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('fechadev').hasError('required')">
+          *Requerido
+        </p>
+      </div>
+  
+      <ion-item>
+        <ion-label position="stacked">Lugar de nacimiento:</ion-label>
+        <ion-textarea [(ngModel)]="ficha.lugarnacimiento" name="lugarnaci" formControlName="lugarnacimiento">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('lugarnacimiento').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('lugarnacimiento').hasError('minlength')">
+        *Mínimo 7 caracteres 
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('lugarnacimiento').hasError('maxlength')">
+        *Máximo 30 caracteres  
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('lugarnacimiento').hasError('pattern')">
+        *Se debe ingresar dos nombres y debe solo contener letras
+       </p>
+      </div>
+      
+      <ion-item>
+        <ion-label position="stacked">Dirección de domicilio:</ion-label>
+        <ion-textarea [(ngModel)]="ficha.direccion" name="direccdomici" formControlName="direcciondomi">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('direcciondomi').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('direcciondomi').hasError('minlength')">
+        *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('direcciondomi').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Escuela / Colegio / Universidad:</ion-label>
+        <ion-input  [(ngModel)]="ficha.institucion" name="instucion" formControlName="institucion"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('institucion').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('institucion').hasError('minlength')">
+        *Mínimo 7 caracteres 
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('institucion').hasError('maxlength')">
+        *Máximo 30 caracteres  
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('institucion').hasError('pattern')">
+        *Se debe ingresar dos nombres y debe solo contener letras
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Donde Trabaja:</ion-label>
+        <ion-input [(ngModel)]="ficha.dondetrabaja" name="diretrabajo" formControlName="dondetrabaja"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('dondetrabaja').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('dondetrabaja').hasError('minlength')">
+        *Mínimo 7 caracteres 
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('dondetrabaja').hasError('maxlength')">
+        *Máximo 30 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Dirección de Trabajo:</ion-label>
+        <ion-input [(ngModel)]="ficha.direcciontrabajo" name="direecciontraba" formControlName="direcciontrabajo"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('direcciontrabajo').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('direcciontrabajo').hasError('minlength')">
+        *Mínimo 7 caracteres 
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('direcciontrabajo').hasError('maxlength')">
+        *Máximo 50 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Estatura:</ion-label>
+        <ion-input [(ngModel)]="ficha.estatura" name="estatura" formControlName="estatur"></ion-input>
+        
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('estatur').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('estatur').hasError('minlength')">
+        *Mínimo 5 caracteres  
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('estatur').hasError('maxlength')">
+        *Máximo 30 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Peso:</ion-label>
+        <ion-input [(ngModel)]="ficha.peso" name="peso" formControlName="pes"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('pes').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('pes').hasError('minlength')">
+        *Mínimo 3 caracteres 
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('pes').hasError('maxlength')">
+        *Máximo 20 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Tipo de Sangre:</ion-label>
+        <ion-input [(ngModel)]="ficha.tiposangre" name="tiposangre" formControlName="tipsang"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('tipsang').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('tipsang').hasError('minlength')">
+        *Mínimo 3 caracteres 
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('tipsang').hasError('maxlength')">
+        *Máximo 15 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Posee alergias? Cuales son?:</ion-label>
+        <ion-select formControlName="posale" placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.alergias" name="alergias" (ionChange)="seleccionalergias()">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('posale').hasError('required')">
+          *Requerido
+        </p>
+      </div>
+      <ion-item id="aler" *ngIf="ficha.alergias==SI">
+        <ion-textarea formControlName="desposale" [(ngModel)]="ficha.descripcionalergias" name="descripcionalergias">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('desposale').hasError('maxlength')">
+        *Máximo 50 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Fracturas? Cuales son?:</ion-label>
+        <ion-select formControlName="fractcua" placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.fracturas" name="fracturas" (ionChange)="seleccionafracturas()">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('fractcua').hasError('required')">
+          *Requerido
+        </p>
+      </div>
+      <ion-item id="frac" *ngIf="ficha.fracturas==SI">
+        <ion-textarea formControlName="desfractcua" [(ngModel)]="ficha.descripcionfracturas" name="descripcionfracturas">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('desfractcua').hasError('maxlength')">
+        *Máximo 50 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Operaciones? Cuales son?:</ion-label>
+        <ion-select formControlName="operacion" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.operaciones" name="operaciones" (ionChange)="seleccionaoperaciones()">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('operacion').hasError('required')">
+          *Requerido
+        </p>
+      </div>
+      <ion-item id="opera" *ngIf="ficha.operaciones==SI">
+        <ion-textarea formControlName="desoperacion" [(ngModel)]="ficha.descripcionoperaciones" name="descripcionoperaciones">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('desoperacion').hasError('maxlength')">
+        *Máximo 50 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Enfermedades? Cuales son?:</ion-label>
+        <ion-select formControlName="enferm" placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.enfermedades" name="enfermedades" (ionChange)="seleccionaenfermedades()">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('enferm').hasError('required')">
+          *Requerido
+        </p>
+      </div>
+      <ion-item id="enfer" *ngIf="ficha.enfermedades==SI">
+        <ion-textarea formControlName="desenfer" [(ngModel)]="ficha.descripcionenfermades" name="descripcionenfermades">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('desenfer').hasError('maxlength')">
+        *Máximo 50 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked" style="padding-bottom:20px !important">Toma Medicamentos? Por? / Para?:</ion-label>
+        <ion-select formControlName="tommedo" placeholder="Seleccionar" style="margin-bottom:20px !important" okText="Ok" cancelText="Cancelar" [(ngModel)]="ficha.medicamentos" name="medicamentos" (ionChange)="seleccionamedicamentos()">
+          <ion-select-option value="Si">Si</ion-select-option>
+          <ion-select-option value="No">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('tommedo').hasError('required')">
+          *Requerido
+        </p>
+        
+      </div>
+      <ion-item id="medi" *ngIf="ficha.medicamentos==SI">
+        <ion-textarea formControlName="destommedo" [(ngModel)]="ficha.descripcionmedicamentos" name="descripcionmedicamentos">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('destommedo').hasError('maxlength')">
+        *Máximo 50 caracteres  
+        </p>
+      </div>
+      <br/>
+      <ion-item lines="none" color="primary" style="text-align: center;">
+        <h4 style="text-align: center;">DATOS DEL PADRE</h4>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres:</ion-label>
+        <ion-input formControlName="nombrepadre" [(ngModel)]="ficha.nombpadre" name="nombpadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('nombrepadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('nombrepadre').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('nombrepadre').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('nombrepadre').hasError('pattern')">
+          *Se debe ingresar dos apellidos y debe solo contener letras
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Apellidos:</ion-label>
+        <ion-input formControlName="apellidopadre" [(ngModel)]="ficha.apellpadre" name="apellpadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('apellidopadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('apellidopadre').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('apellidopadre').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('apellidopadre').hasError('pattern')">
+          *Se debe ingresar dos apellidos y debe solo contener letras
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Numero de Cédula:</ion-label>
+        <ion-input formControlName="cedulapadre" [(ngModel)]="ficha.cedpadre" name="cedpadre" type="tel"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('cedulapadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('cedulapadre').hasError('minlength')">
+          *10 números 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('cedulapadre').hasError('maxlength')">
+          *10 números 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('cedulapadre').hasError('pattern')">
+          *La cédula debe tener solo números
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Lugar de Trabajo:</ion-label>
+        <ion-input formControlName="lugarpadre" [(ngModel)]="ficha.lugartrabajopadre" name="lugartrabajopadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('lugarpadre').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('numerocedulamadre').hasError('minlength')">
+          *5 números 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('numerocedulamadre').hasError('maxlength')">
+          *10 números 
+        </p>
+      
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Email:</ion-label>
+        <ion-input formControlName="emailpadre" [(ngModel)]="ficha.emailpadre" name="emailpadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailpadre').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailpadre').hasError('email')">
+          *Ingrese un correo válido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailpadre').hasError('minlength')">
+          *Mínimo 10 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailpadre').hasError('maxlength')">
+          *Máximo 40 caracteres  
+        </p>
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Telefonos:</ion-label>
+        <ion-input formControlName="telefonopadre" [(ngModel)]="ficha.telefonopadre" name="telefonopadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('telefonopadre').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('telefonopadre').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('telefonopadre').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+     
+      </div>
+      <ion-item lines="none" color="primary" style="text-align: center;">
+        <h4 style="text-align: center;">DATOS DE LA MADRE</h4>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres:</ion-label>
+        <ion-input formControlName="nombremadre" [(ngModel)]="ficha.nombmadre" name="nombmadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('nombremadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('nombremadre').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('nombremadre').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('nombremadre').hasError('pattern')">
+          *Se debe ingresar dos apellidos y debe solo contener letras
+        </p>
+    
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Apellidos:</ion-label>
+        <ion-input formControlName="apellidosmadre" [(ngModel)]="ficha.apellmadre" name="apellmadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('apellidosmadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('apellidosmadre').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('apellidosmadre').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('apellidosmadre').hasError('pattern')">
+          *Se debe ingresar dos apellidos y debe solo contener letras
+        </p>
+ 
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Numero de Cédula:</ion-label>
+        <ion-input formControlName="numerocedulamadre" [(ngModel)]="ficha.cedmadre" name="cedmadre" type="tel"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('numerocedulamadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('numerocedulamadre').hasError('minlength')">
+          *10 números 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('numerocedulamadre').hasError('maxlength')">
+          *10 números 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('numerocedulamadre').hasError('pattern')">
+          *La cédula debe tener solo números
+        </p>
+      
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Lugar de Trabajo:</ion-label>
+        <ion-input formControlName="lugarmadre" [(ngModel)]="ficha.lugartrabajomadre" name="lugartrabajomadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('lugarmadre').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('lugarmadre').hasError('minlength')">
+        *Mínimo 5 caracteres  
+       </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('lugarmadre').hasError('maxlength')">
+        *Máximo 30 caracteres  
+        </p>
+    
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Email:</ion-label>
+        <ion-input formControlName="emailmadre" [(ngModel)]="ficha.emailmadre" name="emailmadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+        *ngIf="formGroup2.get('emailmadre').hasError('required')">
+        *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailmadre').hasError('email')">
+          *Ingrese un correo válido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailmadre').hasError('minlength')">
+          *Mínimo 10 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('emailmadre').hasError('maxlength')">
+          *Máximo 40 caracteres  
+        </p>
+   
+      </div>
+      <ion-item>
+        <ion-label position="stacked">Telefonos:</ion-label>
+        <ion-input formControlName="telefonomadre" [(ngModel)]="ficha.telefonomadre" name="telefonomadre"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('telefonomadre').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('telefonomadre').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('telefonomadre').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+   
+      </div>
 
+      <ion-item>
+        <ion-label position="stacked">Telfs de Emergencia / De Quien?</ion-label>
+        <ion-textarea formControlName="telemerge" [(ngModel)]="ficha.telefonemergencia" name="telefonemergencia">
+        </ion-textarea>
+      </ion-item>
+      <div class="validation-errors">
+        <p class="form-error"
+          *ngIf="formGroup2.get('telemerge').hasError('required')">
+          *Requerido
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('telemerge').hasError('minlength')">
+          *Mínimo 7 caracteres 
+        </p>
+        <p class="form-error"
+          *ngIf="formGroup2.get('telemerge').hasError('maxlength')">
+          *Máximo 30 caracteres  
+        </p>
+  
+      </div>
+      <ion-row>
+        <ion-col>
+            <ion-button [disabled]="!formGroup2.valid" expand="block" color="tertiary" (click)="actualizarficha(ficha.id)">Actualizar</ion-button>
+        </ion-col>
+      </ion-row>
+     
+    </form>
+  </div>
 </ion-content>

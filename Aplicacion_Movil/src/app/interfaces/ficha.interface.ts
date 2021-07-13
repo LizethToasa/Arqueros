@@ -34,5 +34,6 @@ export interface Ficha {
   firma:string;
   identrenador:string;
   fechaescuela:Date;
+  firmaentrenador:string;
   }
   

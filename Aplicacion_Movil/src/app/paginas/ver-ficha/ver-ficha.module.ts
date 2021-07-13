@@ -7,12 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { VerFichaPageRoutingModule } from './ver-ficha-routing.module';
 
 import { VerFichaPage } from './ver-ficha.page';
-
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     VerFichaPageRoutingModule
   ],
   declarations: [VerFichaPage]

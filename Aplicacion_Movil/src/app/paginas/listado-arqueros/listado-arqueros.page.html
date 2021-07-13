@@ -48,6 +48,9 @@
       <ion-button expand="block" (click)="descargar(arquero.cedula)" *ngIf="arquero.ficha == valida">
         Descargar Ficha
       </ion-button>
+      <ion-button expand="block" [routerLink]="['/ver-ficha', arquero.cedula]" *ngIf="arquero.ficha == valida">
+        Editar Ficha
+      </ion-button>
     </ion-card-content>
     
     

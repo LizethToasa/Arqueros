@@ -155,13 +155,6 @@ export class PerfilArqueroPage implements OnInit {
       Validators.pattern("[0-9]*"),
     ]));
 
-    const emailControl = new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.email,
-        Validators.minLength(10),
-        Validators.maxLength(40)
-
-    ]));
     const fechaControl = new FormControl('', Validators.compose([
       Validators.required,
       
