@@ -7,7 +7,7 @@
 <ion-content>
   <form [formGroup]="formGroup" (ngSubmit)="onLogin()">
     <ion-item lines="full">
-      <ion-label position="floating">Correo electrónico</ion-label>
+      <ion-label position="stacked">Correo electrónico</ion-label>
       <ion-input type="email" formControlName="emailControl" [(ngModel)]="usuario" placeholder="escuela.arqueros@gmail.com"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -29,7 +29,7 @@
       </p>
     </div>
     <ion-item lines="full">
-      <ion-label position="floating">Contraseña</ion-label>
+      <ion-label position="stacked">Contraseña</ion-label>
       <div>
         <ion-input formControlName="passwordControl" [type]="passwordTypeInput" 
         #password placeholder="***********" [(ngModel)]="contrasena"></ion-input>

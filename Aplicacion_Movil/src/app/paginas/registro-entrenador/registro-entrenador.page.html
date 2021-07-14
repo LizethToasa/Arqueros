@@ -10,7 +10,7 @@
 <ion-content>
   <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono)">
     <ion-item>
-      <ion-label position="floating"><strong>Nombre</strong></ion-label>
+      <ion-label position="stacked"><strong>Nombre</strong></ion-label>
       <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Nombre1"></ion-input>
     </ion-item>
     <div class="validation-errors">
@@ -33,7 +33,7 @@
     </div>
 
     <ion-item>
-      <ion-label position="floating"><strong>Apellido</strong></ion-label>
+      <ion-label position="stacked"><strong>Apellido</strong></ion-label>
       <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Apellido1"></ion-input>
     </ion-item>
 
@@ -57,7 +57,7 @@
     </div>
 
     <ion-item>
-      <ion-label position="floating"><strong>Cédula</strong></ion-label>
+      <ion-label position="stacked"><strong>Cédula</strong></ion-label>
       <ion-input formControlName="cedulaControl" type="tel" #cedula placeholder="0498989898"></ion-input>
     </ion-item>
 
@@ -81,7 +81,7 @@
     </div>
 
     <ion-item>
-      <ion-label position="floating"><strong>Teléfono</strong></ion-label>
+      <ion-label position="stacked"><strong>Teléfono</strong></ion-label>
       <ion-input formControlName="telefonoControl" type="tel" #telefono placeholder="0999999999"></ion-input>
     </ion-item>
 
@@ -105,7 +105,7 @@
     </div>
 
     <ion-item>
-      <ion-label position="floating"><strong>Correo electrónico</strong></ion-label>
+      <ion-label position="stacked"><strong>Correo electrónico</strong></ion-label>
       <ion-input formControlName="emailControl" type="email" #email placeholder="escuela.arqueros@gmail.com"></ion-input>
     </ion-item>
 
@@ -129,7 +129,7 @@
   </div>
 
   <ion-item>
-    <ion-label position="floating"><strong>Contraseña</strong></ion-label>
+    <ion-label position="stacked"><strong>Contraseña</strong></ion-label>
     <div>
       <ion-input formControlName="passwordControl" [type]="passwordTypeInput" 
       #password placeholder="***********"></ion-input>
