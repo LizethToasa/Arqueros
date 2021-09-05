@@ -32,6 +32,20 @@
       <ion-textarea name="first" formControlName="mensaje" [(ngModel)]="avance.mensaje">
       </ion-textarea>
     </ion-item>
+    <div class="validation-errors">
+      <p class="form-error"
+        *ngIf="formGroup.get('mensaje').hasError('required')">
+        *Requerido
+      </p>
+      <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('minlength')">
+      *Mínimo 5 caracteres 
+    </p>
+    <p class="form-error"
+      *ngIf="formGroup.get('mensaje').hasError('maxlength')">
+      *Máximo 100 caracteres  
+    </p>
+    </div>
     <ion-row>
       <ion-col>
         <ion-button [disabled]="!formGroup.valid"  expand="block" (click)="actualizar()" >Actualizar</ion-button>

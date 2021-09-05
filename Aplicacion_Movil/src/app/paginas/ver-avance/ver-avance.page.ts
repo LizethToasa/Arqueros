@@ -37,7 +37,7 @@ export class VerAvancePage implements OnInit {
     const mensaje = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(50)
+      Validators.maxLength(100)
     ]));
  
     

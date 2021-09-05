@@ -130,7 +130,7 @@ export class FichaPage implements OnInit {
     ]));
     const lugarnacimiento = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(7),
+      Validators.minLength(5),
       Validators.maxLength(30),
       Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$")
     ]));
@@ -142,13 +142,14 @@ export class FichaPage implements OnInit {
     const institucion = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(7),
-      Validators.maxLength(30),
-      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$")
+      Validators.maxLength(50),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú 123456789]+$")
     ]));
     const dondetrabaja = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(7),
       Validators.maxLength(30),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú 123456789]+$")
       
     ]));
     const direcciontrabajo = new FormControl('', Validators.compose([
@@ -158,18 +159,21 @@ export class FichaPage implements OnInit {
     ]));
     const estatur = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(4),
-      Validators.maxLength(20),
+      Validators.minLength(5),
+      Validators.maxLength(7),
+
     ]));
     const pes = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20),
+      Validators.minLength(5),
+      Validators.maxLength(8),
+
     ]));
     const tipsang = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(15),
+      Validators.maxLength(4),
+
     ]));
     const posale = new FormControl('', Validators.compose([
       Validators.required,
@@ -234,7 +238,8 @@ export class FichaPage implements OnInit {
     const telefonopadre = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(7),
-      Validators.maxLength(30)
+      Validators.maxLength(30),
+      Validators.pattern("[0-9 ]*"),
     ]));
     const nombremadre = new FormControl('', Validators.compose([
       Validators.required,
@@ -268,7 +273,8 @@ export class FichaPage implements OnInit {
     const telefonomadre = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(7),
-      Validators.maxLength(30)
+      Validators.maxLength(30),
+      Validators.pattern("[0-9 ]*"),
     ]));
     const telemerge = new FormControl('', Validators.compose([
       Validators.required,

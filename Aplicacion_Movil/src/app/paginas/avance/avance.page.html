@@ -42,7 +42,7 @@
     </p>
     <p class="form-error"
       *ngIf="formGroup.get('mensaje').hasError('maxlength')">
-      *Máximo 50 caracteres  
+      *Máximo 100 caracteres  
     </p>
     </div>
     <ion-button [disabled]="!formGroup.valid" (click)="guardarAvance()" expand="block">Guardar</ion-button>

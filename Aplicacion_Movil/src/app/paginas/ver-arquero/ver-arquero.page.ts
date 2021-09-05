@@ -17,7 +17,7 @@ export class VerArqueroPage implements OnInit {
     this.idarquero=this.route.snapshot.params['id'];
     this.usuarioService.getArquero(this.idarquero).subscribe(usuario => {
       this.usuario = usuario;
-      console.log(this.usuario);
+
     });
     
   }
@@ -25,7 +25,7 @@ export class VerArqueroPage implements OnInit {
   ngOnInit() {
   }
 
-  async guardarUsuario() {
+  async guardarUsuario2() {
     if (this.idarquero) {
       this.usuarioService.updateArquero(this.usuario, this.idarquero).then(() => {
         this.nav.navigateForward('menu-arquero');

@@ -100,7 +100,7 @@
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('lugarnacimiento').hasError('minlength')">
-        *Mínimo 7 caracteres 
+        *Mínimo 5 caracteres 
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('lugarnacimiento').hasError('maxlength')">
@@ -108,7 +108,7 @@
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('lugarnacimiento').hasError('pattern')">
-        *Se debe ingresar dos nombres y debe solo contener letras
+        *Se debe ingresar solo letras
        </p>
       </div>
       
@@ -133,7 +133,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Escuela / Colegio / Universidad:</ion-label>
-        <ion-input  [(ngModel)]="ficha.institucion" name="instucion" formControlName="institucion" placeholder="Colegio Simón Bolivar"></ion-input>
+        <ion-textarea  [(ngModel)]="ficha.institucion" name="instucion" formControlName="institucion" placeholder="Colegio Simón Bolivar"></ion-textarea>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -146,11 +146,11 @@
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('institucion').hasError('maxlength')">
-        *Máximo 30 caracteres  
+        *Máximo 50 caracteres  
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('institucion').hasError('pattern')">
-        *Se debe ingresar dos nombres y debe solo contener letras
+        *Se debe ingresar solo letras y números
         </p>
       </div>
       <ion-item>
@@ -170,10 +170,14 @@
         *ngIf="formGroup2.get('dondetrabaja').hasError('maxlength')">
         *Máximo 30 caracteres  
         </p>
+        <p class="form-error"
+        *ngIf="formGroup2.get('dondetrabaja').hasError('pattern')">
+        *Se debe ingresar solo letras y números
+        </p>
       </div>
       <ion-item>
         <ion-label position="stacked">Dirección de Trabajo:</ion-label>
-        <ion-input [(ngModel)]="ficha.direcciontrabajo" name="direecciontraba" formControlName="direcciontrabajo" placeholder="La Carolina calles"></ion-input>
+        <ion-textarea [(ngModel)]="ficha.direcciontrabajo" name="direecciontraba" formControlName="direcciontrabajo" placeholder="La Carolina calles"></ion-textarea>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -205,8 +209,9 @@
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('estatur').hasError('maxlength')">
-        *Máximo 30 caracteres  
+        *Máximo 7 caracteres  
         </p>
+  
       </div>
       <ion-item>
         <ion-label position="stacked">Peso:</ion-label>
@@ -219,12 +224,13 @@
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('pes').hasError('minlength')">
-        *Mínimo 3 caracteres 
+        *Mínimo 5 caracteres 
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('pes').hasError('maxlength')">
-        *Máximo 20 caracteres  
+        *Máximo 8 caracteres  
         </p>
+
       </div>
       <ion-item>
         <ion-label position="stacked">Tipo de Sangre:</ion-label>
@@ -241,7 +247,7 @@
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('tipsang').hasError('maxlength')">
-        *Máximo 15 caracteres  
+        *Máximo 4 caracteres  
         </p>
       </div>
       <ion-item>
@@ -440,11 +446,11 @@
           *Requerido
         </p>
         <p class="form-error"
-          *ngIf="formGroup2.get('numerocedulamadre').hasError('minlength')">
+          *ngIf="formGroup2.get('lugarpadre').hasError('minlength')">
           *5 números 
         </p>
         <p class="form-error"
-          *ngIf="formGroup2.get('numerocedulamadre').hasError('maxlength')">
+          *ngIf="formGroup2.get('lugarpadre').hasError('maxlength')">
           *10 números 
         </p>
       
@@ -487,6 +493,10 @@
         <p class="form-error"
           *ngIf="formGroup2.get('telefonopadre').hasError('maxlength')">
           *Máximo 30 caracteres  
+        </p>
+        <p class="form-error" 
+        *ngIf="formGroup2.get('telefonopadre').hasError('pattern')">
+        *La cédula debe tener solo números y espacio
         </p>
      
       </div>
@@ -620,6 +630,10 @@
         <p class="form-error"
           *ngIf="formGroup2.get('telefonomadre').hasError('maxlength')">
           *Máximo 30 caracteres  
+        </p>
+        <p class="form-error" 
+        *ngIf="formGroup2.get('telefonomadre').hasError('pattern')">
+        *La cédula debe tener solo números y espacio
         </p>
    
       </div>
