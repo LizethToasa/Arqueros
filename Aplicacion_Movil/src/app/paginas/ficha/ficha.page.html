@@ -389,7 +389,7 @@
         </p>
         <p class="form-error"
           *ngIf="formGroup2.get('nombrepadre').hasError('pattern')">
-          *Se debe ingresar dos apellidos y debe solo contener letras
+          *Se debe ingresar dos nombres y debe solo contener letras
         </p>
       </div>
       <ion-item>
@@ -447,11 +447,11 @@
         </p>
         <p class="form-error"
           *ngIf="formGroup2.get('lugarpadre').hasError('minlength')">
-          *5 números 
+          *Mínimo 7 caracteres 
         </p>
         <p class="form-error"
           *ngIf="formGroup2.get('lugarpadre').hasError('maxlength')">
-          *10 números 
+          *Máximo 30 caracteres 
         </p>
       
       </div>
@@ -478,7 +478,7 @@
         </p>
       </div>
       <ion-item>
-        <ion-label position="stacked">Telefonos:</ion-label>
+        <ion-label position="stacked">Teléfonos:</ion-label>
         <ion-input formControlName="telefonopadre" [(ngModel)]="ficha.telefonopadre" name="telefonopadre" placeholder="0999999999"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -496,7 +496,7 @@
         </p>
         <p class="form-error" 
         *ngIf="formGroup2.get('telefonopadre').hasError('pattern')">
-        *La cédula debe tener solo números y espacio
+        *Los teléfonos deben tener solo números y espacio
         </p>
      
       </div>
@@ -522,7 +522,7 @@
         </p>
         <p class="form-error"
           *ngIf="formGroup2.get('nombremadre').hasError('pattern')">
-          *Se debe ingresar dos apellidos y debe solo contener letras
+          *Se debe ingresar dos nombres y debe solo contener letras
         </p>
     
       </div>
@@ -615,7 +615,7 @@
    
       </div>
       <ion-item>
-        <ion-label position="stacked">Telefonos:</ion-label>
+        <ion-label position="stacked">Teléfonos:</ion-label>
         <ion-input formControlName="telefonomadre" [(ngModel)]="ficha.telefonomadre" name="telefonomadre" placeholder="0999999999"></ion-input>
       </ion-item>
       <div class="validation-errors">
@@ -633,7 +633,7 @@
         </p>
         <p class="form-error" 
         *ngIf="formGroup2.get('telefonomadre').hasError('pattern')">
-        *La cédula debe tener solo números y espacio
+        *Los teléfonos deben tener solo números y espacio
         </p>
    
       </div>
