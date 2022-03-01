@@ -113,6 +113,68 @@ export class RegistroPage implements OnInit {
     this.image = event.target.files[0];
   }
 
+  cambio(){ 
+    var cadena = this.formGroup.get('nombreControl').value;
+    var indices = [];
+    for(var i = 0; i < cadena.length; i++) {
+      if (cadena[i].toLowerCase() === " ") indices.push(i);
+    }
+    if(indices.length>1){
+      var element = <HTMLInputElement> document.getElementById("dir");
+      element.value = '';
+      this.nombreerror();
+    }
+  }
+
+  cambio2(){ 
+    var cadena = this.formGroup.get('apellidoControl').value;
+    var indices = [];
+    for(var i = 0; i < cadena.length; i++) {
+      if (cadena[i].toLowerCase() === " ") indices.push(i);
+    }
+    if(indices.length>1){
+      var element = <HTMLInputElement> document.getElementById("dir2");
+      element.value = '';
+      this.apellidoerror();
+    }
+  }
+
+  async nombreerror() {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Mensaje',
+      message: 'El nombre ingresado tiene mas de 1 espacio volver a ingresarlo.',
+      buttons: [
+       {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async apellidoerror() {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Mensaje',
+      message: 'El apellido ingresado tiene mas de 1 espacio volver a ingresarlo.',
+      buttons: [
+       {
+          text: 'Aceptar',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-class',

@@ -155,7 +155,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Donde Trabaja:</ion-label>
-        <ion-input [(ngModel)]="ficha.dondetrabaja" name="diretrabajo" formControlName="dondetrabaja" placeholder="Supermaxi"></ion-input>
+        <ion-input [(ngModel)]="ficha.dondetrabaja" name="diretrabajo" formControlName="dondetrabaja" placeholder="Tia"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -164,7 +164,7 @@
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('dondetrabaja').hasError('minlength')">
-        *Mínimo 7 caracteres 
+        *Mínimo 3 caracteres 
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('dondetrabaja').hasError('maxlength')">
@@ -249,6 +249,10 @@
         *ngIf="formGroup2.get('tipsang').hasError('maxlength')">
         *Máximo 4 caracteres  
         </p>
+        <p class="form-error" 
+        *ngIf="formGroup2.get('tipsang').hasError('pattern')">
+        *El tipo de sangre no tiene números.
+      </p>
       </div>
       <ion-item>
         <ion-label position="stacked" style="padding-bottom:20px !important">Posee alergias? Cuales son?:</ion-label>
@@ -447,7 +451,7 @@
         </p>
         <p class="form-error"
           *ngIf="formGroup2.get('lugarpadre').hasError('minlength')">
-          *Mínimo 7 caracteres 
+          *Mínimo 3 caracteres 
         </p>
         <p class="form-error"
           *ngIf="formGroup2.get('lugarpadre').hasError('maxlength')">
@@ -479,7 +483,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Teléfonos:</ion-label>
-        <ion-input formControlName="telefonopadre" [(ngModel)]="ficha.telefonopadre" name="telefonopadre" placeholder="0999999999"></ion-input>
+        <ion-input formControlName="telefonopadre" [(ngModel)]="ficha.telefonopadre" name="telefonopadre" placeholder="0999999999" type="tel"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"
@@ -583,7 +587,7 @@
         </p>
         <p class="form-error"
         *ngIf="formGroup2.get('lugarmadre').hasError('minlength')">
-        *Mínimo 5 caracteres  
+        *Mínimo 3 caracteres  
        </p>
         <p class="form-error"
         *ngIf="formGroup2.get('lugarmadre').hasError('maxlength')">
@@ -616,7 +620,7 @@
       </div>
       <ion-item>
         <ion-label position="stacked">Teléfonos:</ion-label>
-        <ion-input formControlName="telefonomadre" [(ngModel)]="ficha.telefonomadre" name="telefonomadre" placeholder="0999999999"></ion-input>
+        <ion-input formControlName="telefonomadre" [(ngModel)]="ficha.telefonomadre" name="telefonomadre" placeholder="0999999999" type="tel"></ion-input>
       </ion-item>
       <div class="validation-errors">
         <p class="form-error"

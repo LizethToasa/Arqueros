@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button routerLink="/login"></ion-back-button>
     </ion-buttons>
-    <ion-title>Registrar Arqueros</ion-title>
+    <ion-title>Registrar Arquero</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,7 @@
   <form [formGroup]="formGroup" (ngSubmit)="onRegister(email, password, nombre, apellido, cedula, telefono,telefono2)">
     <ion-item>
       <ion-label position="stacked"><strong>Nombres</strong></ion-label>
-      <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Nombre1 Nombre2"></ion-input>
+      <ion-input formControlName="nombreControl" type="text" #nombre placeholder="Nombre1 Nombre2" (ionChange)="cambio()" id="dir"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -34,7 +34,7 @@
 
     <ion-item>
       <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
-      <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Apellido1 Apellido2"></ion-input>
+      <ion-input formControlName="apellidoControl" type="text" #apellido placeholder="Apellido1 Apellido2" (ionChange)="cambio2()" id="dir2"></ion-input>
     </ion-item>
 
     <div class="validation-errors">

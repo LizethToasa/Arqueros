@@ -21,6 +21,7 @@ export class RegistroEntrenadorPage implements OnInit {
     private alertCtrl: AlertController
     ) 
     {
+      
       this.crearvalidaciones();
     }
 
@@ -117,12 +118,18 @@ export class RegistroEntrenadorPage implements OnInit {
   }
 
   private redirectUser(isVerified: boolean): void {
-    if (isVerified) {
+    this.router.navigate(['menu-entrenador']);
+    this.mensaje="Se registro correctamente el entrenador."
+    this.presentAlertConfirm();
+    setTimeout(()=>{                           // <<<---using ()=> syntax
+      this.authSvc.logout();
+    }, 5000);
+    /*if (isVerified) {
       //this.router.navigate(['menu']);
     } else {
       //this.router.navigate(['verificar-email2']);
       this.authSvc.logout();
-    }
+    }*/
   }
 
   showPassword() {

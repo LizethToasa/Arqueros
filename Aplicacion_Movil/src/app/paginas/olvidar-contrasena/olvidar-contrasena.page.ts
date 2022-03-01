@@ -79,7 +79,7 @@ export class OlvidarContrasenaPage implements OnInit {
       
     } catch (error) {
       if(error['message']=="There is no user record corresponding to this identifier. The user may have been deleted."){
-        this.mensaje="El usuario ingresado no se encuentra registrado o se encuentra desabilitado.";
+        this.mensaje="El usuario ingresado no se encuentra registrado.";
         this.mensajeerror();
       }
     }

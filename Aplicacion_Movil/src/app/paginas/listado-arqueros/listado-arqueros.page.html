@@ -32,23 +32,24 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            Telefono arquero: <a href="+593{{arquero.telefono}}">{{arquero.telefono}}</a>
+            Telefono arquero: <a href="tel:{{arquero.telefono}}">{{arquero.telefono}}</a>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            Telefono representante: <a href="tel:+593parseInt(arquero.telefono2)">{{arquero.telefono2}}</a>
+            Telefono representante: <a href="tel:{{arquero.telefono2}}">{{arquero.telefono2}}</a>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button expand="block" color="primary" [routerLink]="['/ver-arquero', arquero.uid]">
+      <ion-button expand="block" color="primary" [routerLink]="['/ver-arquero', arquero.uid]" style="margin-bottom: 12px;">
         Ver
       </ion-button>
-      <ion-button expand="block" color="secondary" [routerLink]="['/avance', arquero.uid]">Añadir Avances</ion-button>
-      <ion-button expand="block" color="tertiary" (click)="descargar(arquero.cedula)" *ngIf="arquero.ficha == valida">
+    
+      <ion-button expand="block" color="secondary" [routerLink]="['/avance', arquero.uid]" style="margin-bottom: 12px;">Añadir Avances</ion-button>
+      <ion-button expand="block" color="tertiary" (click)="descargar59(arquero.cedula)" *ngIf="arquero.ficha == valida" style="margin-bottom: 12px;">
         Descargar Ficha
       </ion-button>
-      <ion-button expand="block"color="success" [routerLink]="['/ver-ficha', arquero.cedula]" *ngIf="arquero.ficha == valida">
+      <ion-button expand="block"color="success" [routerLink]="['/ver-ficha', arquero.cedula]" *ngIf="arquero.ficha == valida" style="margin-bottom: 12px;">
         Editar Ficha
       </ion-button>
     </ion-card-content>

@@ -42,6 +42,9 @@ export class VerEntrenamientoPage implements OnInit {
     
     })
     this.crearvalidaciones();
+    this.entrenadorService.getEntrenador(this.usuarioId).subscribe(usuario => {
+      this.notificacionarquero.nombreentrenador = usuario.nombres + " " + usuario.apellidos;
+    });
    }
 
   ngOnInit() {

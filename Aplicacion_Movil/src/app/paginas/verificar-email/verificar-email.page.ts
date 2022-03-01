@@ -28,5 +28,8 @@ export class VerificarEmailPage implements OnInit {
   ngOnDestroy(): void {
     this.authSvc.logout();
   }
+  cerrar(){
+    this.authSvc.logout();
+  }
 
 }

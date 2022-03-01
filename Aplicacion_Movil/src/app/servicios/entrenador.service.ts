@@ -230,4 +230,21 @@ export class EntrenadorService {
 
     
   }
+  updateFirma(usuario:DatosEntrenador,id: string,image?: File){
+
+    this.filePath = `firma/${id}`;
+    const fileRef = this.storage.ref(this.filePath);
+    const task = this.storage.upload(this.filePath, image);
+    task.snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(urlImage => {
+            usuario.firma=urlImage;
+            this.entrenadoresCollection.doc(id).update(usuario);
+          });
+        })
+      ).subscribe();
+
+    
+  }
 }

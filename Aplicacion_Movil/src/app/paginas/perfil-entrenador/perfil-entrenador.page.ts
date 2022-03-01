@@ -8,6 +8,7 @@ import { AuthService } from '../../servicios/auth.service';
 import { ActivatedRoute} from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import * as firebase from 'firebase';
+import { nodeModuleNameResolver } from 'typescript';
 
 @Component({
   selector: 'app-perfil-entrenador',
@@ -31,6 +32,7 @@ export class PerfilEntrenadorPage implements OnInit {
   public image: any;
   usuarioId= null;
   mensaje:string;
+  str = "DelftStacks";
   constructor(
     private usuarioService: EntrenadorService,
     public formBuilder: FormBuilder,
@@ -49,6 +51,17 @@ export class PerfilEntrenadorPage implements OnInit {
      
     } 
   }
+  eventHandler(event) {
+    console.log("")
+    /*if(event.keyCode==32){
+      var str2 = this.usuario.nombres.substring(0,  this.usuario.nombres.length - 1);
+      this.str = str2;
+      console.log(str2);
+ 
+    
+      //this.usuario.nombres=this.str;
+    }*/
+ } 
 
   async mensajeconfirmacion() {
     const alert = await this.alertCtrl.create({
@@ -107,14 +120,14 @@ export class PerfilEntrenadorPage implements OnInit {
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
-      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$"),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú]+$"),
     ]));
 
     const apellidoControl = new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(15),
-      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú ]+$"),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú]+$"),
     ]));
 
     const cedulaControl = new FormControl('', Validators.compose([

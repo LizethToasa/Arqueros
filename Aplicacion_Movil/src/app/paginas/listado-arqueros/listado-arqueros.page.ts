@@ -38,7 +38,7 @@ export class ListadoArquerosPage implements OnInit {
     });
   }
 
-  descargar(id:string){
+  descargar59(id:string){
     this.usuarioService.busquedauser(id).subscribe((alumno) =>{
       this.arquero = alumno[0];
       this.Service.getFicha(this.arquero.uid).subscribe((ficha) =>{

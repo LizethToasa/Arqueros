@@ -61,7 +61,7 @@ export class VerFichaPage implements OnInit {
     ]));
     const dondetrabaja = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(7),
+      Validators.minLength(3),
       Validators.maxLength(30),
       Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú 123456789]+$")
       
@@ -87,6 +87,7 @@ export class VerFichaPage implements OnInit {
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(4),
+      Validators.pattern("^[a-zA-ZÑñÁÉÍÓÚáéíóú +-]+$")
 
     ]));
     const posale = new FormControl('', Validators.compose([
@@ -140,7 +141,7 @@ export class VerFichaPage implements OnInit {
     ]));
     const lugarpadre = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.maxLength(30),
     ]));
     const emailpadre = new FormControl('', Validators.compose([
@@ -175,7 +176,7 @@ export class VerFichaPage implements OnInit {
     ]));
     const lugarmadre = new FormControl('', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
+      Validators.minLength(3),
       Validators.maxLength(30),
     ]));
     const emailmadre = new FormControl('', Validators.compose([
@@ -225,34 +226,49 @@ export class VerFichaPage implements OnInit {
 
   }
   seleccionalergias(){
+    var element = <HTMLInputElement> document.getElementById("aler");
      if(this.ficha.alergias=="Si"){
+       element.style.display = 'inline';
      }else{
        this.ficha.descripcionalergias = "";
+       element.style.display = 'none';
      }
   }
  seleccionafracturas(){
+   var element = <HTMLInputElement> document.getElementById("frac");
     if(this.ficha.fracturas=="Si"){
+      element.style.display = 'inline';
     }else{
      this.ficha.descripcionfracturas = "";
+      element.style.display = 'none';
     }
  }
  seleccionaoperaciones(){
+   var element = <HTMLInputElement> document.getElementById("opera");
     if(this.ficha.operaciones=="Si"){
+      element.style.display = 'inline';
     }else{
      this.ficha.descripcionoperaciones = "";
+      element.style.display = 'none';
     }
  }
  seleccionaenfermedades(){
+   var element = <HTMLInputElement> document.getElementById("enfer");
     if(this.ficha.enfermedades=="Si"){
+      element.style.display = 'inline';
     }else{
      this.ficha.descripcionenfermades = "";
+      element.style.display = 'none';
     }
  }
  
  seleccionamedicamentos(){
+   var element = <HTMLInputElement> document.getElementById("medi");
     if(this.ficha.medicamentos=="Si"){
+      element.style.display = 'inline';
     }else{
      this.ficha.descripcionmedicamentos = "";
+      element.style.display = 'none';
     }
  }
 

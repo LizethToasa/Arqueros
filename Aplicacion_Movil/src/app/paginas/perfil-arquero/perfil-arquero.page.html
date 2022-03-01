@@ -22,7 +22,7 @@
   </div>
     <ion-item>
       <ion-label position="stacked"><strong>Nombres</strong></ion-label>
-      <ion-input formControlName="nombreControl" type="text" #nombre [(ngModel)]="usuario.nombre" placeholder="Nombre1"></ion-input>
+      <ion-input formControlName="nombreControl" type="text" #nombre [(ngModel)]="usuario.nombre" placeholder="Nombre1 Nombre2" (ionChange)="cambio()" id="dir" ></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"
@@ -44,7 +44,7 @@
     </div>
     <ion-item>
       <ion-label position="stacked"><strong>Apellidos</strong></ion-label>
-      <ion-input formControlName="apellidoControl" #apellido type="text" [(ngModel)]="usuario.apellido" placeholder="Apellido"></ion-input>
+      <ion-input formControlName="apellidoControl" #apellido type="text" [(ngModel)]="usuario.apellido" placeholder="Apellido1 Apellido2" (ionChange)="cambio2()" id="dir2"></ion-input>
     </ion-item>
     <div class="validation-errors">
       <p class="form-error"

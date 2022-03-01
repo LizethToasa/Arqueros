@@ -97,6 +97,17 @@ export class ArqueroService {
   }
 
   getNotificacionEntrenadores(){
+    this.notificacionentreCollection2 = this.db.collection<NotificacionEntrenador>('notificacioentrenador', ref =>ref.orderBy('fecha2', "desc"));
+    this.notificacionentre = this.notificacionentreCollection2.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
     return this.notificacionentre;
   }
 
@@ -130,6 +141,17 @@ export class ArqueroService {
   }
 
   getNotificacionesArquero(){
+    this.notificacionCollection = this.db.collection<NotificacionArquero>('notificacionarquero', ref =>ref.orderBy('fecha2', "desc"));
+    this.notificacion = this.notificacionCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+        
+          return {id, ...data};
+        });
+      })
+    );
     return this.notificacion;
   }
 
